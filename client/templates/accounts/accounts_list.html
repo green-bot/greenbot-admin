@@ -24,13 +24,13 @@
             {{#each accounts }}
               <tr>
                 <td>
-                  <a href="/accounts/RVMkMPb4LY">andersonhardware@comcast.com</a>
+                  {{username}}
                 </td>
                 <td>
                   2
                 </td>
                 <td>
-                  <a class="btn btn-default" href="/accounts/RVMkMPb4LY">Show</a><a class="btn btn-default" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/accounts/RVMkMPb4LY">Delete</a>
+                  <a class="btn btn-default" href="{{pathFor 'accountPage' _id=this._id.toHexString }}">Show</a><a class="btn btn-default" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="#">Delete</a>
                 </td>
               </tr>
             {{/each}}
