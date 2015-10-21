@@ -1,0 +1,70 @@
+<template name="numberPortingRequestNew">
+  <h1>New Number Porting request</h1>
+
+
+  <form novalidate="novalidate" class="simple_form new_port_number_request" id="number-porting-request" action="/port_number_requests" accept-charset="UTF-8" method="post">
+      <div class="form-froup row">
+        <div class="col-md-6">
+          <div class="form-group string optional">
+            <label class="string optional control-label" for="port_number_request_name">Name</label>
+            <input class="string optional form-control" type="text" name="name" id="port_number_request_name">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group string optional">
+            <label class="string optional control-label" for="port_number_request_number">Number to Port</label>
+            <input class="string optional form-control" type="text" name="number" id="port_number_request_number">
+          </div>
+        </div>
+      </div>
+      <div class="form-froup row">
+        <div class="col-md-6">
+          <div class="form-group string optional port_number_request_current_service_provider">
+            <label class="string optional control-label" for="port_number_request_current_service_provider">Current service provider</label>
+            <input class="string optional form-control" type="text" name="currentServiceProvider" id="port_number_request_current_service_provider">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group string optional port_number_request_owner_cell">
+            <label class="string optional control-label" for="port_number_request_owner_cell">Owners cell number</label>
+            <input class="string optional form-control" type="text" name="ownerCell" id="port_number_request_owner_cell">
+          </div>
+        </div>
+      </div>
+      <div class="form-froup row">
+        <div class="col-md-6">
+          <div class="form-group string optional port_number_request_service_location_address">
+            <label class="string optional control-label" for="port_number_request_service_location_address">Service location address</label>
+            <input class="string optional form-control" type="text" name="serviceLocationAddress" id="port_number_request_service_location_address">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group string optional port_number_request_suite_num">
+            <label class="string optional control-label" for="port_number_request_suite_num">Suite num</label>
+            <input class="string optional form-control" type="text" name="suiteNum" id="port_number_request_suite_num">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input class="string optional form-control" placeholder="CITY" type="text" name="city" id="port_number_request_city">
+        </div>
+        <div class="col-md-2">
+          <input class="string optional form-control" placeholder="ST" type="text" name="state" id="port_number_request_state">
+        </div>
+        <div class="col-md-5">
+          <input class="string optional form-control" placeholder="ZIP" type="text" name="zip" id="port_number_request_zip">
+        </div>
+      </div>
+      <div class="form-group boolean optional port_number_request_allow_sms">
+        <div class="checkbox">
+          <label class="boolean optional" for="port_number_request_allow_sms">
+            <input class="boolean optional" type="checkbox" value="1" name="allowSms" id="port_number_request_allow_sms">
+            Allow kisst to send you sms messages regarding your account?
+          </label>
+      </div>
+    </div>
+    <input type="submit" name="commit" value="Create Port number request" class="btn btn-success">
+</form>
+
+</template>

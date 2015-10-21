@@ -1,0 +1,55 @@
+<template name="accountsList">
+    <div class="page-header">
+      <a class="btn btn-primary" href="/accounts/new">
+          <span class="glyphicon glyphicon-plus"></span> New Account</a>
+        <h1>
+          Listing accounts
+        </h1>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover account-table">
+          <thead>
+            <tr>
+              <th>
+                Username
+              </th>
+              <th>
+                Assigned Rooms
+              </th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each accounts }}
+              <tr>
+                <td>
+                  <a href="/accounts/RVMkMPb4LY">andersonhardware@comcast.com</a>
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  <a class="btn btn-default" href="/accounts/RVMkMPb4LY">Show</a><a class="btn btn-default" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/accounts/RVMkMPb4LY">Delete</a>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bs-component">
+        <ul class="pagination">
+          <li class="active">
+            <a href="#">1</a>
+          </li><li>
+            <a rel="next" href="/accounts?page=2">2</a>
+          </li><li>
+            <a rel="next" href="/accounts?page=2">Next ›</a>
+          </li><li>
+            <a href="/accounts?page=2">Last »</a>
+          </li>
+        </ul>
+      </div>
+
+</template>

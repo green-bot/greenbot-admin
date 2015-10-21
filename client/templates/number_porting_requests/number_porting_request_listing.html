@@ -1,0 +1,37 @@
+<template name="numberPortingRequestList">
+  <div class="row form-group">
+    <div class="col-md-12">
+      <a class="btn btn-success pull-right" href="{{pathFor route='numberPortingRequestNew' }}">New Number Porting Request</a>
+    </div>
+  </div>
+
+  {{#each numberPortingRequests }}
+  <div class="panel port-number-request" data-phone-no="+123989349384">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>
+            <input class="request-checkbox" name="request_ids[]" type="checkbox" value="7">{{ name }}<small>
+            <a href="/port_number_requests"> Authorization Record</a></small>
+          </h3>
+        </div>
+      </div>
+      <div class="created-at">
+        7 days ago
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <address>{{addressLine}}</address>
+        </div>
+        <div class="col-md-3">
+          <span class="phone"><strong>{{number}}</strong></span><span class="carrier">{{currentServiceProvider}}</span>
+        </div>
+        <div class="col-md-4">
+          <span class="badge">Loa confirmed: {{ loaConfirmedAt }}</span>
+          <span class="badge">Ownership confirmed: 7 days</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</template>
