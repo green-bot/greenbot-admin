@@ -19,6 +19,21 @@ var fixRoomDidReferences = function(){
   });
 }
 
+var fixDidUserReference = function(){
+  db.Dids.find({userId: {$exists: false}}).forEach(function(did){
+    var room = db.Rooms.findOne({ didId: did._id  });
+    if(!room) return;
+    var userId = room.userId;
+    db.Dids.update(did, {$set: {userId: userId}});
+  });
+
+  db.Dids.find({user: {$exists: true}, userId: {$exists: false}}).forEach(function(did){
+    var user = db.Users.findOne({objectId: did.user.objectId});
+    if(!user) return;
+    db.Dids.update(did, {$set: {userId: user._id}});
+  });
+}
+
 var fixRoomUserReferences = function(){
   db.Rooms.find({userId: {$exists: false}}).forEach(function(room){
     var user = db.Users.findOne({objectId: room.user.objectId});

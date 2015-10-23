@@ -1,4 +1,22 @@
 <template name="numberPortingRequestList">
+
+  <ul class="nav nav-tabs">
+    <li class="{{ activeTab 'new'}}" role="presentation">
+      <a href="?current_tab=new">New</a>
+    </li>
+    <li class="{{ activeTab 'ready' 'ready'}}" role="presentation">
+      <a href="?current_tab=ready">Ready</a>
+    </li>
+    <li class="{{ activeTab 'started'}}" role="presentation">
+      <a href="?current_tab=started">Started</a>
+    </li>
+    <li class="{{ activeTab 'completed'}}" role="presentation">
+      <a href="?current_tab=completed">Completed</a>
+    </li>
+  </ul>
+
+
+
   <div class="row form-group">
     <div class="col-md-12">
       <a class="btn btn-success pull-right" href="{{pathFor route='numberPortingRequestNew' }}">New Number Porting Request</a>
@@ -11,13 +29,13 @@
       <div class="row">
         <div class="col-md-12">
           <h3>
-            <input class="request-checkbox" name="request_ids[]" type="checkbox" value="7">{{ name }}<small>
-            <a href="/port_number_requests"> Authorization Record</a></small>
+            <input class="request-checkbox" name="request_ids[]" type="checkbox" value="7">{{ name }}
+            {{#if recording_url }}<small><a href="/port_number_requests"> Authorization Record</a></small>{{/if}}
           </h3>
         </div>
       </div>
       <div class="created-at">
-        7 days ago
+        {{ livestamp createdAt }}
       </div>
       <div class="row">
         <div class="col-md-5">
@@ -27,8 +45,8 @@
           <span class="phone"><strong>{{number}}</strong></span><span class="carrier">{{currentServiceProvider}}</span>
         </div>
         <div class="col-md-4">
-          <span class="badge">Loa confirmed: {{ loaConfirmedAt }}</span>
-          <span class="badge">Ownership confirmed: 7 days</span>
+          {{ #if loaConfirmedAt }}<span class="badge">Loa confirmed: {{ livestamp loaConfirmedAt }}</span>{{/if}}
+          {{ #if ownershipConfirmedAt }}<span class="badge">Ownership confirmed: {{ livestamp ownershipConfirmedAt }}</span>{{/if}}
         </div>
       </div>
     </div>
