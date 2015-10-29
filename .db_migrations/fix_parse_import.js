@@ -81,6 +81,6 @@ var migrate = function(){
   addAccountReferenceToNetworkHandles();
   //--optionally--
   //renameCollection Users to Accounts
-  //rename did field in NetworkHandle to 'handle'
+  //rename did field in NetworkHandles to 'handle'
   //rename did_id fields (foreign keys) to network_handle_id
 }

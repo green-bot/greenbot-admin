@@ -17,3 +17,7 @@ Meteor.publish('rooms', function(accountId){
 Meteor.publish('number_porting_requests', function(accountId){
   return NumberPortingRequests.find({});
 });
+
+Meteor.publish('number_porting_request', function(id){
+  return NumberPortingRequests.find({_id: new Mongo.ObjectID(id) });
+});
