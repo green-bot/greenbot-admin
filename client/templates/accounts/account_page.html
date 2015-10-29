@@ -1,16 +1,16 @@
 <template name="accountPage">
   <h1>Account: {{username}}</h1>
-  {{#each dids}}
+  {{#each networkHandles}}
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail account_card">
-        <h2 class="text-center">{{did}}</h2>
+        <h2 class="text-center">{{network}}:{{did}}</h2>
         <div class="caption">
           <dl>
-            {{#each rooms}}
-              <dt class="account_card_details">
-                <a href="#">{{keyword}}</a> : {{desc}}
-              </dt>
-            {{/each}}
+            <!--{{#each rooms}}-->
+              <!--<dt class="account_card_details">-->
+                <!--<a href="#">{{keyword}}</a> : {{desc}}-->
+              <!--</dt>-->
+            <!--{{/each}}-->
           </dl>
         </div>
       </div>

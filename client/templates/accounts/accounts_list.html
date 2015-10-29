@@ -1,55 +1,32 @@
 <template name="accountsList">
-    <div class="page-header">
-      <a class="btn btn-primary" href="/accounts/new">
-          <span class="glyphicon glyphicon-plus"></span> New Account</a>
-        <h1>
-          Listing accounts
-        </h1>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover account-table">
-          <thead>
-            <tr>
-              <th>
-                Username
-              </th>
-              <th>
-                Assigned Rooms
-              </th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each accounts }}
-              <tr>
-                <td>
-                  {{username}}
-                </td>
-                <td>
-                  {{roomsCount}} 
-                </td>
-                <td>
-                  <a class="btn btn-default" href="{{pathFor 'accountPage' _id=this._id.toHexString }}">Show</a><a class="btn btn-default" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="#">Delete</a>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      </div>
 
-      <div class="bs-component">
-        <ul class="pagination">
-          <li class="active">
-            <a href="#">1</a>
-          </li><li>
-            <a rel="next" href="/accounts?page=2">2</a>
-          </li><li>
-            <a rel="next" href="/accounts?page=2">Next ›</a>
-          </li><li>
-            <a href="/accounts?page=2">Last »</a>
-          </li>
-        </ul>
-      </div>
-
+  <div class="table-responsive">
+    <table class="table table-hover account-table">
+      <thead>
+        <tr>
+          <th> <h3>Accounts</h3> </th>
+          <th> <h3>Bots</h3> </th>
+          <th>
+            <a class="btn btn-success pull-right" href="/accounts/new">
+              <span class="glyphicon glyphicon-plus"></span>
+              New Account
+            </a>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each accounts }}
+        <tr>
+          <td>
+            <a class="btn btn-default" href="{{pathFor 'accountPage' _id=this._id.toHexString }}">{{username}}</a>
+          </td>
+          <td>
+            {{roomsCount}} 
+          </td>
+          <td></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>

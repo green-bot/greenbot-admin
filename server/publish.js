@@ -1,13 +1,13 @@
 Meteor.publish('accounts', function(){
-  return Accounts.find({}, {order: {createdAt: -1}});
+  return RegisteredAccounts.find({}, {order: {createdAt: -1}});
 });
 
 Meteor.publish('account', function(id){
-  return Accounts.find({_id: new Mongo.ObjectID(id) });
+  return RegisteredAccounts.find({_id: new Mongo.ObjectID(id) });
 });
 
-Meteor.publish('dids', function(accountId){
-  return Dids.find({userId: new Mongo.ObjectID(accountId) });
+Meteor.publish('network_handles', function(){
+  return NetworkHandles.find();
 });
 
 Meteor.publish('rooms', function(accountId){

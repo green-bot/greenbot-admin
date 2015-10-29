@@ -1,6 +1,6 @@
 Template.accountPage.helpers({
- dids: function() {
-   return Dids.find({userId: this._id}); 
+ networkHandles: function() {
+   return NetworkHandles.find({accountId: this._id}); 
   },
 
  rooms: function() {

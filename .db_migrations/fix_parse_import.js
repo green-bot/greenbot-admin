@@ -37,8 +37,7 @@ var fixDidUserReference = function(){
 var fixRoomUserReferences = function(){
   db.Rooms.find({userId: {$exists: false}}).forEach(function(room){
     var user = db.Users.findOne({objectId: room.user.objectId});
-    if(!user) return;
-    db.Rooms.update(room, {$set: {userId: user._id}});
+    if(user) db.Rooms.update(room, {$set: {userId: user._id}});
   });
 }
 
@@ -64,6 +63,13 @@ var addRoomsCountToUsers = function(){
   });
 }
 
+var addAccountReferenceToNetworkHandles = function(){
+  db.NetworkHandles.find().forEach(function(nh){
+    var room = db.Rooms.findOne({didId: nh._id});
+    if(room) db.NetworkHandles.update(nh, {$set: {accountId: room.userId}});
+  });
+}
+
 var collections = [db.Users, db.Networks, db.Rooms, db.Dids];
 
 var migrate = function(){
@@ -71,5 +77,10 @@ var migrate = function(){
   fixRoomDidReferences();
   fixRoomUserReferences();
   addRoomsCountToUsers();
+  db.Dids.renameCollection("NetworkHandles");
+  addAccountReferenceToNetworkHandles();
+  //--optionally--
+  //renameCollection Users to Accounts
+  //rename did field in NetworkHandle to 'handle'
+  //rename did_id fields (foreign keys) to network_handle_id
 }
-

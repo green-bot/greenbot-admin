@@ -1,7 +1,17 @@
-account:
-users:
-  _account_id:
-dids:
-port_number_request:
-  _did_id:
 
+Number Porting:
+Accounts:
+  Account1:
+    Network Handles
+    [  SMS:12332048105     5 keywords ]
+    [  Twitter:@gduquesnay 2 keywords ]
+      Edit
+          [  SMS:12332048105     ]
+          [  default: bot1       ]
+          [  keyword: bot1       ]
+          [  keyword: bot2       ]
+          [  keyword: bot2       ]
+
+
+   Service: KISST
+   Username: lorem@ipsum.com
