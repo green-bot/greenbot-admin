@@ -7,8 +7,10 @@ Template.numberPortingRequestNew.events({
     numberPortingRequest.createdAt = new Date();
     numberPortingRequest.accountId = new Mongo.ObjectID( Router.current().params.query.account_id );
 
-    NumberPortingRequests.insert(numberPortingRequest);
-    Router.go("numberPortingRequestList")
+    var id = NumberPortingRequests.insert(numberPortingRequest);
+    numberPortingRequest._id = id;
+    Router.go("numberPortingRequestList");
+    Meteor.call('sendConfirmLoaEmail', numberPortingRequest);
   }
 });
 

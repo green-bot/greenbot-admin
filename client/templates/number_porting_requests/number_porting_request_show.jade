@@ -1,0 +1,27 @@
+template(name="numberPortingRequestShow")
+  h1 Number porting request to enable KISST on existing number #{number}
+
+  ul.timeline
+    if loaConfirmedAt
+      +numberPortingRequestTimelineItem(title="Number porting request details confirmed" badgeClass="success" glyphicon="ok")
+        p= livestamp(loaConfirmedAt)
+
+      if ownershipConfirmedAt
+        +numberPortingRequestTimelineItem(title="Ownership of number confirmed" badgeClass="success" glyphicon="ok")
+          = livestamp(ownershipConfirmedAt)
+          br
+          | link to recording
+          
+        if portingCompletedAt
+          +numberPortingRequestTimelineItem(title="Number porting request details confirmed" badgeClass="success" glyphicon="ok")
+            p= livestamp(portingCompletedAt)
+        else
+          +numberPortingRequestTimelineItem(title="Our team is processing your request" badgeClass="warning" glyphicon="time")
+      else
+        //-+numberPortingRequestTimelineItem(title=pleaseCall number badgeClass="warning" glyphicon="earphone")
+        {{> numberPortingRequestTimelineItem title=pleaseCall badgeClass="warning" glyphicon="earphone"}}
+
+    else
+      +numberPortingRequestTimelineItem(title="LINK TO CONFIRM" timestamp=loaConfirmedAt badgeClass="success" glyphicon="ok")
+    
+

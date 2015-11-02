@@ -9,7 +9,7 @@ Template.numberPortingRequestEdit.events({
     npr_params.loaConfirmedAt = new Date();
     NumberPortingRequests.update(numberPortingRequestId, { $set: npr_params });
 
-    Router.go("numberPortingRequestShow", { _id: numberPortingRequestId });
+    Router.go("numberPortingRequestShow", { _id: numberPortingRequestId.toHexString() });
   }
 });
 

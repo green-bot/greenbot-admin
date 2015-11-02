@@ -1,9 +1,9 @@
 Meteor.publish('accounts', function(){
-  return RegisteredAccounts.find({}, {order: {createdAt: -1}});
+  return Accounts.find({}, {order: {createdAt: -1}});
 });
 
 Meteor.publish('account', function(id){
-  return RegisteredAccounts.find({_id: new Mongo.ObjectID(id) });
+  return Accounts.find({_id: new Mongo.ObjectID(id) });
 });
 
 Meteor.publish('network_handles', function(){
@@ -14,7 +14,7 @@ Meteor.publish('rooms', function(accountId){
   return Rooms.find({userId: new Mongo.ObjectID(accountId) });
 });
 
-Meteor.publish('number_porting_requests', function(accountId){
+Meteor.publish('number_porting_requests', function(){
   return NumberPortingRequests.find({});
 });
 

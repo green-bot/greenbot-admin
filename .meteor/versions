@@ -50,6 +50,7 @@ localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.9
 meteor-base@1.0.1
+meteorhacks:ssr@2.2.0
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
@@ -57,6 +58,8 @@ mobile-status-bar@1.0.6
 momentjs:moment@2.9.0
 mongo@1.1.2
 mongo-id@1.0.1
+mquandalle:jade@0.4.5
+mquandalle:jade-compiler@0.4.5
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7

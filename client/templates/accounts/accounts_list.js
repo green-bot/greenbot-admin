@@ -1,5 +1,5 @@
 Template.accountsList.helpers({
   accounts : () => {
-    return RegisteredAccounts.find();
+    return Accounts.find();
   }
 })
