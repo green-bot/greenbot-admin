@@ -9,7 +9,6 @@ Meteor.methods({
     var account = Accounts.findOne(numberPortingRequest.accountId);
     var host = 'http://104.131.57.1:3001';
     var editNumberPortingRequestUrl = host + Router.routes.numberPortingRequestEdit.path({_id: numberPortingRequest._id.toHexString()});
-    console.log('url: ' + editNumberPortingRequestUrl);
 
     var body_html = SSR.render("confirmLoaBody", {numberPortingRequest: numberPortingRequest, account: account, editNumberPortingRequestUrl: editNumberPortingRequestUrl});
 
