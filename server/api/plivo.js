@@ -11,12 +11,11 @@ api.addRoute('plivo/new_call', { authRequired: false }, {
       var response = plivo.Response();
       var number = this.bodyParams.CallerName;
       var portingRequest = NumberPortingRequests.findOne({number: number});
-      console.log('porting request number: ' + JSON.stringify(this.bodyParams));
       if(portingRequest) {
         var sayNameMessage = "Hello, thank you for using kisst. Please say your full name after the beep and press pound to confirm your number porting request.";
         response.addSpeak(sayNameMessage);
         response.addRecord({
-          action: 'http://104.131.57.1:3001/api/plivo/recording_complete', // recording complete url
+          action: 'http://104.131.57.1:3001/api/plivo/recording_complete',
           maxLength: 10,
           playBeep: true
         });
@@ -25,12 +24,7 @@ api.addRoute('plivo/new_call', { authRequired: false }, {
         response.addSpeak(notFoundMessage);
       }
 
-      return {
-        headers: {
-          'Content-Type': 'application/xml; charset=utf-8'
-        },
-        body: '<?xml version="1.0" encoding="UTF-8" ?>' + response.toXML()
-      };
+      return xmlResponse(response);
     }
   }
 });
@@ -43,7 +37,6 @@ api.addRoute('plivo/recording_complete', { authRequired: false }, {
       var portingRequest = NumberPortingRequests.findOne({number: number});
       response.addSpeak("Thank you for confirming your ownership. We will now proceed with porting your number.");
 
-      console.log('porting request number: ' + JSON.stringify(this.bodyParams));
       var now = new Date();
       NumberPortingRequests.update({ _id: portingRequest._id }, { $set: {ownershipConfirmedAt: now, recordingUrl: this.bodyParams.RecordUrl } });
 
@@ -53,12 +46,16 @@ api.addRoute('plivo/recording_complete', { authRequired: false }, {
         subject: 'request to port ' + portingRequest.number,
       });
 
-      return {
-        headers: {
-          'Content-Type': 'application/xml; charset=utf-8'
-        },
-        body: '<?xml version="1.0" encoding="UTF-8" ?>' + response.toXML()
-      };
+      return xmlReponse(response);
     }
   }
 });
+
+function xmlResponse(plivoResponse) {
+  return {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8'
+    },
+    body: '<?xml version="1.0" encoding="UTF-8" ?>' + response.toXML()
+  };
+}
