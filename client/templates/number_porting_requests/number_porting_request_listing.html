@@ -16,50 +16,7 @@
   </ul>
 
 
-  <div class="row form-group">
-    <div class="col-md-12">
-      <h3>
-        <input id="select-all" type="checkbox">Select all
-        <button id="start-porting" class="pull-right btn btn-success">Start porting selected requests</button>
-      </h3>
-    </div>
-  </div>
+  {{> UI.dynamic template=currentTabTemplate }}
 
-  {{#each numberPortingRequests }}
-  <div class="panel port-number-request" data-phone-no="+123989349384">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-md-12">
-          <h3>
-            <input class="request-checkbox" name="request_ids[]" type="checkbox" value="7" checked={{ isRequestChecked }} />
-            <span class='name'>{{ name }}</span>
-          </h3>
-        </div>
-      </div>
-      <div class="created-at">
-        {{ livestamp createdAt }}
-      </div>
-      <div class="row">
-        <div class="col-md-5">
-          <address>{{addressLine}}</address>
-        </div>
-        <div class="col-md-3">
-          <span class="phone"><strong>{{number}}</strong></span><span class="carrier">{{currentServiceProvider}}</span>
-        </div>
-        <div class="col-md-4">
-          {{ #if loaConfirmedAt }}<span class="badge">Loa confirmed: {{ livestamp loaConfirmedAt }}</span>{{/if}}
-          {{ #if ownershipConfirmedAt }}
-            <span class="badge">Ownership confirmed: {{ livestamp ownershipConfirmedAt }}</span>
-            {{#if recordingUrl}}
-              <audio controls="controls" src="{{recordingUrl}}"></audio>
-            {{else}}
-              <br>
-              <span class='label label-danger'>WARNING! No recording url found!</span>
-            {{/if}}
-          {{/if}}
-        </div>
-      </div>
-    </div>
-  </div>
-  {{/each}}
+
 </template>

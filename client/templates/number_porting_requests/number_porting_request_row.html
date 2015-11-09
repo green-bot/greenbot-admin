@@ -1,0 +1,39 @@
+<template name="numberPortingRequestRow">
+
+  <div class="panel port-number-request">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>
+            <input class="request-checkbox" name="request_ids[]" type="checkbox" value="{{_id._str}}" checked={{ isRequestChecked }} />
+            <span class='name'>{{ name }}</span>
+          </h3>
+        </div>
+      </div>
+      <div class="created-at">
+        {{ livestamp createdAt }}
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <address>{{addressLine}}</address>
+        </div>
+        <div class="col-md-3">
+          <span class="phone"><strong>{{number}}</strong></span><span class="carrier">{{currentServiceProvider}}</span>
+        </div>
+        <div class="col-md-4">
+          {{ #if loaConfirmedAt }}<span class="badge">Loa confirmed: {{ livestamp loaConfirmedAt }}</span>{{/if}}
+          {{ #if ownershipConfirmedAt }}
+            <span class="badge">Ownership confirmed: {{ livestamp ownershipConfirmedAt }}</span>
+            {{#if recordingUrl}}
+              <audio controls="controls" src="{{recordingUrl}}"></audio>
+            {{else}}
+              <br>
+              <span class='label label-danger'>WARNING! No recording found!</span>
+            {{/if}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>

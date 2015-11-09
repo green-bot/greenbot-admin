@@ -1,0 +1,13 @@
+<template name="portStartNotificationNew">
+  <h1>Start porting numbers</h1>
+
+  <div class="well">
+    {{#each numberPortingRequests }}
+      <p>
+        {{ number }}<br>
+      </p>
+    {{/each}}
+  </div>
+
+  <button id='start-porting' class="btn btn-success">Start Porting</button>
+</template>

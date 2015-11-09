@@ -1,0 +1,17 @@
+<template name="numberPortingRequestReadyTab">
+
+  <div class="row form-group">
+    <div class="col-md-12">
+      <h3>
+        <input id="select-all" type="checkbox">Select all
+        {{#if anyRequestsSelected}}
+          <a href="{{pathFor 'portStartNotificationNew'}}" class="pull-right btn btn-success">Start porting selected requests</a>
+        {{/if}}
+      </h3>
+    </div>
+  </div>
+
+  {{#each numberPortingRequests }}
+    {{> numberPortingRequestRow }}
+  {{/each}}
+</template>

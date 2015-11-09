@@ -18,6 +18,6 @@ Meteor.methods({
       subject: 'Please review and confirm your number porting request details for number: ' + NumberPortingRequests.number,
       html: body_html
     });
-  }
+  },
 });
 
