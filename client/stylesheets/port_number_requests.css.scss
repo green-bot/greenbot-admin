@@ -10,4 +10,14 @@
   .phone, .carrier{ font-size: 14px; }
   .carrier{ margin-left: 10px }
 }
-input#select-all{ margin-right: 10px; margin-left: 15px; } 
+input#select-all{ margin-right: 10px; margin-left: 15px; }
+
+#numbers-widget #numbers-input{
+  background-color: #017BA2;
+  background-image: linear-gradient(transparent 50%, rgba(255, 255, 255, 0.5) 50%);
+  background-size: 50px 50px;
+  min-height: 150px;
+  line-height: 25px;
+  margin: 15px 0;
+  color: #000;
+}

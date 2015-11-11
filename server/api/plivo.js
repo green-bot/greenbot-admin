@@ -29,6 +29,15 @@ api.addRoute('plivo/new_call', { authRequired: false }, {
   }
 });
 
+function xmlResponse(plivoResponse) {
+  return {
+    headers: {
+      'Content-Type': 'application/xml; charset=utf-8'
+    },
+    body: '<?xml version="1.0" encoding="UTF-8" ?>' + plivoResponse.toXML()
+  };
+}
+
 api.addRoute('plivo/recording_complete', { authRequired: false }, {
   post: {
     action: function() {
@@ -46,16 +55,8 @@ api.addRoute('plivo/recording_complete', { authRequired: false }, {
         subject: 'request to port ' + portingRequest.number,
       });
 
-      return xmlReponse(response);
+      return xmlResponse(response);
     }
   }
 });
 
-function xmlResponse(plivoResponse) {
-  return {
-    headers: {
-      'Content-Type': 'application/xml; charset=utf-8'
-    },
-    body: '<?xml version="1.0" encoding="UTF-8" ?>' + response.toXML()
-  };
-}

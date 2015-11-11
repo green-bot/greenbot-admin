@@ -1,0 +1,1 @@
+UnauthenticatedController = RouteController.extend();

@@ -1,0 +1,21 @@
+<template name="numberPortingRequestStartedTab">
+
+  <div class="row" id="numbers-widget">
+    <div class="col-md-4">
+      <textarea class="btn-block" id="numbers-input" placeholder="Paste numbers here to complete porting"></textarea>
+    </div>
+    <div class="col-md-4">
+      <h4>Unrecognized Numbers:</h4>
+      <div id="found-errors"> {{ readSession "notFoundNumbers" }}</div>
+    </div>
+    <div class="col-md-4">
+      <button id='complete-porting' class="btn btn-success">Complete Porting Selected Numbers</button>
+    </div>
+  </div>
+
+
+  {{#each numberPortingRequests }}
+    {{> numberPortingRequestRow }}
+  {{/each}}
+
+</template>
