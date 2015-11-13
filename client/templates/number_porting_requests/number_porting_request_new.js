@@ -9,7 +9,7 @@ Template.numberPortingRequestNew.events({
 
     var id = NumberPortingRequests.insert(numberPortingRequest);
     numberPortingRequest._id = id;
-    Router.go("numberPortingRequestList");
+    Router.go('numberPortingRequestList', null, {query: 'current_tab=new'} );
     Meteor.call('sendConfirmLoaEmail', numberPortingRequest);
   }
 });

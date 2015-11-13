@@ -70,17 +70,21 @@ var addAccountReferenceToNetworkHandles = function(){
   });
 }
 
-var collections = [db.Users, db.Networks, db.Rooms, db.Dids];
+var renameCustomersUsernameToEmail = function(){
+  db.Customers.update({}, {$rename: { "username" : "email" }}, {multi: true});
+};
 
 var migrate = function(){
+  var collections = [db.Users, db.Networks, db.Rooms, db.Dids];
   collections.forEach(insertAtRoot);
   fixRoomDidReferences();
   fixRoomUserReferences();
   addRoomsCountToUsers();
   db.Dids.renameCollection("NetworkHandles");
   addAccountReferenceToNetworkHandles();
+  db.Users.renameCollection("Customers");
+  renameCustomersUsernameToEmail();
   //--optionally--
-  //renameCollection Users to Accounts
   //rename did field in NetworkHandles to 'handle'
   //rename did_id fields (foreign keys) to network_handle_id
 }

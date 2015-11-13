@@ -1,24 +1,24 @@
 <template name="accountPage">
   <h1>Account: {{username}}</h1>
+  <table>
+  <tbody>
   {{#each networkHandles}}
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail account_card">
-        <h2 class="text-center">{{network}}:{{did}}</h2>
-        <div class="caption">
-          <dl>
-            <!--{{#each rooms}}-->
-              <!--<dt class="account_card_details">-->
-                <!--<a href="#">{{keyword}}</a> : {{desc}}-->
-              <!--</dt>-->
-            <!--{{/each}}-->
-          </dl>
-        </div>
-      </div>
+  <tr>
+    <td><a href="/network_handles/{{this._id}}">{{network}}:{{did}}</a></td>
+    <td>
+      3
+    </td>
+  </tr>
+  {{/each}}
+  </tbody>
+  </table>
+  <div class="row">
+    <div class="col-md-12">
+      <a class="btn btn-success" href="#">New Network Handle</a> 
     </div>
-    {{/each}}
-    <div class="row">
-      <div class="col-md-12">
-        <a class="btn btn-success pull-right" href="/number_porting_requests/new?account_id={{_id.toHexString }}">New Number Porting Request</a> 
-      </div>
+
+    <div class="col-md-12">
+      <a class="btn btn-success pull-right" href="/number_porting_requests/new?account_id={{_id.toHexString }}">New Number Porting Request</a> 
     </div>
+  </div>
 </template>

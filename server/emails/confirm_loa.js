@@ -6,7 +6,7 @@ Meteor.methods({
 
     // don’t allow sending email unless the user is logged in
     if (!Meteor.user()) throw new Meteor.Error(403, "not logged in");
-    var account = Accounts.findOne(numberPortingRequest.accountId);
+    var account = CustomerAccounts.findOne(numberPortingRequest.accountId);
     var host = 'http://104.131.57.1:3001';
     var editNumberPortingRequestUrl = host + Router.routes.numberPortingRequestEdit.path({_id: numberPortingRequest._id.toHexString()});
 
