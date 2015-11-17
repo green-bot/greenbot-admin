@@ -19,6 +19,14 @@ publishIfSignedIn('network_handles', function(){
   return NetworkHandles.find();
 });
 
+publishIfSignedIn('bots', function(accountId){
+  return Bots.find({accountId: accountId});
+});
+
+publishIfSignedIn('scripts', function(){
+  return Scripts.find();
+});
+
 publishIfSignedIn('rooms', function(accountId){
     return Rooms.find({userId: new Mongo.ObjectID(accountId) });
 });

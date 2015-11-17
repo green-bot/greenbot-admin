@@ -75,7 +75,7 @@ var renameCustomersUsernameToEmail = function(){
 };
 
 var migrate = function(){
-  var collections = [db.Users, db.Networks, db.Rooms, db.Dids];
+  var collections = [db.Users, db.Networks, db.Rooms, db.Dids, db.Scripts];
   collections.forEach(insertAtRoot);
   fixRoomDidReferences();
   fixRoomUserReferences();
