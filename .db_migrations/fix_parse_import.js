@@ -74,6 +74,14 @@ var renameCustomersUsernameToEmail = function(){
   db.Customers.update({}, {$rename: { "username" : "email" }}, {multi: true});
 };
 
+var renameNetworkHandlesDidToHandle = function() {
+  db.NetworkHandles.update({}, {$rename: { "did" : "handle" }}, {multi: true});
+};
+
+var renameRoomsDidIdToNetworkHandleId = function() {
+  db.Rooms.update({}, {$rename: {"didId": "networkHandleId"}}, {multi: true});
+};
+
 var migrate = function(){
   var collections = [db.Users, db.Networks, db.Rooms, db.Dids, db.Scripts];
   collections.forEach(insertAtRoot);
@@ -84,7 +92,6 @@ var migrate = function(){
   addAccountReferenceToNetworkHandles();
   db.Users.renameCollection("Customers");
   renameCustomersUsernameToEmail();
-  //--optionally--
-  //rename did field in NetworkHandles to 'handle'
-  //rename did_id fields (foreign keys) to network_handle_id
+  renameNetworkHandlesDidToHandle();
+  renameRoomsDidIdToNetworkHandleId();
 }
