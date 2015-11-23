@@ -20,7 +20,7 @@ publishIfSignedIn('networkHandles', function(accountId){
 });
 
 publishIfSignedIn('bots', function(accountId){
-  return Bots.find({accountId: accountId });
+  return Bots.find({accountId: new Mongo.ObjectID(accountId) });
 });
 
 publishIfSignedIn('scripts', function(){
