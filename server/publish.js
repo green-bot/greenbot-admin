@@ -15,12 +15,12 @@ publishIfSignedIn('account', function(id){
   return CustomerAccounts.find({_id: new Mongo.ObjectID(id) });
 });
 
-publishIfSignedIn('network_handles', function(){
-  return NetworkHandles.find();
+publishIfSignedIn('networkHandles', function(accountId){
+  return NetworkHandles.find({accountId: new Mongo.ObjectID(accountId) });
 });
 
 publishIfSignedIn('bots', function(accountId){
-  return Bots.find({accountId: accountId});
+  return Bots.find({accountId: accountId });
 });
 
 publishIfSignedIn('scripts', function(){
@@ -31,15 +31,15 @@ publishIfSignedIn('rooms', function(accountId){
     return Rooms.find({userId: new Mongo.ObjectID(accountId) });
 });
 
-publishIfSignedIn('number_porting_requests', function(){
+publishIfSignedIn('numberPortingRequests', function(){
   return NumberPortingRequests.find({});
 });
 
-publishIfSignedIn('number_porting_requests_by_ids', function(ids){
+publishIfSignedIn('numberPortingRequestsByIds', function(ids){
   objectIds = _.map(ids, function(id){ return new Mongo.ObjectID(id); });
   return NumberPortingRequests.find({_id: { $in: objectIds }});
 });
 
-publishIfSignedIn('number_porting_request', function(id){
+publishIfSignedIn('numberPortingRequest', function(id){
   return NumberPortingRequests.find({_id: new Mongo.ObjectID(id) });
 });

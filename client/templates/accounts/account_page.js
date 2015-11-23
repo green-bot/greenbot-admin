@@ -1,21 +1,27 @@
 Template.accountPage.helpers({
- bots: function() {
+ bots() {
    return Bots.find(); 
   },
 
- scripts: function() {
+ networkHandles() {
+   return NetworkHandles.find(); 
+  },
+
+ scripts() {
    return Scripts.find(); 
-  },
+ },
 
-  activeTab: function(tab){
-  },
+ activeTab(tab){
+ },
 
-  'selectedBot' : function() {
+  selectedBot() {
     var selectedBotId = Router.current().params.botId;
 
-    if(selectedBotId)
-      return Bots.findOne(selectedBotId);
-  },
+    if(selectedBotId){
+      bot = Bots.findOne(selectedBotId);
+      return bot;
+    }
+  }
 });
 
 Template.accountPage.events({
@@ -27,5 +33,9 @@ Template.accountPage.events({
     botParams.accountId = new Mongo.ObjectID( Router.current().params._id );
     Bots.insert(botParams);
     $('.modal').modal('hide');
+  },
+  
+  'change select#type' : (e, tmpl) => {
+    $('input#name').val($(e.target).find('option:selected').text())
   }
 });

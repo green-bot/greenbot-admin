@@ -1,7 +1,6 @@
 <template name="accountPage">
   <h3><a href="/accounts/{{ _id._str }}">{{customerName}}</a>  <small>{{email}}</small></h3>
 
-
   <div class="row">
     <div class="col-md-2">
       <ul class="nav nav-pills nav-stacked mb15">
@@ -21,7 +20,6 @@
     </div>
   </div>
 
-
   <div class="modal fade" id="addBotModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -32,11 +30,6 @@
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Bot Name">
-              <p class="help-block">Give your bot a memorable name.</p>
-            </div>
-            <div class="form-group">
               <label for="type">Bot Type</label>
               <select class="form-control" id="type" name="scriptId">
                 <option value="">Select Bot Type</option>
@@ -45,6 +38,11 @@
                 {{/each}}
               </select>
               <p class="help-block">Choose from one of our many bot types.</p>
+            </div>
+            <div class="form-group">
+              <label for="name">Name (optional)</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Bot Name">
+              <p class="help-block">Have too many bots of the same type and need a way to distinguish them? Give your bot a memorable name.</p>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </div>

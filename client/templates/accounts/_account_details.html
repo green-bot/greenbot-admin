@@ -1,4 +1,49 @@
 <template name="accountDetails">
   <h1>Account details</h1>
+
+
+  <h2>Network Handles</h2>
+  <p> A network handle is a unique identifier or handle on some "network" e.g. james@twitter where "james" is the identifier and "twitter" the network.</p>
+  <ul>
+    {{#each networkHandles}}
+      <li>{{did}}@{{network}}</li>
+    {{/each}}
+  </ul>
+  <a class="btn btn-success" data-target="#addNetworkHandleModal" data-toggle="modal" href="#">Add a Network Handle</a>
+
   <a class="btn btn-success pull-right" href="/number_porting_requests/new?account_id={{_id._str }}">New Number Porting Request</a> 
+
+
+  <div class="modal fade" id="addNetworkHandleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Network Handle</h4>
+        </div>
+        <div class="modal-body">
+          Networks
+          <div>
+            <h4>TSG</h4>
+            <p>Tsg is a ....... </p>
+            <p>They allow for porting your existing landline phone number to be used for text services or allocating a new number.</p>
+            <a class="btn btn-success pull-right" href="/accounts/{{_id._str }}/network_handles">Get a New Number</a>
+            <a class="btn btn-success pull-right" href="/number_porting_requests/new?account_id={{_id._str }}">Port an Existing Number</a>
+          </div>
+          <div>
+            <h4>Twitter</h4>
+            <p>Twitter is a ....... well you know</p>
+            <p>You can connect your existing twitter handle.</p>
+            <a class="btn btn-success pull-right" href="/number_porting_requests/new?account_id={{_id._str }}">Get a New Number</a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </template>
