@@ -14,11 +14,18 @@ Template.loginPage.events({
     var email    = e.target["email"].value;
     var password = e.target["password"].value;
 
-    Meteor.loginWithPassword(email, password, function(err){
+    Meteor.call("checkIsAdmin", email, function(err){
       if (err)
         Session.set('errorMessageShown', true);
-      else
-        Router.go("/")
+      else{
+        Meteor.loginWithPassword(email, password, function(err2){
+          if (err2)
+            Session.set('errorMessageShown', true);
+          else
+            Router.go("/")
+        });
+      
+      }
     });
   },
 

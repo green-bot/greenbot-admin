@@ -41,19 +41,6 @@ var fixRoomUserReferences = function(){
   });
 }
 
-//var fixReference = function(fixerupperCollection, refCollection, legacyFkPath, legacyPkPath, newFkPath){
-  //fixerupperCollection.find().forEach(function(doc){
-    //var legacyFkValue = eval("doc." + legacyFkPath);
-    
-    //var queryObject = {};
-    //queryObject[legacyPkPath] = legacyFkValue;
-    //var refDoc = refCollection.findOne(queryObject);
-
-    //if(!refDoc) return;
-    //fixerupperCollection.update(doc, {$set: {newFkPath: refDoc._id}});
-  //});
-//}
-
 
 //@tom ghostofbasho@gmail.com has 30 room but in rails it has 23.  (╯°□°）╯︵ ┻━┻)      ¯\_(ツ)_/¯
 var addRoomsCountToUsers = function(){
@@ -82,6 +69,33 @@ var renameRoomsDidIdToNetworkHandleId = function() {
   db.Rooms.update({}, {$rename: {"didId": "networkHandleId"}}, {multi: true});
 };
 
+var mergeCustomersAndUsers = function() {
+  // TODO: check this on a fresh app setup. If there is no users collection yet, it's going to be created during first user insert,
+  // but in that case we could potentially miss indexation on this collection. (Meteor-accounts applys index on email field when it creates this table)
+  db.Customers.find().forEach(function(customer){
+    if( db.users.findOne({"emails.address" : customer.email}) ) return;
+    db.users.insert({
+      "services" : {
+        "password" : {
+          "bcrypt" : customer.bcryptPassword
+        }
+      },
+      "emails" : [
+        {
+          "address" : customer.email,
+          "verified" : false
+        }
+      ],
+      "profile": {resellerId: customer.reseller_id, roomsCount: customer.roomsCount }
+    });
+  })
+}
+
+var markAdmins = function(){
+  db.users.update({"profile" : {$exists: false}}, { $set: { "isAdmin" : true }}, {multi: true})
+}
+
+
 var migrate = function(){
   var collections = [db.Users, db.Networks, db.Rooms, db.Dids, db.Scripts];
   collections.forEach(insertAtRoot);
@@ -94,4 +108,6 @@ var migrate = function(){
   renameCustomersUsernameToEmail();
   renameNetworkHandlesDidToHandle();
   renameRoomsDidIdToNetworkHandleId();
+  mergeCustomersAndUsers();
+  markAdmins();
 }
