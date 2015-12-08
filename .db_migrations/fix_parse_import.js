@@ -95,6 +95,18 @@ var markAdmins = function(){
   db.users.update({"profile" : {$exists: false}}, { $set: { "isAdmin" : true }}, {multi: true})
 }
 
+var reassociateNetworkHandlesWithUsers = function() {
+  var handles = db.NetworkHandles.find({ accountId: {$exists: true} });
+  handles.forEach(function(handle) {
+    var customer = db.Customers.findOne({ _id: handle.accountId });
+    if(customer) {
+      var customerEmail = customer.email;
+      var user = db.users.findOne({"emails.address" : customerEmail });
+      db.NetworkHandles.update({ _id: handle._id }, { $set: { accountId: user._id }});
+    }
+  });
+};
+
 
 var migrate = function(){
   var collections = [db.Users, db.Networks, db.Rooms, db.Dids, db.Scripts];
@@ -110,4 +122,5 @@ var migrate = function(){
   renameRoomsDidIdToNetworkHandleId();
   mergeCustomersAndUsers();
   markAdmins();
+  reassociateNetworkHandlesWithUsers();
 }

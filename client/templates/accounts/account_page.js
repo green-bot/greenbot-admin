@@ -30,7 +30,7 @@ Template.accountPage.events({
 
     botParams = form2js(e.target);
     botParams.scriptId = new Mongo.ObjectID( botParams.scriptId);
-    botParams.accountId = new Mongo.ObjectID( Router.current().params._id );
+    botParams.accountId = Router.current().params._id;
     Bots.insert(botParams);
     $('.modal').modal('hide');
   },

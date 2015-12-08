@@ -18,9 +18,9 @@
         {{#each accounts }}
         <tr>
           <td>
-            <a class="btn btn-default" href="{{pathFor 'accountPage' _id=this._id.toHexString }}">{{email}}</a>
+            <a class="btn btn-default" href="{{pathFor 'accountPage' _id=this._id }}">{{ getEmail this }}</a>
           </td>
-          <td> {{roomsCount}} </td>
+          <td> {{profile.roomsCount}} </td>
           <td></td>
         </tr>
         {{/each}}

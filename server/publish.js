@@ -8,28 +8,28 @@ var publishIfSignedIn = function(collection, func) {
 };
 
 publishIfSignedIn('accounts', function(){
-  return CustomerAccounts.find({}, {order: {createdAt: -1}});
+  return Meteor.users.find({ isAdmin: {$exists: false} }, {order: {createdAt: -1}});
 });
 
 publishIfSignedIn('account', function(id){
-  return CustomerAccounts.find({_id: new Mongo.ObjectID(id) });
+  return Meteor.users.find({ _id: id });
 });
 
 publishIfSignedIn('networkHandles', function(accountId){
-  return NetworkHandles.find({accountId: new Mongo.ObjectID(accountId) });
+  return NetworkHandles.find({accountId: accountId });
 });
 
 publishIfSignedIn('bots', function(accountId){
-  return Bots.find({accountId: new Mongo.ObjectID(accountId) });
+  return Bots.find({accountId: accountId });
 });
 
 publishIfSignedIn('scripts', function(){
   return Scripts.find();
 });
 
-publishIfSignedIn('rooms', function(accountId){
-    return Rooms.find({userId: new Mongo.ObjectID(accountId) });
-});
+//publishIfSignedIn('rooms', function(accountId){
+    //return Rooms.find({userId: new Mongo.ObjectID(accountId) });
+//});
 
 publishIfSignedIn('numberPortingRequests', function(){
   return NumberPortingRequests.find({});

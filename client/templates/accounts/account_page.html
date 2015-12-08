@@ -5,7 +5,7 @@
     <div class="col-md-2">
       <ul class="nav nav-pills nav-stacked mb15">
         {{#each bots}}
-        <li role="presentation"><a href="/accounts/{{ accountId._str }}/bots/{{ _id }}">{{ name }}</a></li>
+        <li role="presentation"><a href="/accounts/{{ accountId }}/bots/{{ _id }}">{{ name }}</a></li>
         {{/each}}
       </ul>
       <a class="btn btn-success btn-block" data-target="#addBotModal" data-toggle="modal" href="#">Add Bot</a>
