@@ -51,3 +51,7 @@ publishIfSignedIn('numberPortingRequestsByIds', function(ids){
 publishIfSignedIn('numberPortingRequest', function(id){
   return NumberPortingRequests.find({_id: new Mongo.ObjectID(id) });
 });
+
+publishIfSignedIn('session', function(id){
+  return Sessions.find({_id: new Mongo.ObjectID(id) });
+});
