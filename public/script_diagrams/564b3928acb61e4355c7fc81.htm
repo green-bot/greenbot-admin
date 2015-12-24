@@ -1,0 +1,41 @@
+<pre style="background:#000;color:#f8f8f8"><span style="color:#aeaeae;font-style:italic">#!/usr/bin/env ruby</span>
+<span style="color:#aeaeae;font-style:italic"># The basic usage script from https://github.com/JEG2/highline.git</span>
+<span style="color:#aeaeae;font-style:italic">#</span>
+<span style="color:#aeaeae;font-style:italic"># basic_usage.rb</span>
+<span style="color:#aeaeae;font-style:italic">#</span>
+<span style="color:#e28964">require</span> <span style="color:#65b042">'./lib/greenbot.rb'</span>
+
+tell <span style="color:#3e87e3">ENV</span>[<span style="color:#65b042">'PROMPT_1'</span>]
+tell <span style="color:#3e87e3">ENV</span>[<span style="color:#65b042">'PROMPT_2'</span>]
+<span style="color:#e28964">begin</span>
+  tasks <span style="color:#e28964">=</span> <span style="color:#65b042">%w(hours specials address contact quit )</span>
+  my_task <span style="color:#e28964">=</span> select(<span style="color:#65b042">'How can I help?'</span>, tasks)
+
+  <span style="color:#e28964">case</span> my_task
+  <span style="color:#e28964">when</span> <span style="color:#65b042">'hours'</span>
+    tell <span style="color:#3e87e3">ENV</span>[<span style="color:#65b042">'HOURS'</span>]
+  <span style="color:#e28964">when</span> <span style="color:#65b042">'specials'</span>
+    tell <span style="color:#3e87e3">ENV</span>[<span style="color:#65b042">'SPECIALS'</span>]
+  <span style="color:#e28964">when</span> <span style="color:#65b042">'address'</span>
+    tell <span style="color:#3e87e3">ENV</span>[<span style="color:#65b042">'ADDRESS'</span>]
+  <span style="color:#e28964">when</span> <span style="color:#65b042">'contact'</span>
+      <span style="color:#e28964">if</span> confirm(<span style="color:#65b042">'Would you like someone to contact you?'</span>)
+        contact_me <span style="color:#e28964">=</span> <span style="color:#3387cc">true</span>
+        contact_me.remember(<span style="color:#65b042">'contact_me'</span>)
+        name <span style="color:#e28964">=</span> ask(<span style="color:#65b042">'When we call, who should we ask for?'</span>)
+        name.remember(<span style="color:#65b042">'who_to_ask_for'</span>)
+        <span style="color:#e28964">if</span> confirm(<span style="color:#65b042">'Is there another number we should try?'</span>)
+          better_number <span style="color:#e28964">=</span> ask(<span style="color:#65b042">'Please enter that number with an area code'</span>)
+          better_number.remember(<span style="color:#65b042">'better_number'</span>)
+        <span style="color:#e28964">end</span>
+      <span style="color:#e28964">else</span>
+        tell(<span style="color:#65b042">'No problem at all.'</span>)
+        contact_me <span style="color:#e28964">=</span> <span style="color:#3387cc">false</span>
+        contact_me.remember(<span style="color:#65b042">'contact_me'</span>)
+      <span style="color:#e28964">end</span>
+  <span style="color:#e28964">when</span> <span style="color:#65b042">'quit'</span>
+    <span style="color:#e28964">break</span>
+  <span style="color:#e28964">end</span>
+<span style="color:#e28964">end</span> <span style="color:#e28964">while</span> <span style="color:#3387cc">true</span>
+tell <span style="color:#3e87e3">ENV</span>[<span style="color:#65b042">'SIGNATURE'</span>]
+</pre>

@@ -4,7 +4,7 @@ Template.numberPortingRequestNew.events({
     e.preventDefault();
 
     numberPortingRequest = form2js(e.target);
-    numberPortingRequest.accountId = new Mongo.ObjectID( Router.current().params.query.account_id );
+    numberPortingRequest.accountId = Router.current().params.query.account_id;
 
     var id = NumberPortingRequests.insert(numberPortingRequest);
     numberPortingRequest._id = id;

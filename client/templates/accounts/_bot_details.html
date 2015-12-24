@@ -1,14 +1,86 @@
 <template name="botDetails">
   <h1>Bot details {{name}}</h1>
-  <div class="bot-desc">{{{script.desc}}}</div>
+  <h2>Bot Type: Leads </h2>
 
-  <h2> Addresses </h2>
+  <!--<div class="bot-desc well">-->
+    <!--{{#markdown}}{{{script.markdown}}}{{/markdown}}-->
+  <!--</div>-->
+
+  <form name="network-address">
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th class="col-sm-3">Configuration</th>
+          <th class="col-sm-9">Current Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Keywords</td>
+          <td> <input type="text" name="keywords" value="{{ keywords }}" class="col-sm-9 col-md-6" /> </td>
+        </tr>
+        <tr>
+          <td>Notification Emails</td>
+          <td>
+            <div class="col-sm-9 col-md-6">
+              <input type="text" name="notificationEmails" value="{{ notificationEmails }}" class="btn-block" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Post Conversation Webhook</td>
+          <td>
+            <div class="col-sm-9 col-md-6">
+              <input type="text" name="postConversationWebhook" value="{{ postConversationWebhook }}" class="btn-block" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="/script_diagrams/564b3928acb61e4355c7fc81.svg" target="_blank">view diagram</a>
+    <a href="/script_diagrams/564b3928acb61e4355c7fc81.htm" target="_blank">view script</a>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-sm-3">
+            Setting
+          </th>
+          <th class="col-sm-9">Current Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each settings}}
+        <tr>
+          <td>{{name}}</td>
+          <td>
+            <textarea name="settings[{{@index}}][value]" class="col-sm-9 col-md-9">{{ value }}</textarea>
+            <input type="hidden" name="settings[{{@index}}][type]" value="{{type}}">
+            <input type="hidden" name="settings[{{@index}}][name]" value="{{name}}">
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Save changes</button>
+    </div>
+  </form>
+
+  <h2> Networks </h2>
   <ul>
   {{#each addresses}}
-  <li>{{networkHandleName}}:{{keyword}}</li>
+  <li>
+    <a href="/bots/{{../_id}}/addresses/{{networkHandleName}}">{{networkHandleName}}</a>
+  </li>
   {{/each}}
-  </ul>
-  <a class="btn btn-success" data-target="#addBotAddressModal" data-toggle="modal" href="#">Add Address</a>
+</ul>
+
+  <div class="form-group">
+    <a class="btn btn-success" data-target="#addBotAddressModal" data-toggle="modal" href="#">Add Network</a>
+  </div>
 
   <div class="modal fade" id="addBotAddressModal">
     <div class="modal-dialog">
@@ -24,15 +96,15 @@
               <select class="form-control" id="network-handles" name="networkHandleId">
                 <option value="">Select Network Handle</option>
                 {{#each networkHandles}}
-                <option value="{{_id._str}}">{{handle}}@{{network}}</option>
+                <option value="{{_id._str}}">{{ name }}</option>
                 {{/each}}
               </select>
             </div>
-            <div class="form-group">
-              <label for="keyword">Keyword</label>
-              <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword">
-              <p class="help-block">The initial message that will trigger this bot.</p>
-            </div>
+            <!--<div class="form-group">-->
+              <!--<label for="keyword">Keyword</label>-->
+              <!--<input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword">-->
+              <!--<p class="help-block">The initial message that will trigger this bot.</p>-->
+            <!--</div>-->
             <button type="submit" class="btn btn-default">Submit</button>
           </div>
           <div class="modal-footer">
@@ -43,4 +115,5 @@
       </div>
     </div>
   </div>
+
 </template>

@@ -109,7 +109,7 @@ var reassociateNetworkHandlesWithUsers = function() {
 
 
 var migrate = function(){
-  var collections = [db.Users, db.Networks, db.Rooms, db.Dids, db.Scripts];
+  var collections = [db.Users, db.Networks, db.Rooms, db.Dids, db.Scripts, db.Sessions];
   collections.forEach(insertAtRoot);
   fixRoomDidReferences();
   fixRoomUserReferences();

@@ -23,6 +23,14 @@ publishIfSignedIn('bots', function(accountId){
   return Bots.find({accountId: accountId });
 });
 
+publishIfSignedIn('bot', function(botId){
+  return Bots.find({_id: botId });
+});
+
+publishIfSignedIn('botSessions', function(botId){
+  return Sessions.find({botId: botId });
+});
+
 publishIfSignedIn('scripts', function(){
   return Scripts.find();
 });

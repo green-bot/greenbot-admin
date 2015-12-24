@@ -21,6 +21,10 @@ Template.accountPage.helpers({
       bot = Bots.findOne(selectedBotId);
       return bot;
     }
+  },
+
+  conversations() {
+    return Sessions.find().fetch();
   }
 });
 
@@ -28,9 +32,19 @@ Template.accountPage.events({
   'submit form#new-bot-form' : (e, tmpl) => {
     e.preventDefault();
 
+
     botParams = form2js(e.target);
     botParams.scriptId = new Mongo.ObjectID( botParams.scriptId);
     botParams.accountId = Router.current().params._id;
+
+    var account = Meteor.users.findOne(botParams.accountId);
+    var script = Scripts.findOne(botParams.scriptId);
+
+    botParams.settings = script.default_settings;
+    botParams.description = "";
+    botParams.notificationEmails = account.emails[0].address;
+    botParams.postConversationWebhook = "";
+
     Bots.insert(botParams);
     $('.modal').modal('hide');
   },
