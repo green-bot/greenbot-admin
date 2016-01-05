@@ -5,7 +5,8 @@
 
   <form name="network-handle">
     Owner handles:
-    <input name="ownerHandles" value="{{ownerHandles}}">
+    {{#selectizeInput}} <input name="ownerHandles" value="{{ownerHandles}}"> {{/selectizeInput}}
+
     <input type="submit" value="Save" class="btn btn-success">
   </form>
 

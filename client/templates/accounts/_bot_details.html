@@ -17,7 +17,11 @@
       <tbody>
         <tr>
           <td>Keywords</td>
-          <td> <input type="text" name="keywords" value="{{ keywords }}" class="col-sm-9 col-md-6" /> </td>
+          <td>
+            {{#selectizeInput}}
+            <input type="text" name="keywords" value="{{ keywords }}" class="col-sm-9 col-md-6 selectize" />
+            {{/selectizeInput}}
+          </td>
         </tr>
         <tr>
           <td>Notification Emails</td>
@@ -100,16 +104,17 @@
                 {{/each}}
               </select>
             </div>
-            <!--<div class="form-group">-->
-              <!--<label for="keyword">Keyword</label>-->
-              <!--<input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword">-->
+            <div class="form-group">
+              <label for="owners">Owner handles</label>
+              {{#selectizeInput}}
+              <input type="text" class="form-control" id="owners" name="ownerHandles" placeholder="Handles">
+              {{/selectizeInput}}
               <!--<p class="help-block">The initial message that will trigger this bot.</p>-->
-            <!--</div>-->
-            <button type="submit" class="btn btn-default">Submit</button>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </form>
       </div>

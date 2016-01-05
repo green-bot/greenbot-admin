@@ -22,19 +22,3 @@ Template.networkAddressShow.events({
     Bots.update({_id: botId, addresses: address}, {$set: {"addresses.$": updatedAddress}});
   }
 });
-
-
-Template.networkAddressShow.onRendered(function(){
-  // we use the same initialization code several times, need to move it into one place that can be shared
-  // client/templates/accounts/_bot_details.js
-  $('input[name="ownerHandles"]').selectize({
-    delimiter: ',',
-    persist: false,
-    create: function(input) {
-      return {
-        value: input,
-        text: input
-      }
-    }
-  });
-});
