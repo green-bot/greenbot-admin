@@ -20,12 +20,11 @@ dl {
   font-size: 2em;
 }
 
-.conversation-bubble-egress {
+.conversation-bubble-egress, .conversation-bubble-ingress {
   position: relative;
   width: 400px;
   min-height: 100px;
   padding: 0px;
-  background: #FFFFFF;
   -webkit-border-radius: 19px;
   -moz-border-radius: 19px;
   border-radius: 19px;
@@ -33,75 +32,54 @@ dl {
   color: #2B3E50;
   padding: 10px;
 
-  &:after {
+  &:after, &:before {
     content: '';
     position: absolute;
     border-style: solid;
-    border-width: 15px 28px 15px 0;
-    border-color: transparent #FFFFFF;
-    display: block;
-    width: 0;
-    z-index: 1;
-    margin-top: -15px;
-    left: -28px;
     top: 70%;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 18px 31px 18px 0;
-    border-color: transparent #7F7F7F;
-    display: block;
     width: 0;
+    display: block;
+    border-color: transparent #7F7F7F;
     z-index: 0;
     margin-top: -18px;
+  }
+
+  &:after {
+    z-index: 1;
+    margin-top: -15px;
+  }
+
+}
+
+.conversation-bubble-egress {
+  background: #FFFFFF;
+
+  &:before{
     left: -35px;
-    top: 70%;
+    border-width: 18px 31px 18px 0;
+  }
+
+  &:after {
+    border-width: 15px 28px 15px 0;
+    border-color: transparent #FFFFFF;
+    left: -28px;
   }
 }
 
 .conversation-bubble-ingress {
-  position: relative;
-  width: 400px;
-  min-height: 100px;
-  padding: 0px;
   background: #D3D3D3;
-  -webkit-border-radius: 19px;
-  -moz-border-radius: 19px;
-  border-radius: 19px;
-  border: #7F7F7F solid 4px;
-  color: #2B3E50;
-  padding: 10px;
+
+  &:before{
+    right: -35px;
+    border-width: 18px 0 18px 31px;
+  }
 
   &:after {
-    content: '';
-    position: absolute;
-    border-style: solid;
     border-width: 15px 0 15px 28px;
     border-color: transparent #D3D3D3;
-    display: block;
-    width: 0;
-    z-index: 1;
-    margin-top: -15px;
     right: -28px;
-    top: 70%;
   }
 
-  &:before {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 18px 0 18px 31px;
-    border-color: transparent #7F7F7F;
-    display: block;
-    width: 0;
-    z-index: 0;
-    margin-top: -18px;
-    right: -35px;
-    top: 70%;
-  }
 }
 
 
