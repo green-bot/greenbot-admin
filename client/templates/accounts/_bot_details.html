@@ -3,120 +3,102 @@
   <h2>Bot Type: Leads </h2>
 
   <!--<div class="bot-desc well">-->
-    <!--{{#markdown}}{{{script.markdown}}}{{/markdown}}-->
+  <!--{{#markdown}}{{{script.markdown}}}{{/markdown}}-->
   <!--</div>-->
 
-  <form name="network-address">
-    <table class="table table-striped table-responsive">
-      <thead>
-        <tr>
-          <th class="col-sm-3">Configuration</th>
-          <th class="col-sm-9">Current Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Keywords</td>
-          <td>
-            {{#selectizeInput}}
-            <input type="text" name="keywords" value="{{ keywords }}" class="col-sm-9 col-md-6 selectize" />
-            {{/selectizeInput}}
-          </td>
-        </tr>
-        <tr>
-          <td>Notification Emails</td>
-          <td>
-            <div class="col-sm-9 col-md-6">
-              <input type="text" name="notificationEmails" value="{{ notificationEmails }}" class="btn-block" />
+  <div class="col-md-6">
+    <div class="well bs-component">
+      <form class="form-horizontal" name="network-address">
+        <fieldset>
+          <legend>
+            Settings
+          </legend>
+          <div class="form-group">
+            <label for="notificationEmailsId" class="col-md-2 control-label">
+              Notification Emails
+            </label>
+            <div class="col-md-10">
+              <input type="text" name="notificationEmails" value="{{ notificationEmails }}" class="form-control" />
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>Post Conversation Webhook</td>
-          <td>
-            <div class="col-sm-9 col-md-6">
-              <input type="text" name="postConversationWebhook" value="{{ postConversationWebhook }}" class="btn-block" />
+            <span class="material-input"></span>
+          </div>
+          <div class="form-group">
+            <label for="notificationEmailsId" class="col-md-2 control-label">
+              Post Conversation Webhook
+            </label>
+            <div class="col-md-10">
+              <input type="text" name="postConversationWebhook" value="{{ postConversationWebhook }}" class="form-control" />
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <a href="/script_diagrams/564b3928acb61e4355c7fc81.svg" target="_blank">view diagram</a>
-    <a href="/script_diagrams/564b3928acb61e4355c7fc81.htm" target="_blank">view script</a>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th class="col-sm-3">
-            Setting
-          </th>
-          <th class="col-sm-9">Current Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each settings}}
-        <tr>
-          <td>{{name}}</td>
-          <td>
-            <textarea name="settings[{{@index}}][value]" class="col-sm-9 col-md-9">{{ value }}</textarea>
-            <input type="hidden" name="settings[{{@index}}][type]" value="{{type}}">
-            <input type="hidden" name="settings[{{@index}}][name]" value="{{name}}">
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-
-    <div class="form-group">
-      <button type="submit" class="btn btn-success">Save changes</button>
+            <span class="material-input"></span>
+          </div>
+          {{#each settings}}
+          <div class="form-group">
+            <label for="notificationEmailsId" class="col-md-2 control-label">
+              {{name}}
+            </label>
+            <div class="col-md-10">
+              <textarea name="settings[{{@index}}][value]" class="form-control setting-input">{{ value }}</textarea>
+              <input type="hidden" name="settings[{{@index}}][type]" value="{{type}}">
+              <input type="hidden" name="settings[{{@index}}][name]" value="{{name}}">
+            </div>
+            <span class="material-input"></span>
+          </div>
+          {{/each}}
+          <div class="form-group">
+            <button type="submit" class="btn btn-raised btn-success">Save changes</button>
+          </div>
+        </fieldset>
+      </form>
+      <a href="/script_diagrams/564b3928acb61e4355c7fc81.svg" target="_blank">view diagram</a>
+      <a href="/script_diagrams/564b3928acb61e4355c7fc81.htm" target="_blank">view script</a>
     </div>
-  </form>
-
-  <h2> Networks </h2>
-  <ul>
-  {{#each addresses}}
-  <li>
-    <a href="/bots/{{../_id}}/addresses/{{networkHandleName}}">{{networkHandleName}}</a>
-  </li>
-  {{/each}}
-</ul>
-
-  <div class="form-group">
-    <a class="btn btn-success" data-target="#addBotAddressModal" data-toggle="modal" href="#">Add Network</a>
   </div>
 
-  <div class="modal fade" id="addBotAddressModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="new-bot-address-form">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Add Bot Address</h4>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="network-handles">Network Handles</label>
-              <select class="form-control" id="network-handles" name="networkHandleId">
-                <option value="">Select Network Handle</option>
-                {{#each networkHandles}}
-                <option value="{{_id._str}}">{{ name }}</option>
-                {{/each}}
-              </select>
+
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">Connected Networks</div>
+      <div class="panel-body">
+        <ul>
+          {{#each addresses}}
+          <li> {{networkHandleName}} </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="form-group">
+      <a class="btn btn-success btn-raised" data-target="#addBotAddressModal" data-toggle="modal" href="#">Add Network</a>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="modal fade" id="addBotAddressModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="new-bot-address-form">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Add Bot Address</h4>
             </div>
-            <div class="form-group">
-              <label for="owners">Owner handles</label>
-              {{#selectizeInput}}
-              <input type="text" class="form-control" id="owners" name="ownerHandles" placeholder="Handles">
-              {{/selectizeInput}}
-              <!--<p class="help-block">The initial message that will trigger this bot.</p>-->
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="network-handles">Network Handles</label>
+                <select class="form-control" id="network-handles" name="networkHandleId">
+                  <option value="">Select Network Handle</option>
+                  {{#each networkHandles}}
+                  <option value="{{_id._str}}">{{ name }}</option>
+                  {{/each}}
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

@@ -2,29 +2,32 @@
   <!--<h3><a href="/accounts/{{ _id._str }}">{{customerName}}</a>  <small>{{email}}</small>FOOOO</h3>-->
 
   {{#if selectedBot}}
-    <div class="row">
-      <div class="col-md-2">
-        <h4>Recent Conversations</h4>
-        <ul class="nav nav-pills nav-stacked mb15">
-          {{#each conversations}}
-          <li role="presentation"><a href="/conversations/{{_id._str}}">{{ updatedAt }}</a></li>
-          {{/each}}
-        </ul>
-      </div>
-      <div class="col-md-10"> {{> botDetails selectedBot}} </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h4>Recent Conversations</h4>
+      <ul class="nav nav-pills nav-stacked mb15">
+        {{#each conversations}}
+        <li role="presentation"><a href="/conversations/{{_id._str}}">{{ updatedAt }}</a></li>
+        {{/each}}
+      </ul>
     </div>
+    <div class="col-md-10"> {{> botDetails selectedBot}} </div>
+  </div>
   {{else}}
-    <div class="row">
-      <div class="col-md-2">
-        <ul class="nav nav-pills nav-stacked mb15">
-          {{#each bots}}
-          <li role="presentation"><a href="/accounts/{{ accountId }}/bots/{{ _id }}">{{ name }}</a></li>
-          {{/each}}
-        </ul>
-        <a class="btn btn-success btn-block" data-target="#addBotModal" data-toggle="modal" href="#">Add Bot</a>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="btn-group-vertical">
+        {{#each bots}}
+        <a class="btn btn-primary btn-raised" href="/accounts/{{ accountId }}/bots/{{ _id }}">
+                {{ name }}
+              </a> {{/each}}
+        <a class="btn btn-primary btn-raised" data-target="#addBotModal" data-toggle="modal" href="#">Add Bot</a>
       </div>
-      <div class="col-md-10"> {{> accountDetails}} </div>
     </div>
+    <div class="col-md-9">
+      {{> accountDetails}}
+    </div>
+  </div>
   {{/if}}
 
   <div class="modal fade" id="addBotModal">
@@ -32,7 +35,9 @@
       <div class="modal-content">
         <form id="new-bot-form">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <h4 class="modal-title">Add Bot</h4>
           </div>
           <div class="modal-body">
@@ -58,7 +63,10 @@
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </form>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 </template>
