@@ -2,7 +2,7 @@ template(name='botDetails')
   h1 Bot details {{name}}
   h2 Bot Type: Leads 
 
-  .col-md-6
+  .col-md-8
     .well.bs-component
       form.form-horizontal(name='network-address')
         fieldset
@@ -33,16 +33,16 @@ template(name='botDetails')
             button.btn.btn-raised.btn-success(type='submit') Save changes
       a(href='/script_diagrams/564b3928acb61e4355c7fc81.svg', target='_blank') view diagram
       a(href='/script_diagrams/564b3928acb61e4355c7fc81.htm', target='_blank') view script
-  .col-md-6
-    .panel.panel-success
+  .col-md-4
+    .panel.panel-primary
       .panel-heading Connected Networks
       .panel-body
-        ul
-        each addresses
-          li  {{networkHandleName}} 
-
-    .form-group
-      a.btn.btn-success.btn-raised(data-target='#addBotAddressModal', data-toggle='modal', href='#') Add Network
+          each addresses
+            p
+              a.btn.delete(name='{{networkHandleName}}') 
+                {{networkHandleName}} 
+      .form-group.pull-right
+        a.btn.btn-primary.btn-raised(data-target='#addBotAddressModal', data-toggle='modal', href='#') Add Network
       
   .col-md-6
     #addBotAddressModal.modal.fade
@@ -54,13 +54,27 @@ template(name='botDetails')
                 span(aria-hidden='true') ×
               h4.modal-title Add Bot Address
             .modal-body
-              .form-group
-                label(for='network-handles') Network Handles
-                select#network-handles.form-control(name='networkHandleId')
-                  option(value='') Select Network Handle
-                  each networkHandles
-                    option(value='{{_id._str}}') {{ name }}
-                    
+              .row
+                .col-md-6
+                  .form-group
+                    label(for='newNetwork') Network Name
+                    input#newNetwork.form-control(name='newNetwork')
+                  .form-group
+                    label(for='newNetworkHandle') Network Handle
+                    input#newNetworkHandle.form-control(name='newNetworkHandle')
+                .col-md-6
+                  .form-group
+                    label(for='network-handles') Choose Existing Network Handles
+                    select#network-handles.form-control(name='networkHandleId')
+                      option(value='') Select Network Handle
+                      each networkHandles
+                        option(value='{{_id._str}}') {{ name }}
+              .row
+                .form-group
+                  label(for='keywords') Keywords
+                    | {{selectizeInput}}
+                    input#keywords.selectize(name='keywords' type='text' value="{{keywords}}")
+
             .modal-footer
               button.btn.btn-default(type='button', data-dismiss='modal') Close
               button.btn.btn-primary(type='submit') Save changes
