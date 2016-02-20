@@ -1,0 +1,66 @@
+template(name='botDetails')
+  h1 Bot details {{name}}
+  h2 Bot Type: Leads 
+
+  .col-md-6
+    .well.bs-component
+      form.form-horizontal(name='network-address')
+        fieldset
+          legend
+            | Current Settings
+          .form-group
+            label.col-md-2.control-label(for='notificationEmailsId')
+              | Notification Emails
+            .col-md-10
+              input.form-control(type='text', name='notificationEmails', value='{{ notificationEmails }}')
+            span.material-input
+          .form-group
+            label.col-md-2.control-label(for='notificationEmailsId')
+              | Post Conversation Webhook
+            .col-md-10
+              input.form-control(type='text', name='postConversationWebhook', value='{{ postConversationWebhook }}')
+            span.material-input
+          each settings
+            .form-group
+              label.col-md-2.control-label(for='notificationEmailsId')
+                | {{name}}
+              .col-md-10
+                textarea.form-control.setting-input(name='settings[{{@index}}][value]') {{ value }}
+                input(type='hidden', name='settings[{{@index}}][type]', value='{{type}}')
+                input(type='hidden', name='settings[{{@index}}][name]', value='{{name}}')
+              span.material-input
+          .form-group
+            button.btn.btn-raised.btn-success(type='submit') Save changes
+      a(href='/script_diagrams/564b3928acb61e4355c7fc81.svg', target='_blank') view diagram
+      a(href='/script_diagrams/564b3928acb61e4355c7fc81.htm', target='_blank') view script
+  .col-md-6
+    .panel.panel-success
+      .panel-heading Connected Networks
+      .panel-body
+        ul
+        each addresses
+          li  {{networkHandleName}} 
+
+    .form-group
+      a.btn.btn-success.btn-raised(data-target='#addBotAddressModal', data-toggle='modal', href='#') Add Network
+      
+  .col-md-6
+    #addBotAddressModal.modal.fade
+      .modal-dialog
+        .modal-content
+          form#new-bot-address-form
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4.modal-title Add Bot Address
+            .modal-body
+              .form-group
+                label(for='network-handles') Network Handles
+                select#network-handles.form-control(name='networkHandleId')
+                  option(value='') Select Network Handle
+                  each networkHandles
+                    option(value='{{_id._str}}') {{ name }}
+                    
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+              button.btn.btn-primary(type='submit') Save changes

@@ -32,3 +32,7 @@ Template.botDetails.events({
     Bots.update({_id: botId}, {$set: params});
   }
 });
+
+Template.botDetails.rendered = function() {
+    console.log(this.data); // you should see your passage object in the console
+};

@@ -1,0 +1,39 @@
+template(name='accountPage')
+  // <h3><a href="/accounts/{{ _id._str }}">{{customerName}}</a>  <small>{{email}}</small>FOOOO</h3>
+  .row
+    .col-md-3
+      .btn-group-vertical
+        each bots
+          a.btn.btn-primary.btn-raised(href='/accounts/{{ accountId }}/bots/{{ _id }}')
+            {{ name }}
+        a.btn.btn-primary.btn-raised(data-target='#addBotModal', data-toggle='modal', href='#') Add Bot
+    .col-md-9
+      | {{> accountDetails}}
+  #addBotModal.modal.fade
+    .modal-dialog
+      .modal-content
+        form#new-bot-form
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4.modal-title Add Bot
+          .modal-body
+            .form-group
+              label(for='type') Bot Type
+              select#type.form-control(name='scriptId')
+                option(value='') Select Bot Type
+                each scripts
+                  option(value='{{_id._str}}') {{name}}
+              p.help-block Choose from one of our many bot types.
+            .form-group
+              label(for='name') Name (optional)
+              input#name.form-control(type='text', name='name', placeholder='Bot Name')
+              p.help-block
+                | Have too many bots of the same type and need a way to distinguish them? Give your bot a memorable name.
+            button.btn.btn-default(type='submit') Submit
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes
+      // /.modal-content
+    // /.modal-dialog
+  // /.modal
