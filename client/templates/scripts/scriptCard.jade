@@ -1,0 +1,10 @@
+template(name='scriptCard')
+  .col-sm-4
+    .panel.panel-primary
+      .panel-heading
+        h3.panel-title {{name}}
+      .panel-body
+        = default_cmd
+        = short_desc
+        +markdown
+          {{markdown}}

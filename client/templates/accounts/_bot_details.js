@@ -64,3 +64,12 @@ Template.botDetails.onRendered(function(){
     }
   });
 });
+
+Template.botDetails.helpers({
+  script: function () {
+    script = Scripts.findOne(this.scriptId)
+    console.log("I gotta script")
+    console.log(script)
+    return script
+  }
+})

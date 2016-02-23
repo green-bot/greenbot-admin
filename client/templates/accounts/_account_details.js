@@ -4,6 +4,9 @@ Template.accountDetails.helpers({
   },
   keywordJoin (keywords) {
     return keywords.join(',')
+  },
+  bots () {
+    return Bots.find()
   }
 })
 
