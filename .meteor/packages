@@ -30,4 +30,10 @@ matb33:collection-hooks
 dburles:mongo-collection-instances
 dburles:collection-helpers
 markdown
-fezvrasta:bootstrap-material-design
+accounts-github
+accounts-ui
+useraccounts:materialize
+materialize:materialize
+coffeescript
+autopublish
+momentjs:moment

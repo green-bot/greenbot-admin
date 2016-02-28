@@ -1,10 +1,15 @@
 template(name='scriptCard')
-  .col-sm-4
-    .panel.panel-primary
-      .panel-heading
-        h3.panel-title {{name}}
-      .panel-body
-        = default_cmd
-        = short_desc
-        +markdown
-          {{markdown}}
+  .col.l6
+    .card-panel.green.lighten-1.bot-panel
+      .white-text        
+        .row
+          .col.l6
+            h3 {{name}}
+          span.right
+            i.material-icons.medium {{icon_class}}
+        .row
+          p {{short_desc}}
+        .row
+          a.waves-effect.waves-light.btn.green.darken-2.new_bot 
+            | New
+            i.material-icons.left assignment_ind

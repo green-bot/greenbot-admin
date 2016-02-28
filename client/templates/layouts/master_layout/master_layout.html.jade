@@ -1,0 +1,9 @@
+template(name="masterLayout")
+  .container
+    .row
+      {{> navbar }}
+    .row
+      .col.l3
+        {{> botSidebar}}
+      .col.l9
+        {{> yield}}

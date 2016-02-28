@@ -1,0 +1,24 @@
+template(name='bot')
+  h2= this.name
+  table
+    thead
+      tr
+        th(data-field='src') Source
+        th(data-field='updatedAt') When
+        th Data
+    tbody
+      each sessions
+        tr
+          td= src
+          td= dateString
+          td
+            a.waves-effect.waves-light.btn.modal-trigger.green(href="##{sessionId}")
+              | Display
+            
+  each sessions
+    .modal(id="#{sessionId}")
+      .modal-content
+        h4= dateString
+        p Collected Data
+          
+        

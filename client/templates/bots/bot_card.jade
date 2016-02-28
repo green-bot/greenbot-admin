@@ -1,7 +1,4 @@
 template(name='botCard')
-  .col-sm-4
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title {{name}}
-      .panel-body
-        {{keywords}}
+  .bot-sidebar
+    a.btn.waves-effect.waves-light.green.bot-button.selected(class = selected)
+      {{name}}
