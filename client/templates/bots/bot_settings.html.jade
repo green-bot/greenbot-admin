@@ -1,0 +1,11 @@
+template(name='botSettings')
+  .col.s9
+    form(name='bot-settings')
+      each settings
+        .row
+          .input-field
+            input(type='text' name='{{ name }}' value='{{ value }}')
+            label.active(for='{{ key }}') {{ name }}
+      .row
+        .center
+          a.waves-effect.waves-light.btn.green.submit Save

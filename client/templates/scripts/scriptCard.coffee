@@ -1,9 +1,5 @@
 Template.scriptCard.events({
   'click .new_bot' : (event) ->
-    console.log "New event"
-    console.log event
-    console.log this
-    console.log Meteor.user()
     bot =
       accountId: Meteor.userId()
       addresses: []

@@ -96,9 +96,6 @@ dl {
   font-size: 1.0em;
 }
 
-.setting-input {
-  height: 120px;
-}
 .bot-panel {
   height: 400px;
 }
@@ -107,5 +104,11 @@ dl {
   margin-bottom: 1rem;
 }
 .bot-button {
-    width: 100%;
+  width: 100%;
+}
+.bot_ruler {
+  text-align: center;
+  font-weight: 100;
+  font-size: small;
+  color: green;
 }
