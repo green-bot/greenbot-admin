@@ -30,7 +30,6 @@ matb33:collection-hooks
 dburles:mongo-collection-instances
 dburles:collection-helpers
 markdown
-accounts-github
 accounts-ui
 useraccounts:materialize
 materialize:materialize

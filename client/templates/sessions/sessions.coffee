@@ -1,6 +1,26 @@
 Router.route '/login',
   name: 'loginPage'
-  action: -> this.render('loginPage')
   layoutTemplate: 'noAuthLayout'
+  action: ->
+    if Meteor.userId()
+      this.redirect '/dashboard'
+      this.next()
+    else
+      this.render('loginPage')
 
-Router.route '/logout', action: -> Meteor.logout()
+Router.route '/logout',
+  action: ->
+    Meteor.logout()
+    this.redirect 'loginPage'
+    this.next()
+
+
+Router.onBeforeAction ->
+  if !Meteor.userId()
+    # if the user is not logged in, render the Login template
+    console.log "No user involved. Get one."
+    this.redirect 'loginPage'
+  else
+    console.log "Logged in user"
+    console.log this
+  this.next()

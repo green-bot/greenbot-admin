@@ -1,4 +1,10 @@
 Template.dashboard.helpers({
-  scripts: () ->
-    scripts = Scripts.find()
+  bots: () ->
+    Bots.find()
   })
+
+
+
+Router.route '/dashboard',
+  name: 'dashboard'
+  action: -> this.render 'dashboard'
