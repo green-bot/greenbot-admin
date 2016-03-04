@@ -14,6 +14,13 @@ Template.bot.helpers({
     return collectedDataArray
   dateString: () ->
     moment(this.updatedAt).fromNow()
+  desc: () ->
+    console.log "My context is.."
+    console.log @
+    script = Scripts.findOne _id: @.scriptId
+    console.log "And my return is"
+    console.log script
+    script.desc
   })
 
 Template.bot.onRendered ->
@@ -24,6 +31,7 @@ Router.route '/bot/:botId',
   name: 'bot'
   waitOn:  ->
     Meteor.subscribe "bots"
+    Meteor.subscribe "scripts"
   data:  ->
     Session.set 'currentBotId', this.params.botId
     return Bots.findOne this.params.botId
