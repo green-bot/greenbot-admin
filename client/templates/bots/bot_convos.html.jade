@@ -1,0 +1,26 @@
+template(name='botConvos')
+  {{> botRuler botId=botId}}
+  each convos
+    .card.green.lighten-4
+      .card-content
+        .row
+          .col.l6
+            span.card-title.activator.grey-text.text-darken-4
+              | {{ src }} : {{ dst }}
+            p {{ updatedAt }}
+          .col.l6
+            span.card-title.activator.grey-text.text-darken-4
+              i.material-icons.right more_vert
+      .card-reveal
+        span.card-title.grey-text.text-darken-4
+          | Transcript
+          i.material-icons.right close
+        p
+          each transcript
+            .row
+              .col.l3 
+                | {{ direction }}
+              .col.l9
+                | {{ text }}
+                
+        

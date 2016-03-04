@@ -1,0 +1,34 @@
+template(name="botNetworks")
+  {{> botRuler }}
+  h2 Networks for {{ name }}
+  table
+    thead
+      tr
+        th Network
+        th Handle
+        th Keywords
+        th 
+    tbody
+      each addresses
+        tr
+          td {{ network networkHandleName }}
+          td {{ handle networkHandleName }}
+          td= keywords
+          td
+            a.delete(href='#')
+              i.material-icons.left delete
+              | Delete
+  .section
+    h2 Add Network Handle
+    table
+      tbody
+        tr
+          td 
+            input#network(placeholder='network')
+          td 
+            input#handle(placeholder='handle')
+          td 
+            input#keywords(placeholder='keywords')
+          td
+            a#add-network.btn-floating.waves-effect.waves-light.red
+              i.material-icons.left add

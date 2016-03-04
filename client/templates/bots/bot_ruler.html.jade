@@ -1,20 +1,22 @@
 template(name='botRuler')
-  .row
-    .col.s2.bot_ruler.convos
-      i.material-icons chat
-      p Convos
-    .col.s2.bot_ruler.data
-      i.material-icons save
-      p Data
-    .col.s2.bot_ruler.networks
-      i.material-icons wifi
-      p Networks
-    .col.s2.bot_ruler.settings
-      i.material-icons settings
-      p Config
-    .col.s2.bot_ruler.delete
-      i.material-icons delete
-      p Delete
-    .col.s2.bot_ruler.help
-      i.material-icons help
-      p Help
+  nav
+    .nav-wrapper.green.darken-2
+      ul
+        li#convos
+          a.tooltipped( href="/bot/{{currentBotId}}/convos" data-tooltip='Conversations' ) 
+            i.small.material-icons chat
+        li#data
+          a.tooltipped( href="/bot/{{currentBotId}}/data" data-tooltip='Data Sinks' ) 
+            i.small.material-icons save
+        li#networks
+          a.tooltipped( href="/bot/{{currentBotId}}/networks" data-tooltip='Networks' ) 
+            i.small.material-icons wifi
+        li#settings
+          a.tooltipped( href="/bot/{{currentBotId}}/settings" data-tooltip='Settings' ) 
+            i.small.material-icons settings
+        li#delete
+          a.tooltipped(data-tooltip='Delete' ) 
+            i.small.material-icons delete
+        li#help
+          a.tooltipped( href="/bot/{{currentBotId}}/help" data-tooltip='Help' ) 
+            i.small.material-icons help
