@@ -1,15 +1,21 @@
 template(name='scriptCard')
-  .col.l6
-    .card-panel.green.lighten-1.bot-panel
-      .white-text        
-        .row
-          .col.l6
-            h3 {{name}}
-          span.right
-            i.material-icons.medium {{icon_class}}
-        .row
-          p {{short_desc}}
-        .row
-          a.waves-effect.waves-light.btn.green.darken-2.new_bot 
-            | New
-            i.material-icons.left assignment_ind
+  .row
+    .col.s12.m6
+      .card.green.darken-1
+        .card-content.white-text
+          .row
+            span.card-title.left {{name}}
+            i.material-icons.small.right {{icon_class}}
+          .row
+            {{ short_desc }}
+        .card-action
+          .row.center-align
+            a.waves-effect.waves-light.btn.green.darken-2.new_bot 
+              | New
+              i.material-icons.left assignment_ind
+            a.waves-effect.waves-light.btn.green.darken-2.try 
+              | Try
+              i.material-icons.left chat_bubble_outline
+            a.waves-effect.waves-light.btn.green.darken-2.github
+              | GitHub
+              i.zmdi.zmdi-github.left
