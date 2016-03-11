@@ -4,18 +4,22 @@ template(name='scriptCard')
       .card.green.darken-1
         .card-content.white-text
           .row
-            span.card-title.left {{name}}
-            i.material-icons.small.right {{icon_class}}
-          .row
+            .col.s6.offset-s3.center-align
+              span.card-title.left {{name}}
+            .col.s2.offset-9.right
+              i.material-icons.medium {{icon_class}}
+          .row.center-align
             {{ short_desc }}
         .card-action
           .row.center-align
             a.waves-effect.waves-light.btn.green.darken-2.new_bot 
               | New
               i.material-icons.left assignment_ind
-            a.waves-effect.waves-light.btn.green.darken-2.try 
-              | Try
-              i.material-icons.left chat_bubble_outline
-            a.waves-effect.waves-light.btn.green.darken-2.github
-              | GitHub
-              i.zmdi.zmdi-github.left
+            if try_link
+              a.waves-effect.waves-light.btn.green.darken-2(href='{{try_link}}')
+                | Try
+                i.material-icons.left chat_bubble_outline
+            if repo_link
+              a.waves-effect.waves-light.btn.green.darken-2.github(href='{{repo_link}}')
+                | GitHub
+                i.zmdi.zmdi-github.left
