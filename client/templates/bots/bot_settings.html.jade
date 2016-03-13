@@ -1,10 +1,14 @@
 template(name='botSettings')
   {{> botRuler }}
-  h2 Settings for {{ name }}
+  .row
+    h2 Settings
+    .input-field
+      input.name(type='text' name='name' value='{{ name }}')
+      label.active(for='name') NAME
   each settings
     .row
       .input-field
-        input(type='text' name='{{ name }}' value='{{ value }}')
+        input.setting(type='text' name='{{ name }}' value='{{ value }}')
         label.active(for='{{ key }}') {{ name }}
   .row
     .center

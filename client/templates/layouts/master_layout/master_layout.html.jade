@@ -1,9 +1,10 @@
 template(name="masterLayout")
   .container
     .row
-      {{> navbar }}
+      .col.s12
+        {{> navbar }}
     .row
-      .col.l3
+      .col.s3
         {{> botSidebar}}
-      .col.l9
+      .col.s9
         {{> yield}}

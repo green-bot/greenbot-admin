@@ -4,3 +4,7 @@ Template.botRuler.events
     console.log @
     Meteor.call('deleteBot', this._id)
     Router.go 'dashboard'
+
+Template.botRuler.helpers
+  wikiName: ->
+    Router.current().route.getName()

@@ -14,13 +14,9 @@ Template.bot.helpers({
     return collectedDataArray
   dateString: () ->
     moment(this.updatedAt).fromNow()
-  desc: () ->
-    console.log "My context is.."
-    console.log @
+  desc_markdown: () ->
     script = Scripts.findOne _id: @.scriptId
-    console.log "And my return is"
-    console.log script
-    script.desc
+    return marked(script.desc)
   })
 
 Template.bot.onRendered ->

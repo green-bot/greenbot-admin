@@ -1,4 +1,4 @@
-Template.scriptCard.events({
+Template.scriptCard.events
   'click .new_bot' : (event) ->
     bot =
       accountId: Meteor.userId()
@@ -10,5 +10,13 @@ Template.scriptCard.events({
       scriptId: this._id
       settings: this.default_settings
       ownerHandles: []
-    Bots.insert(bot)
-  })
+    newBotId = Bots.insert(bot)
+    console.log newBotId
+    Router.go 'bot', botId: newBotId
+
+  'click .info' : (event, template) ->
+    template.$('#desc').openModal()
+
+Template.scriptCard.helpers
+  desc_markdown: ->
+    marked(@desc)
