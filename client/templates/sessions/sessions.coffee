@@ -18,9 +18,5 @@ Router.route '/logout',
 Router.onBeforeAction ->
   if !Meteor.userId()
     # if the user is not logged in, render the Login template
-    console.log "No user involved. Get one."
     this.redirect 'loginPage'
-  else
-    console.log "Logged in user"
-    console.log this
   this.next()

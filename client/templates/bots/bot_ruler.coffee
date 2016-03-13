@@ -1,10 +1,9 @@
 Template.botRuler.events
   'click #delete' : ->
-    console.log "Deleting a bot in this context"
-    console.log @
-    Meteor.call('deleteBot', this._id)
-    Router.go 'dashboard'
+    Bots.remove this._id
+    Router.go 'library'
 
 Template.botRuler.helpers
-  wikiName: ->
-    Router.current().route.getName()
+  wikiName: -> Router.current().route.getName()
+  currentBotId: ->
+    return Router.current().params.botId

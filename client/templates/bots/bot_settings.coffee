@@ -20,7 +20,7 @@ Template.botSettings.helpers
 
 Template.botSettings.onRendered ->
   this.$('#settings').addClass('green')
-  console.log @
+  this.$('.setting').characterCounter()
 
 Router.route '/bot/:botId/settings',
   name: 'botSettings'

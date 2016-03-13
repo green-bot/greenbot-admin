@@ -2,6 +2,9 @@ template(name='botRuler')
   nav
     .nav-wrapper.green.darken-2
       ul
+        li#info
+          a.tooltipped( href="/bot/{{currentBotId}}" data-tooltip='Information' ) 
+            i.small.material-icons info
         li#convos
           a.tooltipped( href="/bot/{{currentBotId}}/convos" data-tooltip='Conversations' ) 
             i.small.material-icons chat
@@ -14,9 +17,12 @@ template(name='botRuler')
         li#settings
           a.tooltipped( href="/bot/{{currentBotId}}/settings" data-tooltip='Settings' ) 
             i.small.material-icons settings
-        li#delete
-          a.tooltipped(data-tooltip='Delete' ) 
-            i.small.material-icons delete
+        li#test
+          a.tooltipped( href="/bot/{{currentBotId}}/test" data-tooltip='Test' ) 
+            i.small.material-icons play_arrow
         li#help
           a.tooltipped(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' data-tooltip='Help' ) 
             i.small.material-icons help
+        li#delete.right
+          a.tooltipped(data-tooltip='Delete' ) 
+            i.small.material-icons delete

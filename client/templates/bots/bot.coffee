@@ -1,7 +1,5 @@
 if Meteor.isClient
   Meteor.subscribe("sessions", this._id)
-  Template.registerHelper 'currentBotId', -> Session.get('currentBotId')
-
 
 Template.bot.helpers({
   sessions: () ->
@@ -19,19 +17,12 @@ Template.bot.helpers({
     return marked(script.desc)
   })
 
-Template.bot.onRendered ->
-  console.log "Bot template rendered"
-  console.log this
-
 Router.route '/bot/:botId',
   name: 'bot'
   waitOn:  ->
     Meteor.subscribe "bots"
     Meteor.subscribe "scripts"
   data:  ->
-    Session.set 'currentBotId', this.params.botId
     return Bots.findOne this.params.botId
   action:  ->
-    console.log "Rendering a bot"
-    console.log this
     this.render 'bot'

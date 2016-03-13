@@ -8,7 +8,8 @@ template(name='botSettings')
   each settings
     .row
       .input-field
-        input.setting(type='text' name='{{ name }}' value='{{ value }}')
+        textarea.materialize-textarea.setting(length="168" type='text' name='{{ name }}')
+          {{ value }}
         label.active(for='{{ key }}') {{ name }}
   .row
     .center
