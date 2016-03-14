@@ -1,13 +1,13 @@
 Template.botNetworks.events
   'click  #add-network' : (e, tmpl) ->
     e.preventDefault()
-    botId = Router.current().params.botId
-    network = tmpl.$('#network').val()
-    handle = tmpl.$('#handle').val()
+    botId    = Router.current().params.botId
+    network  = tmpl.$('#network').val()
+    handle   = tmpl.$('#handle').val()
     keywords = tmpl.$('#keywords').val()
     Meteor.call('addNetwork', botId, network, handle, name, keywords)
+    tmpl.$('#network, #handle, #keywords').val("")
     console.log "Adding to networks : #{network}, #{handle}, #{keywords}"
-    return
 
   'click  .delete' : (e, tmpl) ->
     e.preventDefault()
@@ -25,9 +25,12 @@ Template.botNetworks.helpers
     networkHandleName.split("::")[0]
   handle: (networkHandleName) ->
     networkHandleName.split("::")[1]
+  availableNetworks: ->
+    Networks.find()
 
 Template.botNetworks.onRendered ->
   this.$('#networks').addClass('green')
+  $('select').material_select()
 
 Router.route '/bot/:botId/networks',
   name: 'networks'

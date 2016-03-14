@@ -20,15 +20,17 @@ template(name="botNetworks")
               | Delete
   .section
     h2 Add Network Handle
-    table
-      tbody
-        tr
-          td 
-            input#network(placeholder='network')
-          td 
-            input#handle(placeholder='handle')
-          td 
-            input#keywords(placeholder='keywords')
-          td
-            a#add-network.btn-floating.waves-effect.waves-light.red
-              i.material-icons.left add
+    .row
+      .col.s3.input-field
+        select#network
+          option(value="") Choose Network...
+          each availableNetworks
+            option(value="{{ name }}") {{ name }}
+        label Network
+      .col.s3.input-field
+        input#handle(placeholder='handle')
+      .col.s3.input-field
+        input#keywords(placeholder='keywords')
+      .col.s3.input-field
+        a#add-network.btn-floating.waves-effect.waves-light.red
+          i.material-icons.left add
