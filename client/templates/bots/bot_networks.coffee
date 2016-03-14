@@ -11,9 +11,8 @@ Template.botNetworks.events
 
   'click  .delete' : (e, tmpl) ->
     e.preventDefault()
+    return unless confirm("Are you sure you want to delete this network hande?")
     botId = Router.current().params.botId
-    console.log "My data context is..."
-    console.log this
     result = Bots.update({_id: botId},
       { $pull : { addresses: {networkHandleId: @.networkHandleId } }})
     console.log "The confirmation message was ... ... ..."
