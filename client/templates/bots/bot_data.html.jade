@@ -1,0 +1,22 @@
+template(name="botData")
+  {{> botRuler }}
+  h1 Data Sinks for {{ name }}
+
+  label.active(for='notificationEmails') Notification Emails
+  input(  type='text' 
+          name='notificationEmails' 
+          value='{{ notificationEmails }}'
+          placeholder='Who to send the results to'          
+          )
+
+  label.active(for='postConversationWebhook') Post Conversation Webhook
+  input(  type='text' 
+          name='postConversationWebhook' 
+          value='{{ postConversationWebhook }}'
+          placeholder='Where to post the conversation JSON to'
+          )
+  
+  .row
+    .center
+      a.waves-effect.waves-light.btn.green.submit Save
+  
