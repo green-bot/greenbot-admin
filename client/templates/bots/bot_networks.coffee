@@ -30,7 +30,7 @@ Template.botNetworks.helpers
 
 Template.botNetworks.onRendered ->
   this.$('#networks').addClass('green')
-  $('select').material_select()
+  #$('select').material_select()
 
 Router.route '/bot/:botId/networks',
   name: 'networks'

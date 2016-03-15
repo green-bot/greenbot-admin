@@ -1,4 +1,13 @@
+Template.botData.helpers
+  emailChips: ->
+    Session.get("emailChips") or @.notificationEmails.split(',')
+
 Template.botData.events
+  'input input[name=notificationEmails]' : (e, tmpl) ->
+    val = $(e.target).val()
+    console.log "input event fired"
+    Session.set('emailChips', val.split(','))
+
   'click .submit' : (e, tmpl) ->
     e.preventDefault()
     botId = Router.current().params.botId

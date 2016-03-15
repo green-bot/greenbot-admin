@@ -22,11 +22,10 @@ template(name="botNetworks")
     h2 Add Network Handle
     .row
       .col.s3.input-field
-        select#network
+        select#network.browser-default
           option(value="") Choose Network...
           each availableNetworks
             option(value="{{ name }}") {{ name }}
-        label Network
       .col.s3.input-field
         input#handle(placeholder='handle')
       .col.s3.input-field

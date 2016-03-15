@@ -5,6 +5,6 @@ Template.botRuler.events
     Router.go 'library'
 
 Template.botRuler.helpers
-  wikiName: -> Router.current().route.getName()
+  wikiName: -> Router.current?().route?.getName() or "default"
   currentBotId: ->
     return Router.current().params.botId
