@@ -34,7 +34,7 @@ accounts-ui
 useraccounts:materialize
 materialize:materialize
 coffeescript
-autopublish
 momentjs:moment
 chuangbo:marked
 aslagle:reactive-table
+autopublish

@@ -34,11 +34,11 @@ Template.accountPage.events({
 
 
     botParams = form2js(e.target);
-    botParams.scriptId = new Mongo.ObjectID( botParams.scriptId);
+    botParams.scriptId  = botParams.scriptId;
     botParams.accountId = Router.current().params._id;
 
     var account = Meteor.users.findOne(botParams.accountId);
-    var script = Scripts.findOne(botParams.scriptId);
+    var script  = Scripts.findOne(botParams.scriptId);
 
     botParams.settings = script.default_settings;
     botParams.description = "";

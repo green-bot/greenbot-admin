@@ -1,1 +1,2 @@
 *.log
+.db_migrations/node_modules/

@@ -1,11 +1,7 @@
 var plivo = Npm.require('plivo');
 
-var api = new Restivus({
-  useDefaultAuth: true,
-  prettyJson: true
-});
 
-api.addRoute('plivo/new_call', { authRequired: false }, {
+restApi.addRoute('plivo/new_call', { authRequired: false }, {
   post: {
     action: function() {
       var response = plivo.Response();
@@ -38,7 +34,7 @@ function xmlResponse(plivoResponse) {
   };
 }
 
-api.addRoute('plivo/recording_complete', { authRequired: false }, {
+restApi.addRoute('plivo/recording_complete', { authRequired: false }, {
   post: {
     action: function() {
       var response = plivo.Response();

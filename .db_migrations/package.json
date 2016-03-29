@@ -1,0 +1,14 @@
+{
+  "name": "db_migrations",
+  "version": "1.0.0",
+  "description": "umm *shrug*",
+  "main": "fix_parse_import.js",
+  "scripts": {
+    "test": "migrate()"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "harmony-proxy": "^1.0.0"
+  }
+}

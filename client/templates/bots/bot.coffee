@@ -1,6 +1,3 @@
-if Meteor.isClient
-  Meteor.subscribe("sessions", this._id)
-
 Template.bot.helpers({
   sessions: () ->
     Sessions.find({botId: this._id})
@@ -22,6 +19,7 @@ Router.route '/bot/:botId',
   waitOn:  ->
     Meteor.subscribe "bots"
     Meteor.subscribe "scripts"
+    Meteor.subscribe "sessions", this.params.botId
   data:  ->
     return Bots.findOne this.params.botId
   action:  ->
