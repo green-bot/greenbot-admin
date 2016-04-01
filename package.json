@@ -1,0 +1,25 @@
+{
+  "name": "greenbot-admin",
+  "version": "1.0.0",
+  "description": "Import from parse: >use greenbot >db.dropDatabase()",
+  "main": "index.js",
+  "dependencies": {
+    "chart.js": "^1.0.2",
+    "materialize-tags": "^1.0.0",
+    "plivo": "^0.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/green-bot/gb_admin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/green-bot/gb_admin/issues"
+  },
+  "homepage": "https://github.com/green-bot/gb_admin#readme"
+}
