@@ -13,8 +13,6 @@ Template.dashboard.onRendered( function() {
   //var ctx = document.getElementById("chart").getContext("2d");
   //var chart = new Chart(ctx).Line(chartData, { responsive: true });
 
-
-
   self.autorun(function() {
     var sessionsForChart = Template.currentData() || [];
     var datalabels = [];
