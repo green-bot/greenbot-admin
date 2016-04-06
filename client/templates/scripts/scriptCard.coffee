@@ -11,6 +11,7 @@ Template.scriptCard.events
       settings: this.default_settings
       ownerHandles: []
     newBotId = Bots.insert(bot)
+    Meteor.call('addNetwork', newBotId, "development", newBotId.toLowerCase(), "test")
     console.log newBotId
     Router.go 'bot', botId: newBotId
 

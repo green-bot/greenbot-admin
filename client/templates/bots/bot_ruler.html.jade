@@ -1,14 +1,5 @@
 template(name='botRuler')
 
-  #bot-test-modal.modal
-    .modal-content
-      h4.modal-header Test
-      .conversation
-      form
-        input(type="text" name="msgBox")
-    .modal-footer
-      a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
-
   nav
     .nav-wrapper.green.darken-2
       ul
@@ -28,7 +19,7 @@ template(name='botRuler')
           a.tooltipped( href="/bot/{{currentBotId}}/settings" data-tooltip='Settings' ) 
             i.small.material-icons settings
         li#test
-          a#browser-test-btn.tooltipped( href="#" data-tooltip='Test' ) 
+          a#browser-test-btn.tooltipped( href="/bot/{{currentBotId}}/play" data-tooltip='Test' ) 
             i.small.material-icons play_arrow
         li#help
           a.tooltipped(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' data-tooltip='Help' ) 

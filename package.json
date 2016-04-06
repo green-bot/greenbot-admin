@@ -4,9 +4,12 @@
   "description": "Import from parse: >use greenbot >db.dropDatabase()",
   "main": "index.js",
   "dependencies": {
-    "chart.js": "^1.0.2",
+    "bufferutil": "^1.2.1",
+    "chart.js": "^1.1.0",
     "materialize-tags": "^1.0.0",
-    "plivo": "^0.3.3"
+    "meteor-node-stubs": "^0.2.1",
+    "plivo": "^0.3.3",
+    "utf-8-validate": "^1.2.1"
   },
   "devDependencies": {},
   "scripts": {

@@ -118,10 +118,9 @@ dl {
 }
 
 #bot-test-modal{
-  .modal-content{
     .conversation{
       border: 1px solid #ccc;
-      height: 200px;
+      height: 400px;
       margin-top: 12px;
       padding: 5px 3%;
       overflow-y: scroll;
@@ -193,6 +192,5 @@ dl {
         }
       }
     }
-  }
 
 }

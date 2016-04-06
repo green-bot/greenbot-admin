@@ -1,5 +1,5 @@
 Meteor.methods
-  'addNetwork' : (botId, network, handle, name, keywords) ->
+  'addNetwork' : (botId, network, handle, keywords) ->
     # First, add a new element to the networkHandles
     name = "#{network}::#{handle}"
     networkHandle = NetworkHandles.insert
