@@ -1,8 +1,6 @@
-startBotDialog = ->
-
 Template.botPlay.events
   'click #restart': -> BotTest.restart()
-    
+
 Template.botPlay.onRendered ->
   outerContext = @
   $.getScript 'https://cdn.socket.io/socket.io-1.4.5.js', ->
@@ -12,7 +10,6 @@ Template.botPlay.onRendered ->
     testNH = _.find(bot.addresses, (addr)-> addr.networkHandleName is "development::#{ handle }" )
     keyword = testNH.keywords[0]
     BotTest.init(handle, keyword)
-    #BotTest.sendMsg(keyword)
 
 Template.botPlay.onDestroyed ->
   BotTest.disconnect()
@@ -33,7 +30,7 @@ BotTest =
 
   init: (@handle, @keyword)->
     self = this
-    @sessionId    = (new Date).getTime()
+    @sessionId    = (new Date).getTime().toString()
     @convosDiv    = $('.conversation')
     @logContainer = $('#log')
     @convosDiv.html("")
@@ -46,8 +43,7 @@ BotTest =
       input.val ''
       false
 
-    @io = io('http://pairing.green-bot.com:3003')
-
+    @io = io('localhost:3003')
     @sendMsg(@keyword)
 
     @io.on 'egress', (msg) ->
@@ -55,8 +51,8 @@ BotTest =
       self.drawMessage 'their', msg.txt
     @io.on 'session:ended', (sess) ->
       console.log sess
-      #$('form input').prop('disabled', true)
-      #self.logContainer.append("<p>Session has ended. You may start it over by pressing 'restart conversation' button.</p>")
+      $('form input').prop('disabled', true)
+      self.logContainer.append("<p>Session has ended. You may start it over by pressing 'restart conversation' button.</p>")
 
   disconnect: -> @.io.disconnect()
 
