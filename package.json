@@ -6,8 +6,10 @@
   "dependencies": {
     "bufferutil": "^1.2.1",
     "chart.js": "^1.1.0",
+    "chokidar": "1.4.3",
     "materialize-tags": "^1.0.0",
     "meteor-node-stubs": "^0.2.1",
+    "pathwatcher": "6.5.0",
     "plivo": "^0.3.3",
     "utf-8-validate": "^1.2.1"
   },

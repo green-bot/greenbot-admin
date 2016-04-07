@@ -43,7 +43,9 @@ BotTest =
       input.val ''
       false
 
-    @io = io('localhost:3003')
+    socketUrl = Meteor.settings.public.GREENBOT_IO_URL
+    console.log socketUrl
+    @io = io(socketUrl)
     @sendMsg(@keyword)
 
     @io.on 'egress', (msg) ->

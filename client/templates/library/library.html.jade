@@ -1,7 +1,15 @@
 
 template(name="library")
   .row
+    each scripts
+      {{> scriptCard }}
+  .row
     .center-align
-      h1 Installed Scripts
-  each scripts
-    {{> scriptCard }}
+      .col.s12.m6
+        .card
+          .card-content
+            .input-field
+              input.pkg(type='text' name='name')
+              label.active(for='name') Manual Install NPM Package
+            a.btn-floating.btn-large.waves-effect.waves-light.red
+              i.material-icons.addScript add

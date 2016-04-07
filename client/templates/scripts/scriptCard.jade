@@ -1,27 +1,25 @@
 template(name='scriptCard')
-  .row
-    .col.s12.m6
-      .card.green.darken-1
-        .card-content.white-text
-          span.card-title {{name}}
-          |               
-          p
-            | {{ short_desc}}
-        |             
-        .card-action
-          a.new_bot
-            i.material-icons add
-            | Create
-          a.info
-            i.material-icons info
-            | Info
-          a.try(href='{{try_link}}')
-            i.material-icons chat_bubble_outline
-            | Demo
-          a.github(href='{{repo_link}}')
-            i.zmdi.zmdi-github.zmdi-hc-2x
-            | Source
-  .row
+  .col.s12.m6
+    .card.green.darken-1
+      .card-content.white-text
+        span.card-title {{name}}
+        |               
+        p
+          | {{ short_desc}}
+      |             
+      .card-action
+        a.new_bot
+          i.material-icons add
+          | Create
+        a.info
+          i.material-icons info
+          | Info
+        a.github(href='{{repo_link}}')
+          i.zmdi.zmdi-github.zmdi-hc-2x
+          | Source
+        a.remove 
+          i.material-icons delete
+
     .col.s6
       #desc.modal.modal-fixed-footer
         .modal-content

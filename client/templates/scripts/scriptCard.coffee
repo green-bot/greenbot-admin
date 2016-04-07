@@ -12,11 +12,14 @@ Template.scriptCard.events
       ownerHandles: []
     newBotId = Bots.insert(bot)
     Meteor.call('addNetwork', newBotId, "development", newBotId.toLowerCase(), "test")
-    console.log newBotId
     Router.go 'bot', botId: newBotId
 
   'click .info' : (event, template) ->
     template.$('#desc').openModal()
+
+  'click .remove' : (event, template) ->
+    console.log 'Removing ' + @npm_pkg_name
+    Meteor.call 'removeScript', @npm_pkg_name
 
 Template.scriptCard.helpers
   desc_markdown: ->

@@ -10,3 +10,12 @@ Router.route  '/library', {
   waitOn:             -> this.subscribe('scripts')
 
   }
+
+Template.library.events
+  'click .addScript' : (e, tmpl) ->
+    console.log "click"
+    e.preventDefault()
+    inputs = tmpl.$('.pkg').each (index, element) ->
+      pkg = tmpl.$('.pkg').prop('value')
+      console.log 'adding ' + pkg
+      Meteor.call 'installScript', pkg
