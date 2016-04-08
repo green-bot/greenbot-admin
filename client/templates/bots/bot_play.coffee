@@ -1,7 +1,16 @@
+collectedData = new ReactiveVar({})
+transcriptData = new ReactiveVar([])
+
+Template.botPlay.helpers
+  collectedData: -> collectedData.get()
+  transcriptData: -> transcriptData.get()
+
 Template.botPlay.events
   'click #restart': -> BotTest.restart()
 
 Template.botPlay.onRendered ->
+  $('ul.tabs').tabs()
+
   outerContext = @
   $.getScript 'https://cdn.socket.io/socket.io-1.4.5.js', ->
     bot = outerContext.data
@@ -36,6 +45,7 @@ BotTest =
     @convosDiv.html("")
     @logContainer.html("")
     $('form input').prop('disabled', false)
+    $('ul.tabs li:not(:first-child)').addClass('disabled')
 
     $('form').off('submit').on 'submit', ->
       input = $(this).find('input')
@@ -53,7 +63,10 @@ BotTest =
       self.drawMessage 'their', msg.txt
     @io.on 'session:ended', (sess) ->
       console.log sess
+      $('ul.tabs li').removeClass('disabled')
       $('form input').prop('disabled', true)
+      collectedData.set(sess.collectedData)
+      transcriptData.set(sess.transcript)
       self.logContainer.append("<p>Session has ended. You may start it over by pressing 'restart conversation' button.</p>")
 
   disconnect: -> @.io.disconnect()

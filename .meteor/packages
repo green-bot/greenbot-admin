@@ -40,3 +40,5 @@ autopublish
 standard-minifier-css
 standard-minifier-js
 modules
+reactive-var
+gantrim:meteor-json-view-materialize
