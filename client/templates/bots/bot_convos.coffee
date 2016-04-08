@@ -1,4 +1,7 @@
-Template.botConvos.helpers({
+collectedData = new ReactiveVar({})
+transcriptData = new ReactiveVar([])
+
+Template.botConvos.helpers
   convos: ->
     Template.instance().data
   tableSettings: ->
@@ -33,7 +36,18 @@ Template.botConvos.helpers({
     for k,v in collectedData
       data.push {k: k, v: v}
     data
-})
+
+  collectedData: -> collectedData.get()
+  transcriptData: -> transcriptData.get()
+
+Template.botConvos.events
+  'click .show-data' : (e, tmpl)->
+    collectedData.set(@.collectedData)
+    $('#collected-data-modal').openModal()
+
+  'click .show-transcript' : (e, tmpl)->
+    transcriptData.set(@.transcript)
+    $('#transcript-modal').openModal()
 
 Router.route '/bot/:botId/convos',
   name: 'botConvos'

@@ -1,6 +1,21 @@
 template(name='botConvos')
   {{> botRuler }}
   {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
+
+  #collected-data-modal.modal.modal-fixed-footer
+    .modal-content
+      h4 Collected data
+      {{> jsonView json=collectedData}}
+    .modal-footer
+      a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+
+  #transcript-modal.modal.modal-fixed-footer
+    .modal-content
+      h4 Transcript
+      {{> jsonView json=transcriptData}}
+    .modal-footer
+      a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+ 
   //-each convos
     //-.card.green.lighten-4
       //-.card-content
