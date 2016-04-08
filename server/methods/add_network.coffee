@@ -18,5 +18,6 @@ Meteor.methods
       networkHandleId: networkHandle
       networkHandleName: name
       keywords: keywords.split(",")
+      network: network
     Bots.update { _id: botId },
                   $push: { 'addresses': address }
