@@ -1,4 +1,7 @@
 template(name='bot')
   {{> botRuler }}
   h2= name
-  {{{ desc_markdown }}}
+  if isScriptGone 
+    p.red-text.darken-4 The associated script has been removed.
+  else
+    {{{ desc_markdown }}}

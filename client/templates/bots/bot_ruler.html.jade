@@ -2,28 +2,55 @@ template(name='botRuler')
 
   nav
     .nav-wrapper.green.darken-2
-      ul
-        li#info
-          a.tooltipped( href="/bot/{{currentBotId}}" data-tooltip='Information' ) 
-            i.small.material-icons info
-        li#convos
-          a.tooltipped( href="/bot/{{currentBotId}}/convos" data-tooltip='Conversations' ) 
-            i.small.material-icons chat
-        li#data
-          a.tooltipped( href="/bot/{{currentBotId}}/data" data-tooltip='Data Sinks' ) 
-            i.small.material-icons save
-        li#networks
-          a.tooltipped( href="/bot/{{currentBotId}}/networks" data-tooltip='Networks' ) 
-            i.small.material-icons wifi
-        li#settings
-          a.tooltipped( href="/bot/{{currentBotId}}/settings" data-tooltip='Settings' ) 
-            i.small.material-icons settings
-        li#test
-          a.tooltipped( href="/bot/{{currentBotId}}/play" data-tooltip='Test' ) 
-            i.small.material-icons play_arrow
-        li#help
-          a.tooltipped(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' data-tooltip='Help' ) 
-            i.small.material-icons help
-        li#delete.right
-          a.tooltipped(data-tooltip='Delete' ) 
-            i.small.material-icons delete
+      if isScriptGone
+        ul
+          li
+            a( href="/bot/{{currentBotId}}" )
+              i.small.material-icons info
+          li#convos
+            a( href="/bot/{{currentBotId}}/convos" )
+              i.small.material-icons chat
+          li
+            a(disabled)
+              i.small.material-icons save
+          li
+            a(disabled)
+              i.small.material-icons wifi
+          li
+            a(disabled)
+              i.small.material-icons settings
+          li
+            a(disabled)
+              i.small.material-icons play_arrow
+          li#help
+            a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' )
+              i.small.material-icons help
+          li#delete.right
+            a()
+              i.small.material-icons delete
+      else
+        ul
+          li#info
+            a( href="/bot/{{currentBotId}}" )
+              i.small.material-icons info
+          li#convos
+            a( href="/bot/{{currentBotId}}/convos" )
+              i.small.material-icons chat
+          li#data
+            a( href="/bot/{{currentBotId}}/data" )
+              i.small.material-icons save
+          li#networks
+            a( href="/bot/{{currentBotId}}/networks" )
+              i.small.material-icons wifi
+          li#settings
+            a( href="/bot/{{currentBotId}}/settings" )
+              i.small.material-icons settings
+          li#test
+            a( href="/bot/{{currentBotId}}/play" )
+              i.small.material-icons play_arrow
+          li#help
+            a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' )
+              i.small.material-icons help
+          li#delete.right
+            a()
+              i.small.material-icons delete

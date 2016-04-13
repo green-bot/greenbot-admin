@@ -194,3 +194,9 @@ dl {
     }
 
 }
+
+nav ul a[disabled]{
+  cursor: default;
+  color: #ccc;
+  &:hover{ background-color: inherit !important; }
+}
