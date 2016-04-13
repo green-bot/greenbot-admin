@@ -22,3 +22,6 @@ Router.route '/bot/:botId',
     return Bots.findOne this.params.botId
   action:  ->
     this.render 'bot'
+
+Template.bot.onRendered ->
+  this.$('#info').addClass('green')

@@ -4,7 +4,7 @@ template(name='botRuler')
     .nav-wrapper.green.darken-2
       if isScriptGone
         ul
-          li
+          li#info
             a( href="/bot/{{currentBotId}}" )
               i.small.material-icons info
           li#convos
