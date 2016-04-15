@@ -1,29 +1,20 @@
 template(name="botData")
-  {{> botRuler }}
+  +botRuler
   h1 Data Sinks for {{ name }}
-  
 
-  label.active(for='notificationEmails') Notification Emails (comma separated)
-  input(  type='text' 
-          name='notificationEmails' 
-          value='{{ notificationEmails }}'
-          placeholder='Who to send the results to'          
-          )
-  
-  .row
-    .col.sm12
-      | Selected emails
-      each emailChips
-        .chip {{ this }}
+  +autoForm collection="Bots" id="insertBookForm" doc=this type="update"
+    {{> afQuickField name='notificationEmails' placeholder='Who to send the results to' }}
+    
+    .row
+      .col.sm12
+        | Selected emails
+        each emailChips
+          .chip {{ this }}
 
-  label.active(for='postConversationWebhook') Post Conversation Webhook
-  input(  type='text' 
-          name='postConversationWebhook' 
-          value='{{ postConversationWebhook }}'
-          placeholder='Where to post the conversation JSON to'
-          )
-  
-  .row
-    .center
-      a.waves-effect.waves-light.btn.green.submit Save
-  
+
+    {{> afQuickField name='notificationEmailSubject' placeholder='What to say in the subject line of a notification email' }}
+    {{> afQuickField name='postConversationWebhook' placeholder='Where to post the conversation JSON to'}}
+    
+    .row
+      .center
+        input.waves-effect.waves-light.btn.green.submit(type="submit" value="Save")

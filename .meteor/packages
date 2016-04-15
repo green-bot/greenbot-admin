@@ -42,3 +42,6 @@ standard-minifier-js
 modules
 reactive-var
 gantrim:meteor-json-view-materialize
+aldeed:collection2
+aldeed:autoform
+gildaspk:autoform-materialize

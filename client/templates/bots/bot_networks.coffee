@@ -21,12 +21,9 @@ Template.botNetworks.events
 
 
 Template.botNetworks.helpers
-  network: (networkHandleName) ->
-    networkHandleName.split("::")[0]
-  handle: (networkHandleName) ->
-    networkHandleName.split("::")[1]
-  availableNetworks: ->
-    Networks.find()
+  network: (networkHandleName) -> networkHandleName.split("::")[0]
+  handle:  (networkHandleName) -> networkHandleName.split("::")[1]
+  availableNetworks: -> Networks.find()
 
 Template.botNetworks.onRendered ->
   this.$('#networks').addClass('green')
@@ -38,7 +35,5 @@ Router.route '/bot/:botId/networks',
     Meteor.subscribe "bots"
     Meteor.subscribe "networkHandles", this.params._id
     Meteor.subscribe "sessions", this.params.botId
-  data: ->
-    return Bots.findOne this.params.botId
-  action: ->
-    this.render 'botNetworks'
+  data: -> Bots.findOne this.params.botId
+  action: -> this.render 'botNetworks'

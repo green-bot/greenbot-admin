@@ -2,8 +2,6 @@ collectedData = new ReactiveVar({})
 transcriptData = new ReactiveVar([])
 
 Template.botConvos.helpers
-  convos: ->
-    Template.instance().data
   tableSettings: ->
     fields: [
         key: 'updatedAt'
@@ -39,6 +37,7 @@ Template.botConvos.helpers
 
   collectedData: -> collectedData.get()
   transcriptData: -> transcriptData.get()
+  convos: -> Sessions.find({botId: @_id}).fetch()
 
 Template.botConvos.events
   'click .show-data' : (e, tmpl)->
@@ -56,16 +55,8 @@ Router.route '/bot/:botId/convos',
   action: ->
     this.render 'botConvos'
   data: ->
-    Sessions.find({botId: this.params.botId}).fetch()
+    Bots.findOne this.params.botId
 
-Router.route '/bot/:botId/convos/:sessionId',
-  name: 'session.show'
-  waitOn: ->
-    Meteor.subscribe "sessions", this.params.botId
-  action: ->
-    this.render 'sessionShow'
-  data: ->
-    Sessions.find({sessionId: this.params.sessionId}).fetch()[0]
 
 Template.botConvos.onRendered ->
   this.$('#convos').addClass('green')
