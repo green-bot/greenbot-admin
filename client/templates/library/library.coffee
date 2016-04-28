@@ -13,9 +13,7 @@ Router.route  '/library', {
 
 Template.library.events
   'click .addScript' : (e, tmpl) ->
-    console.log "click"
     e.preventDefault()
-    inputs = tmpl.$('.pkg').each (index, element) ->
-      pkg = tmpl.$('.pkg').prop('value')
-      console.log 'adding ' + pkg
-      Meteor.call 'installScript', pkg
+    pkgName = tmpl.$('input.pkg').prop('value')
+    console.log 'adding ' + pkgName
+    Meteor.call 'installScriptViaNpm', pkgName
