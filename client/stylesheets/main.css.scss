@@ -1,24 +1,25 @@
-$primary-color: color("materialize-green", "base") !default;
-$primary-color-light: color("materialize-green", "lighten-4") !default;
-$primary-color-dark: color("materialize-green", "darken-2") !default;
-$secondary-color: color("materialize-deep-orange", "base") !default;
-$success-color: color("materialize-green", "base") !default;
-$error-color: color("materialize-red", "base") !default;
-$link-color: color("materialize-deep-orange", "base") !default;
+$primary-color-dark:   #388E3C;
+$primary-color:        #4CAF50;
+$primary-color-light:  #C8E6C9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FF5722;
+$primary-text-color:   #212121;
+$secondary-text-color: #727272;
+$divider-color:        #B6B6B6;
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #4CAF50;
+    color:    $primary-color;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #4CAF50;
+   color:    $primary-color;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #4CAF50;
+   color:    $primary-color;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #4CAF50;
+   color:    $primary-color;
 }
 
 
@@ -26,7 +27,7 @@ $link-color: color("materialize-deep-orange", "base") !default;
   color: white;
 }
 .tabs .tab .active {
-  color: #FF5722;
+  color: $accent-color;
 }
 
 .window-background {
@@ -40,9 +41,11 @@ footer.page-footer {
 }
 
 .side-menu {
-  background-color: #388E3C;
+  background-color: $primary-color-dark;
   width: 100%;
   margin-top: 10px;
+  &:hover{ background-color: $primary-color !important; }
+
 }
 .bot-sidebar {
   margin-top: 10px;
@@ -63,7 +66,7 @@ nav .nav-wrapper, .nav-wrapper {
 }
 
 .bot-sidebar a:visited {
-  color: #388E3C;
+  color: $primary-color-dark;
 }
 
 .settings {
@@ -96,8 +99,8 @@ dl {
   -webkit-border-radius: 19px;
   -moz-border-radius: 19px;
   border-radius: 19px;
-  border: #7F7F7F solid 4px;
-  color: #2B3E50;
+  border: $primary-color-dark solid 4px;
+  color: $primary-color-dark;
   padding: 10px;
 
   &:after, &:before {
@@ -107,7 +110,7 @@ dl {
     top: 70%;
     width: 0;
     display: block;
-    border-color: transparent #7F7F7F;
+    border-color: transparent $primary-color-dark;
     z-index: 0;
     margin-top: -18px;
   }
@@ -120,7 +123,7 @@ dl {
 }
 
 .conversation-bubble-egress {
-  background: #FFFFFF;
+  background: $primary-color-text;
 
   &:before{
     left: -35px;
@@ -129,13 +132,13 @@ dl {
 
   &:after {
     border-width: 15px 28px 15px 0;
-    border-color: transparent #FFFFFF;
+    border-color: transparent $primary-color-text;
     left: -28px;
   }
 }
 
 .conversation-bubble-ingress {
-  background: #D3D3D3;
+  background: $primary-color-light;
 
   &:before{
     right: -35px;
@@ -144,7 +147,7 @@ dl {
 
   &:after {
     border-width: 15px 0 15px 28px;
-    border-color: transparent #D3D3D3;
+    border-color: transparent $primary-color-light;
     right: -28px;
   }
 
@@ -187,7 +190,7 @@ dl {
 
 #bot-test-modal{
     .conversation{
-      border: 1px solid #388E3C;
+      border: 1px solid $primary-color-dark;
       height: 400px;
       margin-top: 12px;
       padding: 5px 3%;
@@ -212,12 +215,12 @@ dl {
 
         &.message-mine {
           float: right;
-          background-color: #DCF8C6;
+          background-color: $primary-color-light;
         }
 
         &.message-their {
           float: left;
-          background-color: #DCF8C6;
+          background-color: $primary-color-light;
         }
 
         &.message-their::before, &.message-mine::before, {
@@ -265,6 +268,6 @@ dl {
 
 nav ul a[disabled]{
   cursor: default;
-  color: #ccc;
-  &:hover{ background-color: inherit !important; }
+  color: $primary-color-light;
+  &:hover{ background-color: $primary-color-dark !important; }
 }
