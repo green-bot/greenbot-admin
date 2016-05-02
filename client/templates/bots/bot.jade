@@ -1,7 +1,12 @@
 template(name='bot')
-  {{> botRuler }}
-  h2= name
-  if isScriptGone 
-    p.red-text.darken-4 The associated script has been removed.
-  else
-    {{{ desc_markdown }}}
+  .card-panel.green.lighten-4
+    {{> botRuler }}
+    .row
+      .col.s10   
+        if isScriptGone 
+          p.red-text.darken-4 The associated script has been removed.
+        else
+          if desc_markdown
+            {{{ desc_markdown }}}    
+          else
+            h2= name

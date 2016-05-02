@@ -8,25 +8,16 @@ Template.botConvos.helpers
         label: 'Updated At'
         fn: (value) -> moment(value).format('l')
       ,
+        key: 'src'
+        label: 'Source'
+      ,
         key: 'transcript'
         label: 'Transcript'
         tmpl: Template.conversationTableTranscript
       ,
-        key: 'src'
-        label: 'Source'
-      ,
-        key: 'dst'
-        label: 'Destination'
-      ,
         key: 'collectedData'
         label: 'Data'
         tmpl: Template.conversationTableCollectedData
-      ,
-        key: 'sessionId'
-        label: 'Session ID'
-      ,
-        key: 'lang'
-        label: 'Language'
     ]
 
   convoData: (collectedData) ->
@@ -59,4 +50,4 @@ Router.route '/bot/:botId/convos',
 
 
 Template.botConvos.onRendered ->
-  this.$('#convos').addClass('green')
+  this.$('#convos .material-icons').css('color', '#FF5722')

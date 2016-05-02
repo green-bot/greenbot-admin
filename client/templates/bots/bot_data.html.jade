@@ -1,20 +1,13 @@
 template(name="botData")
-  +botRuler
-  h1 Data Sinks for {{ name }}
-
-  +autoForm collection="Bots" id="insertBookForm" doc=this type="update"
-    {{> afQuickField name='notificationEmails' placeholder='Who to send the results to' }}
-    
-    .row
-      .col.sm12
-        | Selected emails
-        each emailChips
-          .chip {{ this }}
-
-
-    {{> afQuickField name='notificationEmailSubject' placeholder='What to say in the subject line of a notification email' }}
-    {{> afQuickField name='postConversationWebhook' placeholder='Where to post the conversation JSON to'}}
-    
-    .row
-      .center
-        input.waves-effect.waves-light.btn.green.submit(type="submit" value="Save")
+  .card-panel.green.lighten-4
+    {{> botRuler }}
+    h2 Data
+    +autoForm collection="Bots" id="insertBookForm" doc=this type="update"
+      {{> afQuickField name='notificationEmails' placeholder='Who to send the results to' }}
+      {{> afQuickField name='notificationEmailSubject' placeholder='What to say in the subject line of a notification email' }}
+      {{> afQuickField name='postConversationWebhook' placeholder='Where to post the conversation JSON to'}}
+      
+      .row
+        .right
+          button.btn.waves-effect.waves-light.green.submit(type="submit") Save
+            i.material-icons.right save

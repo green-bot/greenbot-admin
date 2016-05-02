@@ -7,9 +7,7 @@ Template.bot.helpers
     collectedDataArray.push { key: key, val: this.collectedData[key] } for key in keys
     return collectedDataArray
   dateString: () -> moment(this.updatedAt).fromNow()
-  desc_markdown: () ->
-    script = Scripts.findOne _id: @.scriptId
-    marked(script.desc)
+  desc_markdown: () -> Session.get('readme')
   isScriptGone: -> !@scriptId?
 
 Router.route '/bot/:botId',
@@ -24,4 +22,11 @@ Router.route '/bot/:botId',
     this.render 'bot'
 
 Template.bot.onRendered ->
-  this.$('#info').addClass('green')
+  this.$('#info .material-icons').css('color', '#FF5722')
+  Meteor.call 'getReadme', @data.scriptId, (err, res) ->
+    if err
+      console.log "Read me threw error"
+      console.log err
+      return ""
+    console.log res
+    Session.set 'readme', marked(res)

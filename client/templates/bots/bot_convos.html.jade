@@ -1,42 +1,20 @@
 template(name='botConvos')
-  {{> botRuler }}
-  {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
+  .card-panel.green.lighten-4
+    {{> botRuler }}
+    h2 Conversations
+    {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
 
-  #collected-data-modal.modal.modal-fixed-footer
-    .modal-content
-      h4 Collected data
-      {{> jsonView json=collectedData}}
-    .modal-footer
-      a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+    #collected-data-modal.modal.modal-fixed-footer
+      .modal-content
+        h4 Collected data
+        {{> jsonView json=collectedData}}
+      .modal-footer
+        a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
 
-  #transcript-modal.modal.modal-fixed-footer
-    .modal-content
-      h4 Transcript
-      {{> jsonView json=transcriptData}}
-    .modal-footer
-      a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+    #transcript-modal.modal.modal-fixed-footer
+      .modal-content
+        h4 Transcript
+        {{> jsonView json=transcriptData}}
+      .modal-footer
+        a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
  
-  //-each convos
-    //-.card.green.lighten-4
-      //-.card-content
-        //-.row
-          //-.col.l6
-            //-span.card-title.activator.grey-text.text-darken-4
-              //-| {{ src }} : {{ dst }}
-            //-p {{ updatedAt }}
-          //-.col.l6
-            //-span.card-title.activator.grey-text.text-darken-4
-              //-i.material-icons.right more_vert
-      //-.card-reveal
-        //-span.card-title.grey-text.text-darken-4
-          //-| Transcript
-          //-i.material-icons.right close
-        //-p
-          //-each transcript
-            //-.row
-              //-.col.l3 
-                //-| {{ direction }}
-              //-.col.l9
-                //-| {{ text }}
-                
-        

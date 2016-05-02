@@ -1,14 +1,14 @@
 Template.accountPage.helpers({
  bots() {
-   return Bots.find(); 
+   return Bots.find();
   },
 
  networkHandles() {
-   return NetworkHandles.find(); 
+   return NetworkHandles.find();
   },
 
  scripts() {
-   return Scripts.find(); 
+   return Scripts.find();
  },
 
  activeTab(tab){
@@ -48,7 +48,7 @@ Template.accountPage.events({
     Bots.insert(botParams);
     $('.modal').modal('hide');
   },
-  
+
   'change select#type' : (e, tmpl) => {
     $('input#name').val($(e.target).find('option:selected').text())
   }

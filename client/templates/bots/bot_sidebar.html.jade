@@ -1,7 +1,10 @@
 template(name="botSidebar")
-  each bots
-    {{> botCard }}
-  
-  .center
-    a.btn-floating.btn-large.waves-effect.waves-light.red.add-bot
+  .center-align.bot-sidebar
+    each bots
+      a.btn-large.waves-effect.side-menu(href='/bot/{{_id}}' style='{{selected}}') 
+        | {{ name }} 
+    .section
+
+    a.btn-floating.btn-large.waves-effect.waves-light.deep-orange.add-bot
       i.material-icons add
+  

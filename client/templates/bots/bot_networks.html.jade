@@ -1,35 +1,35 @@
 template(name="botNetworks")
-  {{> botRuler }}
-  h2 Networks for {{ name }}
-  table
-    thead
-      tr
-        th Network
-        th Handle
-        th Keywords
-        th 
-    tbody
-      each addresses
+  .card-panel.green.lighten-4
+    {{> botRuler }}
+    h2 Connections
+    table
+      thead
         tr
-          td {{ network networkHandleName }}
-          td {{ handle networkHandleName }}
-          td= keywords
-          td
-            a.delete(href='#')
-              i.material-icons.left delete
-              | Delete
-  .section
-    h2 Add Network Handle
-    .row
-      .col.s3.input-field
-        select#network.browser-default
-          option(value="") Choose Network...
-          each availableNetworks
-            option(value="{{ name }}") {{ name }}
-      .col.s3.input-field
-        input#handle(placeholder='handle')
-      .col.s3.input-field
-        input#keywords(placeholder='keywords')
-      .col.s3.input-field
-        a#add-network.btn-floating.waves-effect.waves-light.red
-          i.material-icons.left add
+          th Network
+          th Handle
+          th Keywords
+          th 
+      tbody
+        each addresses
+          tr
+            td {{ network networkHandleName }}
+            td {{ handle networkHandleName }}
+            td= keywords
+            td
+              a.green-text.delete(href='#')
+                i.material-icons.left delete
+                | Delete
+    .section
+      .row
+        .col.s3.input-field
+          select#network.browser-default
+            option(value="") Network...
+            each availableNetworks
+              option(value="{{ name }}") {{ name }}
+        .col.s3.input-field
+          input#handle(placeholder='handle or phone #')
+        .col.s3.input-field
+          input#keywords(placeholder='keywords')
+        .col.s3.input-field
+          a#add-network.btn-floating.waves-effect.waves-light.red
+            i.material-icons.left add

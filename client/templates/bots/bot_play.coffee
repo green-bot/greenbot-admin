@@ -9,6 +9,7 @@ Template.botPlay.events
   'click #restart': -> BotTest.restart()
 
 Template.botPlay.onRendered ->
+  this.$('#test .material-icons').css('color', '#FF5722')
   $('ul.tabs').tabs()
 
   outerContext = @

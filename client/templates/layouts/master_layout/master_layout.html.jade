@@ -2,7 +2,19 @@ template(name="masterLayout")
   .container
     .row
       .col.s12
-        {{> navbar }}
+        nav.green.darken-2
+          .nav-wrapper
+            a.brand-logo(href='/').left
+              img.logo(src="/img/logo.png")
+              | GreenBot
+            ul.right
+              li 
+                a(href='/library') Scripts
+              li 
+                a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}') 
+                  | Help
+              li 
+                a(href='/logout') Logout
     .row
       .col.s3
         {{> botSidebar}}

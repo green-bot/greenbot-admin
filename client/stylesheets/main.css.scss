@@ -1,3 +1,71 @@
+$primary-color: color("materialize-green", "base") !default;
+$primary-color-light: color("materialize-green", "lighten-4") !default;
+$primary-color-dark: color("materialize-green", "darken-2") !default;
+$secondary-color: color("materialize-deep-orange", "base") !default;
+$success-color: color("materialize-green", "base") !default;
+$error-color: color("materialize-red", "base") !default;
+$link-color: color("materialize-deep-orange", "base") !default;
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #4CAF50;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #4CAF50;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #4CAF50;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #4CAF50;
+}
+
+
+.tabs .tab a {
+  color: white;
+}
+.tabs .tab .active {
+  color: #FF5722;
+}
+
+.window-background {
+  background-color: color("materialize-grey", "lighten-4");
+}
+
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: color("materialize-grey", "lighten-4");
+}
+
+.side-menu {
+  background-color: #388E3C;
+  width: 100%;
+  margin-top: 10px;
+}
+.bot-sidebar {
+  margin-top: 10px;
+}
+.script-card-content {
+  height: 250px;
+}
+.icon-bottom {
+  vertical-align: bottom;
+  color: white;
+}
+.manual-card-action {
+  height: 91px;
+}
+nav .nav-wrapper, .nav-wrapper {
+  height: 72px;
+
+}
+
+.bot-sidebar a:visited {
+  color: #388E3C;
+}
+
 .settings {
   color: green;
 }
@@ -119,7 +187,7 @@ dl {
 
 #bot-test-modal{
     .conversation{
-      border: 1px solid #ccc;
+      border: 1px solid #388E3C;
       height: 400px;
       margin-top: 12px;
       padding: 5px 3%;
@@ -127,7 +195,7 @@ dl {
 
       .message-wrapper {
         margin-bottom: 9px;
-       
+
         &::after {
           content: "";
           display: table;
@@ -141,18 +209,18 @@ dl {
         max-width: 236px;
         border-radius: 7px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
-       
+
         &.message-mine {
           float: right;
           background-color: #DCF8C6;
         }
-       
-        &.message-other {
+
+        &.message-their {
           float: left;
-          background-color: #FFF;
+          background-color: #DCF8C6;
         }
-       
-        &.message-other::before, &.message-mine::before, {
+
+        &.message-their::before, &.message-mine::before, {
           content: "";
           position: absolute;
           bottom: 3px;
@@ -162,21 +230,21 @@ dl {
           background-repeat: no-repeat;
           background-size: contain;
         }
-       
-        &.message-other::before {
+
+        &.message-their::before {
           left: -11px;
           background-image: url(/bot_test_modal/message-ingress.png)
         }
-       
+
         &.message-mine::before {
           right: -11px;
           background-image: url(/bot_test_modal/message-egress.png)
         }
-       
+
         .text {
           padding: 5px 7px;
           word-wrap: break-word;
-       
+
           &::after {
             content: " \00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
             display: inline;

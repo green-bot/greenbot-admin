@@ -1,12 +1,9 @@
 Template.accountsNew.events({
-  'submit form' : (e, tmpl) => {
-    e.preventDefault();
-
-    var accountParams = form2js(e.target);
-    accountParams.createdAt = new Date();
-
-    CustomerAccounts.insert(accountParams);
-    Router.go('accountsList');
+  'submit form': (e, tmpl) => {
+    e.preventDefault()
+    var email = $("input[name='email']").val()
+    var password = $("input[name='password']").val()
+    Meteor.call('addUser', email, password)
+    Router.go('accountsList')
   }
-});
-
+})

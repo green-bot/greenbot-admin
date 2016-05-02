@@ -1,24 +1,21 @@
 template(name='scriptCard')
-  .col.s12.m6
-    .card.green.darken-1
-      .card-content.white-text
-        span.card-title {{name}}
-        |               
-        p
-          | {{ short_desc}}
-      |             
+  .col.s12.m4
+    .card.green.darken-2.script-card
+      .card-content.white-text.script-card-content
+        .row
+          .left.card-title {{name}}
+          a.right.btn-floating.waves-effect.waves-light.deep-orange.new_bot
+            i.material-icons.addScript add
+        .row
+          p {{ short_desc}}
       .card-action
-        a.new_bot
-          i.material-icons add
-          | Create
-        a.info
-          i.material-icons info
-          | Info
-        a.github(href='{{repo_link}}')
-          i.zmdi.zmdi-github.zmdi-hc-2x
-          | Source
-        a.remove 
-          i.material-icons delete
+        .row.center-align
+          a.info
+            i.material-icons.small.icon-bottom info
+          a.github(href='{{repo_link}}')
+            i.icon-bottom.zmdi.zmdi-github.zmdi-hc-2x
+          a.remove 
+            i.material-icons.small.icon-bottom delete
 
     .col.s6
       #desc.modal.modal-fixed-footer

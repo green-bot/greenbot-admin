@@ -1,0 +1,17 @@
+template(name='accountsNew')
+  .container
+    .row
+      .col.s6.offset-s3
+        .card-panel
+          h2  New account 
+          |   
+          form(action='/accounts', method='post')
+            .input-field
+              input.name(type='text' name='email')
+              label.active(for='email') Email
+            .input-field
+              input.name(type='password' name='password')
+              label.active(for='password') Password
+            button.btn.waves-effect.waves-light.right.deep-orange(type='submit') 
+              | Create
+              i.material-icons.right send

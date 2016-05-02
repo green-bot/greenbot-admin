@@ -26,7 +26,7 @@ Template.botData.events
 
 
 Template.botData.onRendered ->
-  this.$('#data').addClass('green')
+  this.$('#data .material-icons').css('color', '#FF5722')
   AutoForm.setDefaultTemplate('materialize')
 
 Router.route '/bot/:botId/data',

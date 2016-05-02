@@ -26,8 +26,7 @@ Template.botNetworks.helpers
   availableNetworks: -> Networks.find()
 
 Template.botNetworks.onRendered ->
-  this.$('#networks').addClass('green')
-  #$('select').material_select()
+  this.$('#networks .material-icons').css('color', '#FF5722')
 
 Router.route '/bot/:botId/networks',
   name: 'networks'

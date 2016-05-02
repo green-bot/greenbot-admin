@@ -1,23 +1,25 @@
 template(name='botPlay')
-  {{> botRuler }}
-  .row
-    .col.s12
-      ul.tabs
-        li.tab.col.s3
-          a.active(href='#conversation-tab') Conversation
-        li.tab.col.s3.disabled
-          a(href='#transcript-tab') Transcript
-        li.tab.col.s3.disabled
-          a(href='#collected-data-tab') Collected data
-    #conversation-tab.col.s12
-      #bot-test-modal
-        .conversation
-        form
-          input(type="text" name="msgBox" placeholder="Type something here")
-        #log
-        a#restart.waves-effect.waves-light.btn(href="#!") Restart conversation
-
-    #transcript-tab.col.s12
-      {{> jsonView json=transcriptData}}
-    #collected-data-tab.col.s12
-      {{> jsonView json=collectedData}}
+  .card-panel.green.lighten-4
+    {{> botRuler }}
+    .row
+      .col.s12
+        ul.tabs.green
+          li.tab.col.s3
+            a.active(href='#conversation-tab') Conversation
+          li.tab.col.s3.disabled
+            a(href='#transcript-tab') Transcript
+          li.tab.col.s3.disabled
+            a(href='#collected-data-tab') Collected data
+      #conversation-tab.col.s12
+        #bot-test-modal
+          .conversation
+          form
+            input(type="text" name="msgBox" placeholder="Type response here")
+          #log
+          a#restart.waves-effect.waves-light.btn.right.green(href="#!") Restart
+            i.material-icons.right replay
+            
+      #transcript-tab.col.s12
+        {{> jsonView json=transcriptData}}
+      #collected-data-tab.col.s12
+        {{> jsonView json=collectedData}}

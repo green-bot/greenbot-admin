@@ -19,7 +19,7 @@ Template.botSettings.helpers
   settings: -> this.settings
 
 Template.botSettings.onRendered ->
-  this.$('#settings').addClass('green')
+  this.$('#settings .material-icons').css('color', '#FF5722')
   this.$('.setting').characterCounter()
 
 Router.route '/bot/:botId/settings',

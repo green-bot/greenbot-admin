@@ -6,7 +6,7 @@ Template.botCard.helpers
   selected: ->
     instance = Template.parentData()
     if instance?._id is this._id
-      style = ""
+      style = "deep-orange"
     else
-      style = "darken-2"
+      style = "green"
     return style

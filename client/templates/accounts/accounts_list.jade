@@ -1,0 +1,31 @@
+template(name='accountsList')
+  .container
+    .row
+      .col.s1
+        a.btn.btn-success.pull-right(href='/accounts/new')
+          span.glyphicon.glyphicon-plus
+          |               New Account
+    .row
+      .table-responsive
+        table.table.table-hover.account-table
+          thead
+            tr
+              th
+                h3 Accounts
+              |           
+              th
+                h3 Bots
+              |           
+              th
+              
+          |       
+          tbody
+            each accounts
+              tr
+                td
+                  a.btn.btn-default(href="{{pathFor 'accountPage' _id=this._id }}") {{ getEmail this }}
+                |           
+                td  {{profile.roomsCount}} 
+                |           
+                td
+                |         

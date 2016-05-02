@@ -1,16 +1,23 @@
 template(name='botSettings')
-  {{> botRuler }}
-  .row
-    h2 Settings
-    .input-field
-      input.name(type='text' name='name' value='{{ name }}')
-      label.active(for='name') NAME
-  each settings
+  .card-panel.green.lighten-4
+    {{> botRuler }}
     .row
-      .input-field
-        textarea.materialize-textarea.setting(length="168" type='text' name='{{ name }}')
-          {{ value }}
-        label.active(for='{{ key }}') {{ name }}
-  .row
-    .center
-      a.waves-effect.waves-light.btn.green.submit Save
+      .valign-wrapper
+        .col.s9.left-align
+          h2.valign Settings
+        .col.s3
+          button.valign.btn.waves-effect.waves-light.green.submit(type="submit") Bot Docs
+            i.material-icons.right info
+    .row
+      .col.s12  
+        .input-field
+          input.name(type='text' name='name' value='{{ name }}')
+          label.active(for='name') NAME
+        each settings
+          .input-field
+            textarea.materialize-textarea.setting(length="168" type='text' name='{{ name }}')
+              {{ value }}
+            label.active(for='{{ key }}') {{ name }}
+        .row
+          .center
+            a.waves-effect.waves-light.btn.green.submit Save
