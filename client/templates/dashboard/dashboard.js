@@ -52,8 +52,8 @@ Template.dashboard.onRendered( function() {
 
 Router.route('/dashboard',{
   name: 'dashboard',
-  action(){ this.render('dashboard') },
-  data(){
+  action() { this.render('dashboard') },
+  data() {
     return Sessions.find().fetch();
   }
 })
