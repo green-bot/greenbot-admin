@@ -2,6 +2,7 @@ template(name='botConvos')
   .card-panel.green.lighten-4
     {{> botRuler }}
     h2 Conversations
+    button.green.csv-export.btn Export to CSV
     {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
 
     #collected-data-modal.modal.modal-fixed-footer
