@@ -1,2 +1,2 @@
 Meteor.publish "bots", () ->
-  return Bots.find({accountId: this.userId})
+  Bots.find({accountId: this.userId})
