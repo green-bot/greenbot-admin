@@ -1,10 +1,8 @@
 template(name="botSidebar")
-  .center-align.bot-sidebar
+  .collection
     each bots
-      a.btn-large.waves-effect.side-menu(href='/bot/{{_id}}' style='{{selected}}') 
-        | {{ name }} 
-    .section
-
-    a.btn-floating.btn-large.waves-effect.waves-green.deep-orange.add-bot
-      i.material-icons add
-  
+      a.collection-item.green(href='/bot/{{_id}}' class=activeStyle) 
+        {{ name }}
+  .center-align
+    a.btn-floating.btn-large.deep-orange.add-bot
+      i.large.material-icons add

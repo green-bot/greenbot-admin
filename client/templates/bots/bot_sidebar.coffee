@@ -3,15 +3,12 @@ Template.botSidebar.onCreated ->
   @subscribe 'bots'
 
 Template.botSidebar.helpers
-  bots: ->
-    Bots.find({accountId: Meteor.userId()})
-  selected: ->
+  bots: Bots.find({accountId: Meteor.userId()})
+  activeStyle: ->
     instance = Template.parentData()
     if instance?._id is this._id
-      style = "color: #FF5722;"
-    else
-      style = "color: white;"
-    return style
+      return 'orange-text'
+    return 'white-text'
 
 Template.botSidebar.events({
   'click .add-bot' : () ->

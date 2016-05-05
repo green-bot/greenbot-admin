@@ -40,13 +40,6 @@ footer.page-footer {
   background-color: color("materialize-grey", "lighten-4");
 }
 
-.side-menu {
-  background-color: $primary-color-dark;
-  width: 100%;
-  margin-top: 10px;
-  &:hover{ background-color: $primary-color !important; }
-
-}
 .bot-sidebar {
   margin-top: 10px;
 }
@@ -67,6 +60,9 @@ nav .nav-wrapper, .nav-wrapper {
 
 .bot-sidebar a:visited {
   color: $primary-color-dark;
+}
+.botActive {
+  color: $accent-color;
 }
 
 .settings {
