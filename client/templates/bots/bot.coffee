@@ -16,9 +16,9 @@ Router.route '/bot/:botId',
     Meteor.subscribe "bots"
     Meteor.subscribe "scripts"
     Meteor.subscribe "sessions", this.params.botId
-  data:  ->
+  data: ->
     return Bots.findOne this.params.botId
-  action:  ->
+  action: ->
     this.render 'bot'
 
 Template.bot.onRendered ->
