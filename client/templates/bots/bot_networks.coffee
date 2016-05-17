@@ -2,9 +2,9 @@ Template.botNetworks.events
   'click  #add-network' : (e, tmpl) ->
     e.preventDefault()
     botId    = Router.current().params.botId
-    network  = tmpl.$('#network').val()
-    handle   = tmpl.$('#handle').val()
-    keywords = tmpl.$('#keywords').val()
+    network  = tmpl.$('#network').val().trim()
+    handle   = tmpl.$('#handle').val().trim()
+    keywords = tmpl.$('#keywords').val().trim()
     Meteor.call('addNetwork', botId, network, handle, keywords)
     tmpl.$('#network, #handle, #keywords').val("")
     console.log "Adding to networks : #{network}, #{handle}, #{keywords}"

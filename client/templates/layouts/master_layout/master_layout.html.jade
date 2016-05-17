@@ -6,13 +6,11 @@ template(name="masterLayout")
         i.material-icons menu
       ul.right.hide-on-med-and-down
         li
+          {{> loginButtons}}
+        li
           a(href='/library') Library
         li
           a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}') Help
-        li
-          a(href='/logout') Logout
-        li
-          a(href='mobile.html') Mobile
       ul#mobile-demo.side-nav
         li
           a(href='sass.html') Sass
@@ -20,8 +18,6 @@ template(name="masterLayout")
           a(href='badges.html') Components
         li
           a(href='collapsible.html') Javascript
-        li
-          a(href='mobile.html') Mobile
 
   .row
     .col.s2

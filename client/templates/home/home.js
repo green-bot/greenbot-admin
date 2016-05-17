@@ -1,13 +1,26 @@
 import Chart from "chart.js";
 
+Router.route('/', {
+  waitOn: function () {
+    return Meteor.subscribe('bots')
+  },
+  template: 'home',
+  action: function () {
+    this.render()
+  }
+})
 
-Template.dashboard.helpers({
+Template.home.onCreated( function() {
+  this.subscribe('bots')
+})
+
+Template.home.helpers({
   bots(){
     return Bots.find();
   }
 })
 
-Template.dashboard.onRendered( function() {
+Template.home.onRendered( function() {
   var self = this;
 
   //var ctx = document.getElementById("chart").getContext("2d");
@@ -46,14 +59,4 @@ Template.dashboard.onRendered( function() {
       var ctx = document.getElementById("chart").getContext("2d");
       this.chartObj = new Chart(ctx).Line(chartData, { responsive: true, animation: false });
   });
-})
-
-
-
-Router.route('/dashboard',{
-  name: 'dashboard',
-  action() { this.render('dashboard') },
-  data() {
-    return Sessions.find().fetch();
-  }
 })

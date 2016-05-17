@@ -36,5 +36,7 @@ BotSchema = new SimpleSchema
   ownerHandles:
     type: [Object]
     defaultValue: []
+  passcode:
+    type: String
 
 Bots.attachSchema(BotSchema)
