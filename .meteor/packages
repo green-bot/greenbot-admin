@@ -29,6 +29,8 @@ matb33:collection-hooks
 dburles:mongo-collection-instances
 dburles:collection-helpers
 markdown
+accounts-ui
+useraccounts:materialize
 materialize:materialize
 coffeescript
 momentjs:moment
@@ -43,6 +45,4 @@ gantrim:meteor-json-view-materialize
 aldeed:collection2
 aldeed:autoform
 gildaspk:autoform-materialize
-accounts-base
-accounts-ui
-mantarayar:shortid
+lfergon:exportcsv

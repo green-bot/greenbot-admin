@@ -1,7 +1,9 @@
 template(name='botConvos')
   .card-panel
     {{> botRuler }}
-    h2 Conversations
+    .vertical-align
+      h2.inline-block.right-margin Conversations
+      button.green.csv-export.btn.push-up Export to CSV
     {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
 
     #collected-data-modal.modal.modal-fixed-footer

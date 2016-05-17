@@ -1,3 +1,4 @@
+fileSaver = require 'filesaver.js'
 collectedData = new ReactiveVar({})
 transcriptData = new ReactiveVar([])
 
@@ -39,6 +40,13 @@ Template.botConvos.events
     transcriptData.set(@.transcript)
     $('#transcript-modal').openModal()
 
+  'click .csv-export': (e, tmpl) ->
+    selector = botId: @_id
+    Meteor.call 'exportSessions', selector, (err, data) ->
+      if data?
+        blob = new Blob([data], {type: "text/plain;charset=utf-8"})
+        saveAs blob, 'greenbot-sessions.csv'
+
 Router.route '/bot/:botId/convos',
   name: 'botConvos'
   waitOn: ->
@@ -47,7 +55,6 @@ Router.route '/bot/:botId/convos',
     this.render 'botConvos'
   data: ->
     Bots.findOne this.params.botId
-
 
 Template.botConvos.onRendered ->
   this.$('#convos .material-icons').css('color', '#FF5722')
