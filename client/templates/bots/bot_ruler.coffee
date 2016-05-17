@@ -7,6 +7,6 @@ Template.botRuler.events
 
 
 Template.botRuler.helpers
-  wikiName: -> Router.currentDatarent?().route?.getName() or "default"
+  wikiName: -> Router.currentTemplate?().route?.getName() or "default"
   currentBotId: -> Router.current().params.botId
   isScriptGone: -> !@scriptId?

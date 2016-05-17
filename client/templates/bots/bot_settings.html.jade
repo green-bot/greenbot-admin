@@ -3,9 +3,11 @@ template(name='botSettings')
     {{> botRuler }}
     .row
       .valign-wrapper
-        .col.s9.left-align
+        .col.s8.left-align
           h2.valign Settings
-        .col.s3
+        .col.s2
+          h4 Passcode: {{passcode}}
+        .col.s2
           button.valign.btn.waves-effect.waves-green.green.submit(type="submit") Bot Docs
             i.material-icons.right info
     .row
