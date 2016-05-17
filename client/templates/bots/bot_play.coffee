@@ -40,7 +40,7 @@ BotTest =
 
   init: (@handle, @keyword)->
     self = this
-    @sessionId    = (new Date).getTime().toString()
+    @src    = (new Date).getTime().toString()
     @convosDiv    = $('.conversation')
     @logContainer = $('#log')
     @convosDiv.html("")
@@ -56,26 +56,41 @@ BotTest =
 
     socketUrl = Meteor.settings.public.GREENBOT_IO_URL
     console.log socketUrl
-    @io = io(socketUrl)
+    connect = ->
+      io.connect(socketUrl, {
+        reconnection: true,
+        reconnectionDelay: 1000,
+        reconnectionDelayMax : 5000,
+        reconnectionAttempts: Infinity
+      })
+
+    @io = connect()
+    @io.on 'connect', -> console.log 'connected to server'
+    @io.on 'disconnect', ->
+      console.log 'disconnected from server'
+      window.setTimeout connect, 5000
+      
     @sendMsg(@keyword)
 
     @io.on 'egress', (msg) ->
-      return if self.sessionId isnt msg.dst
+      return if self.src isnt msg.dst
       self.drawMessage 'their', msg.txt
-    @io.on 'session:ended', (sess) ->
+    @io.on 'session:ended', (sess) =>
+      return unless sess.src is @src
       console.log sess
       $('ul.tabs li').removeClass('disabled')
       $('form input').prop('disabled', true)
       collectedData.set(sess.collectedData)
       transcriptData.set(sess.transcript)
       self.logContainer.append("<p>Session has ended. You may start it over by pressing 'restart conversation' button.</p>")
+      @disconnect()
 
-  disconnect: -> @.io.disconnect()
+  disconnect: -> @io.disconnect()
 
   sendMsg: (txt) ->
     msg =
       dst: "development::#{ @handle }"
-      src: @sessionId
+      src: @src
       txt: txt + '\n'
     @io.emit 'ingress', msg
     @drawMessage 'mine', msg.txt
