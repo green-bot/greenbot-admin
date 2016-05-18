@@ -34,5 +34,6 @@ Router.route '/bot/:botId/networks',
     Meteor.subscribe "bots"
     Meteor.subscribe "networkHandles", this.params._id
     Meteor.subscribe "sessions", this.params.botId
+    Meteor.subscribe 'networks'
   data: -> Bots.findOne this.params.botId
   action: -> this.render 'botNetworks'
