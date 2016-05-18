@@ -51,6 +51,8 @@ Router.route '/bot/:botId/convos',
   name: 'botConvos'
   waitOn: ->
     Meteor.subscribe "sessions", this.params.botId
+    Meteor.subscribe 'bots'
+    
   action: ->
     this.render 'botConvos'
   data: ->

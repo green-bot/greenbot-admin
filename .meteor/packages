@@ -36,7 +36,6 @@ coffeescript
 momentjs:moment
 chuangbo:marked
 aslagle:reactive-table
-autopublish
 standard-minifier-css
 standard-minifier-js
 modules

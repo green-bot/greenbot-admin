@@ -1,20 +1,25 @@
 
-Template.botSidebar.onCreated ->
-  @subscribe 'bots'
+Router.route 'botSidebar',
+  name: 'botSidebar'
+  waitOn:  ->
+    Meteor.subscribe "bots"
+  action: ->
+    this.render 'bot'
+
 
 Template.botSidebar.helpers
-  bots: Bots.find({accountId: Meteor.userId()})
+  bots: ->
+    Bots.find()
+
   activeStyle: ->
     instance = Template.parentData()
     if instance?._id is this._id
       return 'orange-text'
     return 'white-text'
 
-Template.botSidebar.events({
+Template.botSidebar.events
   'click .add-bot' : () ->
     Router.go('library')
-
-  })
 
 Template.botSidebar.onRendered ->
   # Initialize collapse button
