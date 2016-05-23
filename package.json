@@ -12,6 +12,7 @@
     "meteor-node-stubs": "^0.2.1",
     "pathwatcher": "6.5.0",
     "plivo": "^0.3.3",
+    "request": "2.72.0",
     "utf-8-validate": "^1.2.1"
   },
   "devDependencies": {},
