@@ -13,7 +13,7 @@ Template.botPlay.onRendered ->
   $('ul.tabs').tabs()
 
   outerContext = @
-  $.getScript 'https://cdn.socket.io/socket.io-1.4.5.js', ->
+  $.getScript Meteor.settings.public.GREENBOT_IO_URL+'/socket.io/socket.io.js',  ->
     bot = outerContext.data
     handle = bot._id.toLowerCase()
 
