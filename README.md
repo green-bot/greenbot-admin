@@ -1,4 +1,4 @@
-#External Installation instructions
+## External Installation instructions
 
 Greenbot Admin is written in Meteor 1.3. To use it in production, deploy it like any other meteor version. Which I admit, is not super easy.
 
