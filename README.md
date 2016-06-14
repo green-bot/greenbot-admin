@@ -5,7 +5,7 @@ Greenbot Admin is written in Meteor 1.3. To use it in production, deploy it like
 * Install node verion 0.10.45 on system.  We use a package called 'n' to manage node versions.  Greenbot-core is built on the edge API, currently 6.2. To use node version 0.10.45, install 'npm install -g n', and then set the version of node as 'n 0.10.45'. You can set it back to greenbot-core version with 'n 6.2'
 * Install mupx on the system: npm install -g mupx
 * In a seperate directory, configure a mup.json file to point to your deployment target: 
-    
+``` 
     {
       // Server authentication info
       "servers": [
@@ -49,6 +49,7 @@ Greenbot Admin is written in Meteor 1.3. To use it in production, deploy it like
       // Make it false when you deploy using a CI box.
       "enableUploadProgressBar": true
     }
+```
 * mupx setup
 * mupx deploy
 
