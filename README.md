@@ -2,8 +2,16 @@
 
 Greenbot Admin is written in Meteor 1.3. To use it in production, deploy it like any other meteor version. Which I admit, is not super easy.
 
-* Install node verion 0.10.45 on system.  We use a package called 'n' to manage node versions.  Greenbot-core is built on the edge API, currently 6.2. To use node version 0.10.45, install 'npm install -g n', and then set the version of node as 'n 0.10.45'. You can set it back to greenbot-core version with 'n 6.2'
-* Install mupx on the system: npm install -g mupx
+* Install node verion 0.10.45 on system.  We use a package called 'n' to manage node versions.  Greenbot-core is built on the edge API, currently 6.2. To use node version 0.10.45, install and then set the version of node as 'n 0.10.45'. You can set it back to greenbot-core version with 'n 6.2'
+```
+npm install -g n
+```
+
+* Install mupx on the system:
+```
+npm install -g mupx
+```
+
 * In a seperate directory, configure a mup.json file to point to your deployment target: 
 ``` 
     {
@@ -50,8 +58,11 @@ Greenbot Admin is written in Meteor 1.3. To use it in production, deploy it like
       "enableUploadProgressBar": true
     }
 ```
-* mupx setup
-* mupx deploy
+* Setup and deploy the server:
+```
+mupx setup
+mupx deploy
+```
 
 ## Gotcha's
 Mupx deploys meteor servers using docker, and _sets the name of the default mongo collection to be the name of the package_. In this case, **greenbot-admin**. The default collection is typically **greenbot**.
