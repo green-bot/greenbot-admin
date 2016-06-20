@@ -46,7 +46,7 @@ BotTest =
     @convosDiv.html("")
     @logContainer.html("")
     $('form input').prop('disabled', false)
-    $('ul.tabs li:not(:first-child)').addClass('disabled')
+    #$('ul.tabs li:not(:first-child)').addClass('disabled')
 
     $('form').off('submit').on 'submit', ->
       input = $(this).find('input')
@@ -78,14 +78,14 @@ BotTest =
     @io.on 'session:ended', (sess) =>
       return unless sess.src is @src
       console.log sess
-      $('ul.tabs li').removeClass('disabled')
-      $('form input').prop('disabled', true)
+      #$('ul.tabs li').removeClass('disabled')
+      #$('form input').prop('disabled', true)
       collectedData.set(sess.collectedData)
       transcriptData.set(sess.transcript)
       self.logContainer.append("<p>Session has ended. You may start it over by pressing 'restart conversation' button.</p>")
       @disconnect()
 
-  disconnect: -> @io.disconnect()
+  disconnect: -> #@io.disconnect()
 
   sendMsg: (txt) ->
     msg =
