@@ -1,25 +1,29 @@
-collectedData = new ReactiveVar({})
-transcriptData = new ReactiveVar([])
+collectedData = new ReactiveVar()
+selectedNetworkHandle = new ReactiveVar()
 
 Template.botPlay.helpers
   collectedData: -> collectedData.get()
-  transcriptData: -> transcriptData.get()
+  isNetworkHandleSelected: -> selectedNetworkHandle.get()?
+  networkHandles: ->
+    Template.instance().data.addresses.map (a) -> a.networkHandleName
 
 Template.botPlay.events
-  'click #restart': -> BotTest.restart()
+  'change #network-handle': (event, template)->
+    console.log 'changed'
+    selectedNetworkHandle.set $(event.target).val()
+  'submit #send-message-form': (event, template) ->
+    event.preventDefault()
+    input = $(event.target).find('input')
+    BotTest.sendMsg(input.val())
+    input.val ''
 
 Template.botPlay.onRendered ->
   this.$('#test .material-icons').css('color', '#FF5722')
-  $('ul.tabs').tabs()
+  $('select').material_select()
+  bot = @.data
 
-  outerContext = @
-  $.getScript Meteor.settings.public.GREENBOT_IO_URL+'/socket.io/socket.io.js',  ->
-    bot = outerContext.data
-    handle = bot._id.toLowerCase()
-
-    testNH = _.find(bot.addresses, (addr)-> addr.networkHandleName is "development::#{ handle }" )
-    keyword = testNH.keywords[0]
-    BotTest.init(handle, keyword)
+  $.getScript Meteor.settings.public.GREENBOT_IO_URL+'/socket.io/socket.io.js',  =>
+    BotTest.init()
 
 Template.botPlay.onDestroyed ->
   BotTest.disconnect()
@@ -34,25 +38,16 @@ Router.route '/bot/:botId/play',
     this.render 'botPlay'
 
 BotTest =
-  restart: ->
-    @disconnect()
-    @init(@handle, @keyword)
-
-  init: (@handle, @keyword)->
+  init: ->
     self = this
     @src    = (new Date).getTime().toString()
     @convosDiv    = $('.conversation')
     @logContainer = $('#log')
     @convosDiv.html("")
     @logContainer.html("")
-    $('form input').prop('disabled', false)
-    #$('ul.tabs li:not(:first-child)').addClass('disabled')
+    #$('form input').prop('disabled', false)
+    #
 
-    $('form').off('submit').on 'submit', ->
-      input = $(this).find('input')
-      self.sendMsg(input.val())
-      input.val ''
-      false
 
     socketUrl = Meteor.settings.public.GREENBOT_IO_URL
     console.log socketUrl
@@ -70,18 +65,18 @@ BotTest =
       console.log 'disconnected from server'
       window.setTimeout connect, 5000
       
-    @sendMsg(@keyword)
+    #@sendMsg(@keyword)
 
     @io.on 'egress', (msg) ->
       return if self.src isnt msg.dst
       self.drawMessage 'their', msg.txt
+
     @io.on 'session:ended', (sess) =>
       return unless sess.src is @src
       console.log sess
       #$('ul.tabs li').removeClass('disabled')
       #$('form input').prop('disabled', true)
       collectedData.set(sess.collectedData)
-      transcriptData.set(sess.transcript)
       self.logContainer.append("<p>Session has ended. You may start it over by pressing 'restart conversation' button.</p>")
       @disconnect()
 
@@ -89,7 +84,7 @@ BotTest =
 
   sendMsg: (txt) ->
     msg =
-      dst: "development::#{ @handle }"
+      dst: selectedNetworkHandle.get()
       src: @src
       txt: txt + '\n'
     @io.emit 'ingress', msg
@@ -98,5 +93,6 @@ BotTest =
   drawMessage: (direction, txt) ->
     msgHtml = $("<div class='message-wrapper'><div class='message message-#{direction}'><div class='text'>#{txt}</div><div class='message-timestamp'>#{ moment().format("HH:m") }</div></div></div>")
     self = @
+    @convosDiv    = $('.conversation')
     @convosDiv.append msgHtml
     self.convosDiv.animate { scrollTop: @convosDiv[0].scrollHeight }, '500', 'swing'

@@ -4,25 +4,22 @@ template(name='botPlay')
       .col.s12
         {{> botRuler }}
     .row
-      .col.s12
-        ul.tabs.green
-          li.tab.col.s3
-            a.active(href='#conversation-tab') Conversation
-          li.tab.col.s3
-            a(href='#transcript-tab') Transcript
-          li.tab.col.s3
-            a(href='#collected-data-tab') Collected data
-      #conversation-tab.col.s12
-        #bot-test-modal
-          .conversation
-          form
-            input(type="text" name="msgBox" placeholder="Type here")
-          #log
-          a#restart.waves-effect.waves-green.btn.right.green(href="#!") Restart
-            i.material-icons.right replay
-            
-      #transcript-tab.col.s12
-        Hello
-        {{> jsonView json=transcriptData}}
-      #collected-data-tab.col.s12
-        {{> jsonView json=collectedData}}
+      .input-field.col.s4
+        select#network-handle(placeholder="Select a Network Handle")
+          option(value='' disabled selected) Select a Network Handle to Start Testing
+
+          each networkHandles
+            option(value=this) {{ this }}
+
+    if isNetworkHandleSelected
+      .row
+        #conversation-tab.col.s12
+          #bot-test-modal
+            .conversation
+            form#send-message-form
+              input#send-message(type="text" name="msgBox" placeholder="Type here" autocomplete='off')
+            #log
+            if collectedData
+              #collected-data
+                h2 Collected Data
+                {{> jsonView json=collectedData}}
