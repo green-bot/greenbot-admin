@@ -11,6 +11,7 @@ Template.botPlay.events
   'change #network-handle': (event, template)->
     console.log 'changed'
     selectedNetworkHandle.set $(event.target).val()
+    $('#send-message-form input').focus()
   'submit #send-message-form': (event, template) ->
     event.preventDefault()
     input = $(event.target).find('input')
@@ -18,6 +19,7 @@ Template.botPlay.events
     input.val ''
 
 Template.botPlay.onRendered ->
+  selectedNetworkHandle.set(null)
   this.$('#test .material-icons').css('color', '#FF5722')
   $('select').material_select()
   bot = @.data
@@ -80,7 +82,7 @@ BotTest =
       self.logContainer.append("<p>Session has ended. You may start it over by pressing 'restart conversation' button.</p>")
       @disconnect()
 
-  disconnect: -> #@io.disconnect()
+  disconnect: -> @io.disconnect()
 
   sendMsg: (txt) ->
     msg =
