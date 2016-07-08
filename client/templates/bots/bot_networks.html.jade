@@ -9,12 +9,17 @@ template(name="botNetworks")
           th Handle
           th Keywords
           th 
+          th 
       tbody
         each addresses
           tr
             td {{ network networkHandleName }}
             td {{ handle networkHandleName }}
             td= keywords
+            td
+              a.green-text( href="/dev-tools/{{networkHandleName}}" )
+                i.material-icons.left play_arrow
+                | Test
             td
               a.green-text.delete(href='#')
                 i.material-icons.left delete

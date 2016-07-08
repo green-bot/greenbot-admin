@@ -1,15 +1,12 @@
-template(name='botPlay')
+template(name='devTools')
   .card-panel
     .row
-      .col.s12
-        {{> botRuler }}
-    .row
-      .input-field.col.s4
+      .input-field.col.s12
         select#network-handle(placeholder="Select a Network Handle")
           option(value='' disabled selected) Select a Network Handle to Start Testing
 
           each networkHandles
-            option(value=this) {{ this }}
+            option(value=handle selected=isSelected(handle)) {{handle}} ({{ bots }})
 
     if isNetworkHandleSelected
       .row

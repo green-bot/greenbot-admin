@@ -26,15 +26,31 @@ getIo = new Promise (resolve, reject) =>
       .fail ->
         console.log 'failed to get socket.io js'
 
-Template.botPlay.helpers
+Template.devTools.helpers
   collectedData: -> collectedData.get()
   isNetworkHandleSelected: -> selectedNetworkHandle.get()?
+  isSelected: (handle) -> handle is selectedNetworkHandle.get()
   networkHandles: ->
-    Template.instance().data.addresses.map (a) -> a.networkHandleName
+    networkHandles = {}
+    Bots.find().fetch().forEach (bot) ->
+      bot.addresses.forEach (address) ->
+        name = address.networkHandleName
+        networkHandles[name] ?= []
+        networkHandles[name].push(bot.name) unless bot.name in networkHandles[name]
+    #networkHandleNames = _.uniq(_.flatten(networkHandleNames)).sort (a, b) ->
+      #a = a.toLowerCase()
+      #b = b.toLowerCase()
+      #if (a < b) return -1
+      #if (a > b) return 1
+      #return 0
 
-Template.botPlay.events
-  'change #network-handle': (event, template)->
-    console.log 'changed'
+    arrayifiedHandles = []
+    for handle, bots of networkHandles
+      arrayifiedHandles.push(handle: handle, bots: bots.join(", "))
+    arrayifiedHandles
+
+Template.devTools.events
+  'change #network-handle': (event, template) ->
     selectedNetworkHandle.set $(event.target).val()
     Meteor.defer ->
       $('#send-message-form input').focus()
@@ -45,12 +61,11 @@ Template.botPlay.events
     BotTest.sendMsg(input.val())
     input.val ''
 
-Template.botPlay.onCreated ->
+Template.devTools.onCreated ->
   console.log 'created'
 
-Template.botPlay.onRendered ->
+Template.devTools.onRendered ->
   console.log 'rendered'
-  selectedNetworkHandle.set(null)
   collectedData.set(null)
   this.$('#test .material-icons').css('color', '#FF5722')
   $('select').material_select()
@@ -60,17 +75,17 @@ Template.botPlay.onRendered ->
     connection = getConnection(io)
     BotTest.init(connection)
 
-Template.botPlay.onDestroyed ->
+Template.devTools.onDestroyed ->
   BotTest.disconnect()
 
-Router.route '/bot/:botId/play',
-  name: 'botPlay'
+Router.route '/dev-tools/:networkHandle?',
+  name: 'devTools'
+  data: ->
+    selectedNetworkHandle.set(this.params.networkHandle)
   waitOn: ->
     Meteor.subscribe "bots"
-  data: ->
-    Bots.findOne this.params.botId
   action: ->
-    this.render 'botPlay'
+    this.render 'devTools'
 
 BotTest =
   init: (@io) ->

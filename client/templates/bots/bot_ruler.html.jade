@@ -18,9 +18,6 @@ template(name='botRuler')
           li
             a(disabled)
               i.small.material-icons settings
-          li
-            a(disabled)
-              i.small.material-icons play_arrow
           li#help
             a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' )
               i.small.material-icons help
@@ -44,9 +41,6 @@ template(name='botRuler')
           li#settings
             a( href="/bot/{{currentBotId}}/settings" )
               i.small.material-icons settings
-          li#test
-            a( href="/bot/{{currentBotId}}/play" )
-              i.small.material-icons play_arrow
           li#help
             a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' )
               i.small.material-icons help
