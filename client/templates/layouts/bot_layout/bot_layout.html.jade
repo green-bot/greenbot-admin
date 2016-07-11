@@ -1,4 +1,4 @@
-template(name="masterLayout")
+template(name="botLayout")
   nav.green.darken-2
     .nav-wrapper
       a.brand-logo(href='/') GreenBot
@@ -9,4 +9,7 @@ template(name="masterLayout")
       ul#mobile-demo.side-nav
         {{> navItems }}
   .row
-    {{> yield}}
+    .col.s2
+      {{> botSidebar}}
+    .col.s10
+      {{> yield}}

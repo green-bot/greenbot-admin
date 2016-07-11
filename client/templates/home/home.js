@@ -1,15 +1,5 @@
 import Chart from "chart.js";
 
-Router.route('/', {
-  waitOn: function () {
-    return Meteor.subscribe('bots')
-  },
-  template: 'home',
-  action: function () {
-    this.render()
-  }
-})
-
 Template.home.onCreated( function() {
   this.subscribe('bots')
 })

@@ -27,13 +27,3 @@ Template.botNetworks.helpers
 
 Template.botNetworks.onRendered ->
   this.$('#networks .material-icons').css('color', '#FF5722')
-
-Router.route '/bot/:botId/networks',
-  name: 'networks'
-  waitOn: ->
-    Meteor.subscribe "bots"
-    Meteor.subscribe "networkHandles", this.params._id
-    Meteor.subscribe "sessions", this.params.botId
-    Meteor.subscribe 'networks'
-  data: -> Bots.findOne this.params.botId
-  action: -> this.render 'botNetworks'

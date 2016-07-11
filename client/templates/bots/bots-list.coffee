@@ -1,3 +1,3 @@
 Template.botsList.helpers
-  id: ->
-    Session.get('botId')
+  lastBotAdded: ->
+    Bots.findOne({}, {sort: {createdAt:-1}})._id

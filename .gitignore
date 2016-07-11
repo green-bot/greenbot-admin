@@ -1,3 +1,4 @@
 *.log
 .db_migrations/node_modules/
 node_modules
+.meteor/dev_bundle*

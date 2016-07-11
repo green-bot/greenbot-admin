@@ -1,11 +1,10 @@
 template(name='bot')
-  h1 {{ id }}
   with bot
-    .col.s10
+    .col.s12
       .card-panel
         {{> botRuler }}
         .row
-          .col.s10   
+          .col.s10
             if isScriptGone 
               p.red-text.darken-4 The associated script has been removed.
             else

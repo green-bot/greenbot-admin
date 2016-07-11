@@ -13,9 +13,7 @@ Template.botSidebar.events
   'click .add-bot' : () ->
     Router.go('library')
   'click a.bot-item' : (e) ->
-    e.preventDefault()
     Session.set('botId', @._id)
-    
 
 Template.botSidebar.onRendered ->
   # Initialize collapse button

@@ -47,16 +47,5 @@ Template.botConvos.events
         blob = new Blob([data], {type: "text/plain;charset=utf-8"})
         saveAs blob, 'greenbot-sessions.csv'
 
-Router.route '/bot/:botId/convos',
-  name: 'botConvos'
-  waitOn: ->
-    Meteor.subscribe "sessions", this.params.botId
-    Meteor.subscribe 'bots'
-    
-  action: ->
-    this.render 'botConvos'
-  data: ->
-    Bots.findOne this.params.botId
-
 Template.botConvos.onRendered ->
   this.$('#convos .material-icons').css('color', '#FF5722')

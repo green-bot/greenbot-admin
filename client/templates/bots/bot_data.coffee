@@ -23,19 +23,6 @@ Template.botData.events
         notificationEmails: notificationEmails
         notificationEmailSubject: notificationEmailSubject
 
-
-
 Template.botData.onRendered ->
   this.$('#data .material-icons').css('color', '#FF5722')
   AutoForm.setDefaultTemplate('materialize')
-
-Router.route '/bot/:botId/data',
-  name: 'data'
-  waitOn: ->
-    Meteor.subscribe "bots"
-    Meteor.subscribe "networkHandles", this.params._id
-    Meteor.subscribe "sessions", this.params.botId
-  data: ->
-    return Bots.findOne this.params.botId
-  action: ->
-    this.render 'botData'

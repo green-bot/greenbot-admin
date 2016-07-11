@@ -1,5 +1,6 @@
 template(name="botsList")
-  .col.s2
-    {{> botSidebar}}
-  .col.s10
-    {{> bot id=id }}
+  if lastBotAdded
+    p helloo
+    {{> bot lastBotAdded}}
+  else
+    a(href='/library') please add bot from Scripts Library

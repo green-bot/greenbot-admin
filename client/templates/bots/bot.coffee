@@ -9,19 +9,8 @@ Template.bot.helpers
   dateString: () -> moment(this.updatedAt).fromNow()
   desc_markdown: () -> Session.get('readme')
   isScriptGone: -> !@scriptId?
-  id: -> Session.get('botId')
-  bot: -> Bots.findOne Session.get('botId')
-
-#Router.route '/bot/:botId',
-  #name: 'bot'
-  #waitOn:  ->
-    #Meteor.subscribe "bots"
-    #Meteor.subscribe "scripts"
-    #Meteor.subscribe "sessions", this.params.botId
-  #data: ->
-    #return Bots.findOne this.params.botId
-  #action: ->
-    #this.render 'bot'
+  id: -> this._id
+  bot: -> Bots.findOne this._id
 
 Template.bot.onRendered ->
   this.$('#info .material-icons').css('color', '#FF5722')

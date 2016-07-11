@@ -8,5 +8,5 @@ Template.botRuler.events
 
 Template.botRuler.helpers
   wikiName: -> Router.currentTemplate?().route?.getName() or "default"
-  currentBotId: -> Session.get('botId') #Router.current().params.botId
+  currentBotId: -> Router.current().params.botId
   isScriptGone: -> !@scriptId?
