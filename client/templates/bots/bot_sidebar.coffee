@@ -1,12 +1,4 @@
 
-Router.route 'botSidebar',
-  name: 'botSidebar'
-  waitOn:  ->
-    Meteor.subscribe "bots"
-  action: ->
-    this.render 'bot'
-
-
 Template.botSidebar.helpers
   bots: ->
     Bots.find()
@@ -20,6 +12,10 @@ Template.botSidebar.helpers
 Template.botSidebar.events
   'click .add-bot' : () ->
     Router.go('library')
+  'click a.bot-item' : (e) ->
+    e.preventDefault()
+    Session.set('botId', @._id)
+    
 
 Template.botSidebar.onRendered ->
   # Initialize collapse button
