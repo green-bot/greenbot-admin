@@ -1,11 +1,8 @@
 template(name="botSidebar")
-  if Template.subscriptionsReady
-    .collection
-      each bots
-        a.collection-item.green.bot-item(href='/bot/{{_id}}' class=activeStyle) 
-          {{ name }}
-    .center-align
-      a.btn-floating.btn-large.deep-orange.add-bot
-        i.large.material-icons add
-  else
-    | Loading...
+  .collection
+    each bots
+      a.collection-item.green.bot-item(href='/bot/{{_id}}' class=activeStyle) 
+        {{ name }}
+  .center-align
+    a.btn-floating.btn-large.deep-orange.add-bot
+      i.large.material-icons add

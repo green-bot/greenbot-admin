@@ -1,12 +1,4 @@
 template(name="masterLayout")
-  nav.green.darken-2
-    .nav-wrapper
-      a.brand-logo(href='/') GreenBot
-      a.button-collapse(href='#', data-activates='mobile-demo')
-        i.material-icons menu
-      ul.right.hide-on-med-and-down
-        {{> navItems }}
-      ul#mobile-demo.side-nav
-        {{> navItems }}
+  {{> topNav }}
   .row
     {{> yield}}

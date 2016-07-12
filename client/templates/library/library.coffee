@@ -6,8 +6,9 @@ Template.library.helpers({
 Router.route  '/library', {
   name:               'library',
   action:             -> this.render('library'),
-  waitOn:             -> this.subscribe('scripts')
-
+  waitOn:             ->
+    this.subscribe('scripts')
+    this.subscribe('bots')
   }
 
 Template.library.events

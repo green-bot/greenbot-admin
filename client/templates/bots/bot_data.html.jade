@@ -1,13 +1,17 @@
 template(name="botData")
-  .card-panel
-    {{> botRuler }}
-    h2 Data
-    +autoForm collection="Bots" id="insertBookForm" doc=this type="update"
-      {{> afQuickField name='notificationEmails' placeholder='Who to send the results to' }}
-      {{> afQuickField name='notificationEmailSubject' placeholder='What to say in the subject line of a notification email' }}
-      {{> afQuickField name='postConversationWebhook' placeholder='Where to post the conversation JSON to'}}
-      
-      .row
-        .right
-          button.btn.waves-effect.waves-green.green.submit(type="submit") Save
-            i.material-icons.right save
+  .col.s2
+    {{> botSidebar}}
+  .col.s10
+    h3 Bots > {{name}}
+    .card-panel
+      {{> botRuler }}
+      h2 Data
+      +autoForm collection="Bots" id="insertBookForm" doc=this type="update"
+        {{> afQuickField name='notificationEmails' placeholder='Who to send the results to' }}
+        {{> afQuickField name='notificationEmailSubject' placeholder='What to say in the subject line of a notification email' }}
+        {{> afQuickField name='postConversationWebhook' placeholder='Where to post the conversation JSON to'}}
+        
+        .row
+          .right
+            button.btn.waves-effect.waves-green.green.submit(type="submit") Save
+              i.material-icons.right save
