@@ -1,21 +1,30 @@
 template(name='scriptCard')
+  ul.dropdown-content(id=dropdownId)
+    li
+      a.info
+        i.black-text.material-icons.small.icon-bottom info
+        | Details
+    li
+      a.github(href='{{repo_link}}')
+        i.black-text.icon-bottom.zmdi.zmdi-github.zmdi-hc-2x.center-align(style="width: 30px")
+        span Repo
+    li
+      a.remove 
+        i.black-text.material-icons.small.icon-bottom delete
+        span Delete
   .col.s12.m4
-    .card.green.darken-2.script-card
+    .card.green.darken-2.script-card(class="{{hide}}")
       .card-content.white-text.script-card-content
         .row
           .left.card-title {{name}}
-          a.right.btn-floating.waves-effect.waves-green.deep-orange.new_bot
-            i.material-icons add
+          a.dropdown-button.white-text.flow-text.right(href="#!" data-activates="{{dropdownId}}")
+            i.material-icons more_vert
         .row
-          p {{ short_desc}}
+          p.flow-text {{ short_desc}}
       .card-action
         .row.center-align
-          a.info
-            i.material-icons.small.icon-bottom info
-          a.github(href='{{repo_link}}')
-            i.icon-bottom.zmdi.zmdi-github.zmdi-hc-2x
-          a.remove 
-            i.material-icons.small.icon-bottom delete
+          a.btn.waves-effect.waves-green.deep-orange.select_bot
+            | Select
 
     .col.s6
       #desc.modal.modal-fixed-footer
