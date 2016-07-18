@@ -1,0 +1,33 @@
+template(name='script')
+  .col.s2
+    {{> scriptSidebar}}
+  .col.s10
+    h3 Scripts > {{name}}
+    .card-panel
+      .col.s12.m4
+        .card.green.darken-2.script-card
+          .card-content.white-text.script-card-content
+            .row
+              .left.card-title {{name}}
+              a.right.btn-floating.waves-effect.waves-green.deep-orange.new_bot
+                i.material-icons add
+            .row
+              p {{ short_desc}}
+          .card-action
+            .row.center-align
+              a.info
+                i.material-icons.small.icon-bottom info
+              a.github(href='{{repo_link}}')
+                i.icon-bottom.zmdi.zmdi-github.zmdi-hc-2x
+              a.remove 
+                i.material-icons.small.icon-bottom delete
+
+        .col.s6
+          #desc.modal.modal-fixed-footer
+            .modal-content
+              h4 {{ name }}
+              |       
+              {{{ desc_markdown }}}
+            .modal-footer
+              a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') 
+                | Close
