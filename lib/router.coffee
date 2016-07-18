@@ -99,23 +99,24 @@ Router.route '/',
   template: 'home'
   action: ->
     @render()
-Router.route '/script',
-  name: 'script'
+Router.route '/scripts',
+  name: 'scripts'
   action: ->
-    @render 'script'
+    @render 'scripts'
   waitOn: ->
-Router.route '/bot/:botId',
-  name: 'bot'
+    Meteor.subscribe 'bots'
+Router.route '/bots/:botId',
+  name: 'botShow'
   layoutTemplate: 'listLayout'
   action: ->
-    @render 'bot'
+    @render 'botShow'
   waitOn: ->
     Meteor.subscribe 'bots'
     Meteor.subscribe 'scripts'
     Meteor.subscribe 'sessions', @params.botId
   data: ->
     Bots.findOne @params.botId
-Router.route '/bot/:botId/:section',
+Router.route '/bots/:botId/:section',
   name: 'data'
   layoutTemplate: 'listLayout'
   action: ->
@@ -128,7 +129,6 @@ Router.route '/bot/:botId/:section',
       when 'settings'
         Meteor.subscribe 'networkHandles', @params._id
         Meteor.subscribe 'sessions', @params.botId
-        Meteor.subscribe 'networkHandles', @params._id
       when 'convos'
         Meteor.subscribe 'sessions', @params.botId
       when 'networks'

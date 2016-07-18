@@ -4,10 +4,10 @@ template(name='botRuler')
       if isScriptGone
         ul
           li#info
-            a( href="/bot/{{currentBotId}}" )
+            a( href="/bots/{{currentBotId}}" )
               i.small.material-icons info
           li#convos
-            a( href="/bot/{{currentBotId}}/convos" )
+            a( href="/bots/{{currentBotId}}/convos" )
               i.small.material-icons chat
           li
             a(disabled)
@@ -27,23 +27,23 @@ template(name='botRuler')
       else
         ul
           li#info
-            a( href="/bot/{{currentBotId}}" )
+            a( href="/bots/{{currentBotId}}" )
               i.small.material-icons info
           li#convos
-            a( href="/bot/{{currentBotId}}/convos" )
+            a( href="/bots/{{currentBotId}}/convos" )
               i.small.material-icons chat
           li#data
-            a( href="/bot/{{currentBotId}}/data" )
+            a( href="/bots/{{currentBotId}}/data" )
               i.small.material-icons save
           li#networks
-            a( href="/bot/{{currentBotId}}/networks" )
+            a( href="/bots/{{currentBotId}}/networks" )
               i.small.material-icons wifi
           li#settings
-            a( href="/bot/{{currentBotId}}/settings" )
+            a( href="/bots/{{currentBotId}}/settings" )
               i.small.material-icons settings
           li#help
             a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' )
               i.small.material-icons help
           li#delete.right
-            a()
+            a
               i.small.material-icons delete

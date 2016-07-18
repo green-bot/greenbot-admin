@@ -1,14 +1,14 @@
-Template.script.helpers({
+Template.scripts.helpers({
   scripts: () ->
     scripts = Scripts.find()
   })
 
-Template.script.events
-  'click .addScript' : (e, tmpl) ->
+Template.scripts.events
+  'click .install-script' : (e, tmpl) ->
     e.preventDefault()
-    pkgName = tmpl.$('input.pkg').prop('value')
+    pkgName = tmpl.$('input.package').prop('value')
     console.log 'adding ' + pkgName
     Meteor.call 'installScriptViaNpm', pkgName
 
-Template.script.onRendered ->
+Template.scripts.onRendered ->
   this.subscribe('scripts')
