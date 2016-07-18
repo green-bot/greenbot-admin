@@ -1,0 +1,7 @@
+template(name="botsNew")
+  {{> botSidebar}}
+  .col.s10
+    h1 Make a New Bot
+    p.flow-text Scripts determine your bot's basic behavior. Go ahead and select one for your new bot.
+    each scripts
+      {{> scriptCard}}

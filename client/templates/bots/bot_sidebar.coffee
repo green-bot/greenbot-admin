@@ -11,7 +11,7 @@ Template.botSidebar.helpers
 
 Template.botSidebar.events
   'click .add-bot' : () ->
-    Router.go('library')
+    Router.go('botsNew')
   'click a.bot-item' : (e) ->
     Session.set('botId', @._id)
 
