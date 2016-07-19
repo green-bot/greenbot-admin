@@ -1,6 +1,6 @@
 Template.botsSidebar.helpers
   bots: ->
-    Bots.find()
+    Bots.find {}, sort: { name: 1 }
 
   activeStyle: ->
     instance = Template.parentData()
