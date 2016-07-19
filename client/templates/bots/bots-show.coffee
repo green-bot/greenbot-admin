@@ -1,5 +1,5 @@
-Template.botShow.helpers
-  sessions: () -> Sessions.find({botId: this._id})
+Template.botsShow.helpers
+  sessions: () -> Sessions.find({botId: @_id})
   collectedDataArray: () ->
     return [] unless this.collectedData?
     collectedDataArray = []
@@ -12,7 +12,8 @@ Template.botShow.helpers
   id: -> this._id
   bot: -> Bots.findOne this._id
 
-Template.botShow.onRendered ->
+Template.botsShow.onRendered ->
+  Session.set 'lastBotViewedId', @data._id
   this.$('#info .material-icons').css('color', '#FF5722')
   Meteor.call 'getReadme', @data.scriptId, (err, res) ->
     if err

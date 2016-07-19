@@ -1,0 +1,9 @@
+template(name='scriptsShow')
+  h3 Scripts > {{name}}
+  .card-panel
+    .row
+      .col.s10
+        if desc_markdown
+          {{{ desc_markdown }}}    
+        else
+          h2= name

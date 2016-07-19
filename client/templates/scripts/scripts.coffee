@@ -12,3 +12,7 @@ Template.scripts.events
 
 Template.scripts.onRendered ->
   this.subscribe('scripts')
+
+Template.scripts.helpers
+  firstScript: ->
+    Scripts.findOne({}, {sort: {createdAt: 1}})

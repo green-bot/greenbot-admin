@@ -1,0 +1,8 @@
+template(name="botsSidebar")
+  .collection
+    each bots
+      a.collection-item.green.bot-item(href='/bots/{{_id}}' class=activeStyle) 
+        {{ name }}
+  .center-align
+    a.btn-floating.btn-large.deep-orange.add-bot
+      i.large.material-icons add

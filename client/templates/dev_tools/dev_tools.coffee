@@ -3,7 +3,6 @@ selectedNetworkHandle = new ReactiveVar()
 
 socketUrl = Meteor.settings.public.GREENBOT_IO_URL
 getConnection = (ioInstance) ->
-  console.log 'getting connection'
   ioInstance.connect(socketUrl, {
     reconnection: true,
     reconnectionDelay: 1000,
@@ -12,15 +11,12 @@ getConnection = (ioInstance) ->
   })
 
 getIo = new Promise (resolve, reject) =>
-  console.log 'I promise'
   cachedIO = Session.get('socketIO')
   if cachedIO?
-    console.log 'cached io'
     resolve cachedIO
   else
     $.getScript(  "#{socketUrl}/socket.io/socket.io.js" )
       .done ->
-        console.log 'done'
         Session.set('socketIO', window.io)
         resolve window.io
       .fail ->
@@ -61,11 +57,7 @@ Template.devTools.events
     BotTest.sendMsg(input.val())
     input.val ''
 
-Template.devTools.onCreated ->
-  console.log 'created'
-
 Template.devTools.onRendered ->
-  console.log 'rendered'
   collectedData.set(null)
   this.$('#test .material-icons').css('color', '#FF5722')
   $('select').material_select()
@@ -89,7 +81,6 @@ Router.route '/dev-tools/:networkHandle?',
 
 BotTest =
   init: (@io) ->
-    console.log 'init'
     self = this
     @src = (new Date).getTime().toString()
     @convosDiv = $('.conversation')

@@ -1,4 +1,4 @@
-Template.scriptSidebar.helpers
+Template.scriptsSidebar.helpers
   scripts: ->
     Scripts.find()
 
@@ -8,13 +8,11 @@ Template.scriptSidebar.helpers
       return 'orange-text'
     return 'white-text'
 
-Template.scriptSidebar.events
-  'click .add-script' : () ->
-    Router.go('script')
+Template.scriptsSidebar.events
   'click a.script-item' : (e) ->
     Session.set('scriptId', @._id)
 
-Template.scriptSidebar.onRendered ->
+Template.scriptsSidebar.onRendered ->
   # Initialize collapse button
   this.$(".button-collapse").sideNav()
   $('.button-collapse').sideNav

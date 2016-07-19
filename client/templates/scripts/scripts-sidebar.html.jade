@@ -1,0 +1,8 @@
+template(name="scriptsSidebar")
+  .collection
+    each scripts
+      a.collection-item.green.script-item(href='/scripts/{{_id}}' class=activeStyle) 
+        {{ name }}
+  .center-align
+    a.btn-floating.btn-large.deep-orange.add-script(href='/scripts/new')
+      i.large.material-icons add

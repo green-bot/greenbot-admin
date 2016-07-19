@@ -1,0 +1,13 @@
+template(name='botsShow')
+  h3 Bots > {{name}}
+  .card-panel
+    {{> botRuler }}
+    .row
+      .col.s10
+        if isScriptGone 
+          p.red-text.darken-4 The associated script has been removed.
+        else
+          if desc_markdown
+            {{{ desc_markdown }}}    
+          else
+            h2= name

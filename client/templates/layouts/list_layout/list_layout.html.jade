@@ -1,5 +1,7 @@
 template(name="listLayout")
   {{> topNav }}
   .row
-    .col.s12
-      {{> yield}}
+    .col.s2
+      {{> yield region='sidebar'}}
+    .col.s10
+      {{> yield }}

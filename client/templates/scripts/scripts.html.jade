@@ -2,8 +2,13 @@ template(name='scripts')
   .col.s2
     {{> scriptSidebar}}
   .col.s10
-    h1 Script Library
-    p.flow-text These are all the scripts you have installed. They determine the basic behavior for your bots.
-    {{> scriptManualInstall }}
-    each scripts
-      {{> scriptCard}}
+    if selectedScript 
+      {{> scriptShow }}
+    else
+      if firstScript
+        p Please choose a script from the list to the left
+      else
+        h1 Scripts
+        You have no scripts yet
+        button Click here 
+        p to install your first script

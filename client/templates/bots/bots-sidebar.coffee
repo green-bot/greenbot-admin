@@ -1,5 +1,4 @@
-
-Template.botSidebar.helpers
+Template.botsSidebar.helpers
   bots: ->
     Bots.find()
 
@@ -9,13 +8,13 @@ Template.botSidebar.helpers
       return 'orange-text'
     return 'white-text'
 
-Template.botSidebar.events
+Template.botsSidebar.events
   'click .add-bot' : () ->
     Router.go('botsNew')
   'click a.bot-item' : (e) ->
     Session.set('botId', @._id)
 
-Template.botSidebar.onRendered ->
+Template.botsSidebar.onRendered ->
   # Initialize collapse button
   this.$(".button-collapse").sideNav()
   $('.button-collapse').sideNav
