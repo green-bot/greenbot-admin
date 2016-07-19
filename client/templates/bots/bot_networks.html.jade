@@ -1,43 +1,41 @@
 template(name="botNetworks")
-  {{> botSidebar}}
-  .col.s10
-    h3 Bots > {{name}}
-    .card-panel
-      {{> botRuler }}
-      h2 Connections
-      table
-        thead
+  h3 Bots > {{name}}
+  .card-panel
+    {{> botRuler }}
+    h2 Connections
+    table
+      thead
+        tr
+          th Network
+          th Handle
+          th Keywords
+          th 
+          th 
+      tbody
+        each addresses
           tr
-            th Network
-            th Handle
-            th Keywords
-            th 
-            th 
-        tbody
-          each addresses
-            tr
-              td {{ network networkHandleName }}
-              td {{ handle networkHandleName }}
-              td= keywords
-              td
-                a.green-text( href="/dev-tools/{{networkHandleName}}" )
-                  i.material-icons.left play_arrow
-                  | Test
-              td
-                a.green-text.delete(href='#')
-                  i.material-icons.left delete
-                  | Delete
-      .section
-        .row
-          .col.s3.input-field
-            select#network.browser-default
-              option(value="") Network...
-              each availableNetworks
-                option(value="{{ name }}") {{ name }}
-          .col.s3.input-field
-            input#handle(placeholder='handle or phone #')
-          .col.s3.input-field
-            input#keywords(placeholder='keywords')
-          .col.s3.input-field
-            a#add-network.btn-floating.waves-effect.waves-green.red
-              i.material-icons.left add
+            td {{ network networkHandleName }}
+            td {{ handle networkHandleName }}
+            td= keywords
+            td
+              a.green-text( href="/dev-tools/{{networkHandleName}}" )
+                i.material-icons.left play_arrow
+                | Test
+            td
+              a.green-text.delete(href='#')
+                i.material-icons.left delete
+                | Delete
+    .section
+      .row
+        .col.s3.input-field
+          select#network.browser-default
+            option(value="") Network...
+            each availableNetworks
+              option(value="{{ name }}") {{ name }}
+        .col.s3.input-field
+          input#handle(placeholder='handle or phone #')
+        .col.s3.input-field
+          input#keywords(placeholder='keywords')
+        .col.s3.input-field
+          a#add-network.btn-floating.waves-effect.waves-green.red
+            i.material-icons.left add

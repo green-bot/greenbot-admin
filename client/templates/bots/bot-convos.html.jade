@@ -1,25 +1,23 @@
 template(name='botConvos')
-  {{> botSidebar}}
-  .col.s10
-    h3 Bots > {{name}}
-    .card-panel
-      {{> botRuler }}
-      .vertical-align
-        h2.inline-block.right-margin Conversations
-        button.green.csv-export.btn.push-up Export to CSV
-      {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
+  h3 Bots > {{name}}
+  .card-panel
+    {{> botRuler }}
+    .vertical-align
+      h2.inline-block.right-margin Conversations
+      button.green.csv-export.btn.push-up Export to CSV
+    {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
 
-      #collected-data-modal.modal.modal-fixed-footer
-        .modal-content
-          h4 Collected data
-          {{> jsonView json=collectedData}}
-        .modal-footer
-          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+    #collected-data-modal.modal.modal-fixed-footer
+      .modal-content
+        h4 Collected data
+        {{> jsonView json=collectedData}}
+      .modal-footer
+        a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
 
-      #transcript-modal.modal.modal-fixed-footer
-        .modal-content
-          h4 Transcript
-          {{> jsonView json=transcriptData}}
-        .modal-footer
-          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
-   
+    #transcript-modal.modal.modal-fixed-footer
+      .modal-content
+        h4 Transcript
+        {{> jsonView json=transcriptData}}
+      .modal-footer
+        a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+ 

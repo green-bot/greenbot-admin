@@ -164,6 +164,7 @@ Router.route '/bots/:botId/:section',
     section = @params.section
     capitalizedSection = section.charAt(0).toUpperCase() + section.slice(1)
     @render 'bot' + capitalizedSection
+    @render('botsSidebar', {to: 'sidebar'})
   waitOn: ->
     Meteor.subscribe 'bots'
     switch @params.section

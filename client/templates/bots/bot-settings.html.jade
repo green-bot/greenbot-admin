@@ -1,28 +1,28 @@
 template(name='botSettings')
-  {{> botSidebar}}
-  .col.s10
-    h3 Bots > {{name}}
-    .card-panel
-      {{> botRuler }}
-      .row
-        .valign-wrapper
-          .col.s8.left-align
-            h2.valign Settings
-          .col.s2
-            h4 Passcode: {{passcode}}
-          .col.s2
-            button.valign.btn.waves-effect.waves-green.green.submit(type="submit") Bot Docs
-              i.material-icons.right info
-      .row
-        .col.s12  
+  h3 Bots > {{name}}
+  .card-panel
+    {{> botRuler }}
+    .row
+      .valign-wrapper
+        .col.s8.left-align
+          h2.valign Settings
+        .col.s2
+          h4 Passcode: {{passcode}}
+        .col.s2
+          button.valign.btn.waves-effect.waves-green.green.submit(type="submit") Bot Docs
+            i.material-icons.right info
+    .row
+      .col.s12  
+        .input-field
+          input.name(type='text' name='name' value='{{ name }}')
+          label.active(for='name') NAME
+        each settings
           .input-field
-            input.name(type='text' name='name' value='{{ name }}')
-            label.active(for='name') NAME
-          each settings
-            .input-field
-              textarea.materialize-textarea.setting(length="168" type='text' name='{{ name }}')
-                {{ value }}
-              label.active(for='{{ key }}') {{ name }}
-          .row
-            .center
-              a.waves-effect.waves-green.btn.green.submit Save
+            textarea.materialize-textarea.setting(length="168" type='text' name='{{ name }}')
+              {{ value }}
+            label.active(for='{{ key }}') {{ name }}
+        .row
+          .center
+            a.waves-effect.waves-green.btn.green.submit {{ saveMessage }}
+            if lastSavedAt
+              | last saved {{livestamp lastSavedAt}}
