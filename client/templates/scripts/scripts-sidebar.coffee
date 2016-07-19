@@ -1,6 +1,6 @@
 Template.scriptsSidebar.helpers
   scripts: ->
-    Scripts.find()
+    Scripts.find {}, sort: { name: 1 }
 
   activeStyle: ->
     instance = Template.parentData()
