@@ -1,5 +1,4 @@
 saving = new ReactiveVar(false)
-lastSavedAt = new ReactiveVar()
 
 Template.botSettings.events
   'click .submit' : (e, tmpl) ->
@@ -15,7 +14,7 @@ Template.botSettings.events
       console.log(err) if err?
       unless err?
         saving.set(false)
-        lastSavedAt.set new Date()
+        toastr.success 'Saved!', positionClass: 'toastr-bottom-right'
 
 Template.botSettings.helpers
   script: ->
@@ -28,7 +27,6 @@ Template.botSettings.helpers
     else
       message = 'Save'
     message
-  lastSavedAt: -> lastSavedAt.get()
 
 Template.botSettings.onRendered ->
   this.$('#settings .material-icons').css('color', '#FF5722')
