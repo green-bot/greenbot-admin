@@ -118,6 +118,7 @@ Router.route '/scripts/:scriptId',
     @render('scriptsSidebar', {to: 'sidebar'})
   waitOn: ->
     Meteor.subscribe 'scripts'
+    Meteor.subscribe 'bots'
   data: ->
     Scripts.findOne @params.scriptId
 Router.route '/scripts',
@@ -158,6 +159,7 @@ Router.route '/bots/:botId',
     Meteor.subscribe 'bots'
     Meteor.subscribe 'scripts'
     Meteor.subscribe 'sessions', @params.botId
+    Meteor.subscribe 'networks'
   data: ->
     Bots.findOne @params.botId
 Router.route '/bots/:botId/:section',
@@ -170,14 +172,17 @@ Router.route '/bots/:botId/:section',
     @render('botsSidebar', {to: 'sidebar'})
   waitOn: ->
     Meteor.subscribe 'bots'
-    switch @params.section
-      when 'settings'
-        Meteor.subscribe 'networkHandles', @params._id
-        Meteor.subscribe 'sessions', @params.botId
-      when 'convos'
-        Meteor.subscribe 'sessions', @params.botId
-      when 'networks'
-        Meteor.subscribe 'networks'
+    Meteor.subscribe 'sessions', @params.botId
+    Meteor.subscribe 'networks'
+
+    #switch @params.section
+      #when 'settings'
+        #Meteor.subscribe 'networkHandles', @params._id
+        #Meteor.subscribe 'sessions', @params.botId
+      #when 'convos'
+        #Meteor.subscribe 'sessions', @params.botId
+      #when 'networks'
+        #Meteor.subscribe 'networks'
   data: ->
     Bots.findOne @params.botId
 

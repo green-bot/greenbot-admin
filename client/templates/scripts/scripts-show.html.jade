@@ -1,9 +1,30 @@
 template(name='scriptsShow')
-  h3 Scripts > {{name}}
   .card-panel
     .row
-      .col.s10
+      .col.s12
+        .row
+          a.remove.right
+            i.black-text.material-icons.xs.icon-bottom delete
+            span Delete
+            
+          h2.left
+            = name
+
+        a.github(href='{{repo_link}}' target='_blank')
+          i.black-text.icon-bottom.zmdi.zmdi-github.zmdi-hc-2x.center-align(style="width: 30px")
+          span Repo
+
+        p {{ short_desc }}
+
         if desc_markdown
           {{{ desc_markdown }}}    
         else
-          h2= name
+
+        h3 Bots created using this script
+        ul
+          each bots
+            li 
+              a(href='/bots/{{_id}}')
+                {{name}}
+
+        button#add-bot.waves-effect.waves-green.btn.green.submit Add a bot
