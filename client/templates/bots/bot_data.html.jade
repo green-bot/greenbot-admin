@@ -1,6 +1,6 @@
 template(name="botData")
-  h3 Bots > {{name}}
   .card-panel
+    h2 {{name}}
     {{> botRuler }}
     h2 Data
     +autoForm collection="Bots" id="insertBookForm" doc=this type="update"

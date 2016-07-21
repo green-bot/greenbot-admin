@@ -126,17 +126,17 @@ Router.route '/scripts',
   action: ->
     defaultSelectedScriptId = Session.get('lastScriptViewedId') or Scripts.findOne({}, {sort: {createdAt:1}})?._id
     if defaultSelectedScriptId
-      @redirect "/scripts/#{defaultSelectedScriptId}"
+      Router.go "/scripts/#{defaultSelectedScriptId}", {}, {replaceState: true}
     else
-      @redirect '/scripts/new'
+      Router.go "/scripts/new", {}, {replaceState: true}
 Router.route '/bots',
   name: 'bots'
   action: ->
     defaultSelectedBotId = Session.get('lastBotViewedId') or Bots.findOne({}, {sort: {createdAt:1}})?._id
     if defaultSelectedBotId
-      @redirect "/bots/#{defaultSelectedBotId}"
+      Router.go "/bots/#{defaultSelectedBotId}", {}, {replaceState: true}
     else
-      @redirect '/bots/new'
+      Router.go "/bots/new", {}, {replaceState: true}
 
 Router.route 'bots/new',
   name: 'botsNew'
@@ -155,6 +155,8 @@ Router.route '/bots/:botId',
   action: ->
     @render 'botsShow'
     @render('botsSidebar', {to: 'sidebar'})
+    console.log "Updating session botsShow.botId #{@params.botId}"
+    Session.set 'botsShow.botId', @params.botId
   waitOn: ->
     Meteor.subscribe 'bots'
     Meteor.subscribe 'scripts'

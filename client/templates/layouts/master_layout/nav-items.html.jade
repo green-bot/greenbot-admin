@@ -2,7 +2,7 @@ template(name='navItems')
   li
     {{> loginButtons}}
   li
-    a(href='/bots' class="{{isActive route='^bots' regex=true}}") Bots
+    a(href='/bots' class="{{isActive path='bot' regex=true}}") Bots
   li
     a(href='/dev-tools' class="{{isActive path='/dev-tools'}}") Dev Tools
   li
