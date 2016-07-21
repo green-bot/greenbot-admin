@@ -17,16 +17,21 @@ Template.botsShow.helpers
 Template.botsShow.onRendered ->
   console.log 'rendered'
   Session.set 'lastBotViewedId', @data._id
+  console.log @data.scriptId
   this.$('#info .material-icons').css('color', '#FF5722')
-  @readme = new ReactiveVar()
+  self = this
   this.autorun =>
     console.log 'Getting readme'
     if Session.get('botsShow.botId')
+      console.log @data.scriptId
       Meteor.call 'getReadme', @data.scriptId, (err, res) =>
         console.log 'Got the readme'
         if err
           console.log "Read me threw error"
           console.log err
           return ""
-        @readme.set marked(res)
+        self.readme.set marked(res)
 
+Template.botsShow.onCreated ->
+  self = this
+  self.readme = new ReactiveVar()
