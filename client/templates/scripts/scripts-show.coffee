@@ -37,4 +37,3 @@ Template.scriptsShow.events
 
   'click .remove' : (event, template) ->
     Meteor.call 'removeScript', @npm_pkg_name
-
