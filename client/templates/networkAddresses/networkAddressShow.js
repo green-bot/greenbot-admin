@@ -6,7 +6,7 @@ var _networkAddress = function(){
 }
 
 Template.networkAddressShow.helpers({
-  networkAddress() {
+  networkAddress(){
     return _networkAddress();
   }
 });
@@ -18,7 +18,12 @@ Template.networkAddressShow.events({
     var address = _networkAddress();
     var updatedAddress = _.clone(address);
     updatedAddress.ownerHandles = e.target.ownerHandles.value.split(",");
-    debugger
-    Bots.update({_id: botId, addresses: address}, {$set: {"addresses.$": updatedAddress}});
+    debugger;
+
+    Meteor.call('updateNetworkAddress', botId, updatedAddress, function(err, res){
+      if (!err){
+        toastr.success('Saved!');
+      }
+    });
   }
 });

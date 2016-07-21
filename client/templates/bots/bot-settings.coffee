@@ -10,9 +10,9 @@ Template.botSettings.events
       value = $(this).prop('value')
       Meteor.call('updateSetting', botId, name, value)
     name = tmpl.$('.name').prop('value')
-    Bots.update botId, $set: { name: name }, (err) ->
-      console.log(err) if err?
-      unless err?
+
+    Meteor.call 'updateBotName', botId, name, (err) ->
+      if not err
         saving.set(false)
         toastr.success 'Saved!', positionClass: 'toastr-bottom-right'
 

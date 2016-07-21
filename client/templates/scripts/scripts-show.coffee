@@ -1,11 +1,3 @@
-simplePasscode = ->
-  alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  code = ''
-  for i in [1..6]
-    index = Math.floor(Math.random() * 26)
-    code += alpha.charAt(index)
-  code
-
 Template.scriptsShow.onRendered ->
   Session.set 'lastScriptViewedId', @data._id
 
@@ -18,19 +10,9 @@ Template.scriptsShow.helpers
 
 Template.scriptsShow.events
   'click button#add-bot' : (e) ->
-    console.log 'event'
-    bot =
-      accountId: Meteor.userId()
-      description: this.short_desc
-      name: this.name
-      notificationEmails: Meteor.user().emails[0].address
-      scriptId: this._id
-      settings: this.default_settings
-      passcode: simplePasscode()
-    console.log bot
-    newBotId = Bots.insert(bot)
-    Meteor.call('addNetwork', newBotId, "development", newBotId.toLowerCase(), "test")
-    Router.go 'bots', botId: newBotId
+    Meteor.call 'addBot', @, (err, res) ->
+      if not err
+        Router.go 'bots', botId: res
 
   'click .info' : (event, template) ->
     template.$('#desc').openModal()

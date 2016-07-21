@@ -13,12 +13,10 @@ Template.botNetworks.events
     e.preventDefault()
     return unless confirm("Are you sure you want to delete this network hande?")
     botId = Router.current().params.botId
-    result = Bots.update({_id: botId},
-      { $pull : { addresses: {networkHandleId: @.networkHandleId } }})
-    console.log "The confirmation message was ... ... ..."
-    console.log result
-    return
-
+    Meteor.call 'removeBotNetworkHandle', botId, @.networkHandleId, (err, res) ->
+      if not err
+        console.log "The confirmation message was ... ... ..."
+        console.log res
 
 Template.botNetworks.helpers
   network: (networkHandleName) -> networkHandleName.split("::")[0]

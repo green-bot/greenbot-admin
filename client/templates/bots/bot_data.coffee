@@ -11,17 +11,14 @@ Template.botData.events
   'click .submit2' : (e, tmpl) ->
     e.preventDefault()
     botId = Router.current().params.botId
-    postConversationWebhook = tmpl.$('input[name=postConversationWebhook]').val()
-    notificationEmails = tmpl.$('input[name=notificationEmails]').val()
-    notificationEmailSubject = tmpl.$('input[name=notificationEmailSubject]').val()
-    console.log "Updating data sinks"
-    console.log postConversationWebhook
-    console.log notificationEmails
-    Bots.update { _id: botId },
-      $set :
-        postConversationWebhook: postConversationWebhook
-        notificationEmails: notificationEmails
-        notificationEmailSubject: notificationEmailSubject
+    data =
+      postConversationWebhook: tmpl.$('input[name=postConversationWebhook]').val()
+      notificationEmails: tmpl.$('input[name=notificationEmails]').val()
+      notificationEmailSubject: tmpl.$('input[name=notificationEmailSubject]').val()
+
+    Meteor.call 'updateBotData', botId, data, (err, res) ->
+      if not err
+        toastr.success 'Saved!'
 
 Template.botData.onRendered ->
   this.$('#data .material-icons').css('color', '#FF5722')

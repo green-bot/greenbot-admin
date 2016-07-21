@@ -11,8 +11,7 @@ Template.botsShow.helpers
   isScriptGone: -> !@scriptId?
   id: -> this._id
   bot: -> Bots.findOne this._id
-  readme: ->
-    Template.instance().readme.get()
+  readme: -> Template.instance().readme.get()
 
 Template.botsShow.onRendered ->
   console.log 'rendered'
@@ -23,8 +22,8 @@ Template.botsShow.onRendered ->
   this.autorun =>
     console.log 'Getting readme'
     if Session.get('botsShow.botId')
-      console.log @data.scriptId
-      Meteor.call 'getReadme', @data.scriptId, (err, res) =>
+      bot = Bots.findOne(Session.get('botsShow.botId'))
+      Meteor.call 'getReadme', bot?.scriptId, (err, res) =>
         console.log 'Got the readme'
         if err
           console.log "Read me threw error"
