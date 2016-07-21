@@ -267,3 +267,7 @@ nav ul a[disabled]{
   color: $primary-color-light;
   &:hover{ background-color: $primary-color-dark !important; }
 }
+
+nav ul a{
+  &.active{ background-color: $accent-color; }
+}

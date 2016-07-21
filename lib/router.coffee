@@ -1,3 +1,6 @@
+Router.onAfterAction () ->
+  Session.set('active', @route.getName())
+
 Router.route '/bots/:_id/addresses/:networkHandleName',
   name: 'networkAddressShow'
   waitOn: ->

@@ -2,10 +2,10 @@ template(name='navItems')
   li
     {{> loginButtons}}
   li
-    a(href='/bots') Bots
+    a(href='/bots' class="{{isActive route='^bots' regex=true}}") Bots
   li
-    a(href='/dev-tools') Dev Tools
+    a(href='/dev-tools' class="{{isActive path='/dev-tools'}}") Dev Tools
   li
-    a(href='/scripts') Script Library
+    a(href='/scripts' class="{{isActive route='^scripts' regex=true}}") Script Library
   li
     a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}') Help
