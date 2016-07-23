@@ -18,4 +18,13 @@ Template.scriptsShow.events
     template.$('#desc').openModal()
 
   'click .remove' : (event, template) ->
-    Meteor.call 'removeScript', @npm_pkg_name
+    $('.overlay').LoadingOverlay("show")
+    Meteor.call 'removeScript', @npm_pkg_name, (err)->
+      if err
+        console.log err
+      else
+        firstScriptId = Scripts.findOne({}, sort: { name: 1 } )._id
+        console.log firstScriptId
+        Router.go "/scripts/#{firstScriptId}"
+        $('.overlay').LoadingOverlay("hide")
+        toastr.success('Script removed!')

@@ -1,3 +1,18 @@
 template(name="scriptsNew")
-  h1 Install a New Script
-  p.flow-text A bot's script is like its brain. Pick one to install.
+  .overlay
+    h1 Install a New Script
+    p.flow-text A bot's script is like its brain. Pick one to install.
+
+    .row
+      p
+        | To install a locally developed scipt, provide the directory name of the 
+        | package here. Or, to install one available on npmjs.com, 
+        | specify the package name.
+    form#install-script
+      .row
+        .input-field
+          input.package(type='text' name='name')
+          label.active(for='name') NPM directory or package name
+      .row.center-align
+        button(type='submit').btn.deep-orange
+          | Install
