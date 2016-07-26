@@ -99,6 +99,7 @@ Router.route '/accountsList',
 Router.route '/',
   waitOn: ->
     Meteor.subscribe 'bots'
+    Meteor.subscribe 'sessions'
   template: 'home'
   action: ->
     @render()

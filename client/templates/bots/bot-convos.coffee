@@ -37,7 +37,7 @@ Template.botConvos.events
     $('#collected-data-modal').openModal()
 
   'click .show-transcript' : (e, tmpl)->
-    transcriptData.set(@.transcript)
+    transcriptData.set(@transcript)
     $('#transcript-modal').openModal()
 
   'click .csv-export': (e, tmpl) ->

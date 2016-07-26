@@ -15,7 +15,7 @@ getIo = new Promise (resolve, reject) =>
   if cachedIO?
     resolve cachedIO
   else
-    $.getScript(  "#{socketUrl}/socket.io/socket.io.js" )
+    $.getScript("#{socketUrl}/socket.io/socket.io.js")
       .done ->
         Session.set('socketIO', window.io)
         resolve window.io
