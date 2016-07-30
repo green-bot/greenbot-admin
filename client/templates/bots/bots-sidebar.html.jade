@@ -1,8 +1,10 @@
 template(name="botsSidebar")
-  .collection
+  ul.collection
     each bots
-      a.collection-item.green.bot-item(href='/bots/{{_id}}' class=activeStyle) 
-        {{ name }}
+      li
+        a.collection-item.green.bot-item(href='/bots/{{_id}}' class=activeStyle) 
+          i.material-icons(style='line-height:inherit;vertical-align:bottom') record_voice_over
+          {{ name }}
   .center-align
     a.btn-floating.btn-large.deep-orange.add-bot
       i.large.material-icons add

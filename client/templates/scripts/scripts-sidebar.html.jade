@@ -1,8 +1,10 @@
 template(name="scriptsSidebar")
-  .collection
+  ul.collection
     each scripts
-      a.collection-item.green.script-item(href='/scripts/{{_id}}' class=activeStyle) 
-        {{ name }}
+      li
+        a.collection-item.green.script-item(href='/scripts/{{_id}}' class=activeStyle) 
+          i.material-icons(style='line-height:inherit;vertical-align:bottom') person_outline
+          {{ name }}
   .center-align
     a.btn-floating.btn-large.deep-orange.add-script(href='/scripts/new')
       i.large.material-icons add
