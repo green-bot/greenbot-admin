@@ -13,7 +13,7 @@ template(name='scriptCard')
         i.black-text.material-icons.small.icon-bottom delete
         span Delete
   .col.s12.m4
-    .card.green.darken-2.script-card(class="{{hide}}")
+    .card.teal.darken-2.script-card(class="{{hide}}")
       .card-content.white-text.script-card-content
         .row
           .left.card-title {{name}}
@@ -23,7 +23,7 @@ template(name='scriptCard')
           p {{ short_desc}}
       .card-action
         .row.center-align
-          a.btn.waves-effect.waves-green.deep-orange.select-script
+          a.btn.waves-effect.waves-teal.red.select-script
             | Select
 
     .col.s6
@@ -33,5 +33,5 @@ template(name='scriptCard')
           |       
           {{{ desc_markdown }}}
         .modal-footer
-          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') 
+          a.modal-action.modal-close.waves-effect.waves-teal.btn-flat(href='#!') 
             | Close

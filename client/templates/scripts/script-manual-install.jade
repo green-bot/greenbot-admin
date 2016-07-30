@@ -1,6 +1,6 @@
 template(name='scriptManualInstall')
   .col.s12.m4
-    .card.green.darken-2.script-card
+    .card.teal.darken-2.script-card
       .card-content.white-text.script-card-content
         .row
           .left.card-title Install A Script
@@ -15,7 +15,7 @@ template(name='scriptManualInstall')
             label.active.white-text(for='name') NPM directory or package name
       .card-action
         .row.center-align
-          a.btn.waves-effect.waves-green.deep-orange.install-script
+          a.btn.waves-effect.waves-teal.orange.install-script
             | Install
     .col.s6
       #desc.modal.modal-fixed-footer
@@ -24,5 +24,5 @@ template(name='scriptManualInstall')
           |       
           {{{ desc_markdown }}}
         .modal-footer
-          a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') 
+          a.modal-action.modal-close.waves-effect.waves-teal.btn-flat(href='#!') 
             | Close

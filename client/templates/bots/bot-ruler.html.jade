@@ -1,6 +1,6 @@
 template(name='botRuler')
   nav
-    .nav-wrapper.green
+    .nav-wrapper.teal
       if isScriptGone
         ul
           li#info
@@ -19,7 +19,7 @@ template(name='botRuler')
             a(disabled)
               i.small.material-icons settings
           li#help
-            a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' )
+            a(href='https://github.com/teal-bot/tealbot-core/wiki/{{ wikiName }}' )
               i.small.material-icons help
           li#delete.right
             a()
@@ -42,7 +42,7 @@ template(name='botRuler')
             a( href="/bots/{{currentBotId}}/settings" )
               i.small.material-icons settings
           li#help
-            a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' target='_blank')
+            a(href='https://github.com/teal-bot/tealbot-core/wiki/{{ wikiName }}' target='_blank')
               i.small.material-icons help
           li#delete.right
             a

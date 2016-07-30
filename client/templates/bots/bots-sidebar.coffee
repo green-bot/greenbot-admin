@@ -5,8 +5,7 @@ Template.botsSidebar.helpers
   activeStyle: ->
     instance = Template.parentData()
     if instance?._id is this._id
-      return 'orange-text'
-    return 'white-text'
+      return 'active'
 
 Template.botsSidebar.events
   'click .add-bot' : () ->

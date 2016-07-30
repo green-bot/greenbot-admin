@@ -4,7 +4,7 @@ template(name='botConvos')
     {{> botRuler }}
     .vertical-align
       h2.inline-block.right-margin Conversations
-      button.green.csv-export.btn.push-up Export to CSV
+      button.teal.csv-export.btn.push-up Export to CSV
     {{> reactiveTable collection=convos class="table highlight" settings=tableSettings}}
 
     #collected-data-modal.modal.modal-fixed-footer
@@ -12,12 +12,12 @@ template(name='botConvos')
         h4 Collected data
         {{> jsonView json=collectedData}}
       .modal-footer
-        a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+        a.modal-action.modal-close.waves-effect.waves-teal.btn-flat(href='#!') Close
 
     #transcript-modal.modal.modal-fixed-footer
       .modal-content
         h4 Transcript
         {{> jsonView json=transcriptData}}
       .modal-footer
-        a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href='#!') Close
+        a.modal-action.modal-close.waves-effect.waves-teal.btn-flat(href='#!') Close
  

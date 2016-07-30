@@ -22,6 +22,13 @@ $divider-color:        #B6B6B6;
    color:    $primary-color;
 }
 
+body {
+  background: #f2f2f2;
+}
+
+.collection-borderless {
+  border: none;
+}
 
 .tabs .tab a {
   color: white;
@@ -41,8 +48,17 @@ footer.page-footer {
 }
 
 .bot-sidebar {
-  margin-top: 10px;
+  i {
+    padding-right: 10px;
+  }
+  .bot-item {
+    line-height:1em;
+    vertical-align:bottom;
+    font-size: 14.5px;
+    color: #616161;
+  }
 }
+
 .script-card-content {
   height: 250px;
 }

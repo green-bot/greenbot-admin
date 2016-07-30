@@ -18,11 +18,11 @@ template(name="botNetworks")
             td {{ handle networkHandleName }}
             td= keywords
             td
-              a.green-text( href="/dev-tools/{{networkHandleName}}" )
+              a.teal-text( href="/dev-tools/{{networkHandleName}}" )
                 i.material-icons.left play_arrow
                 | Test
             td
-              a.green-text.delete(href='#')
+              a.teal-text.delete(href='#')
                 i.material-icons.left delete
                 | Delete
     .section
@@ -37,5 +37,5 @@ template(name="botNetworks")
         .col.s3.input-field
           input#keywords(placeholder='keywords')
         .col.s3.input-field
-          a#add-network.btn-floating.waves-effect.waves-green.red
+          a#add-network.btn-floating.waves-effect.waves-teal.orange
             i.material-icons.left add
