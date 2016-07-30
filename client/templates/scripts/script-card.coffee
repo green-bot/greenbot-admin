@@ -1,8 +1,11 @@
 Template.scriptCard.events
   'click .select-script' : (event) ->
-    Meteor.call 'addBot', @, (err, res)->
+    Meteor.call 'addBot', @, (err, res) ->
       if not err
-        Router.go 'bots', botId: res
+        Router.go "/bots/#{res}"
+      else
+        console.log '!!!!err'
+        console.log err
 
   'click .info' : (event, template) ->
     template.$('#desc').openModal()
