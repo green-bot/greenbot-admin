@@ -1,13 +1,12 @@
 Chart = require('chart.js')
 
 Template.home.events
-  'click .reactive-table tbody tr': (ev) ->
-    if ev.target.className.indexOf('sessions-delete') > -1
-      session = this
-      Meteor.call 'killSession', session.sessionId, (err, res) ->
-        if err?
-          console.log 'Error killing session'
-          console.log err
+  'click .reactive-table a.sessions-delete': (ev) ->
+    ev.preventDefault()
+    Meteor.call 'killSession', @sessionId, (err, res) ->
+      if err?
+        console.log 'Error killing session'
+        console.log err
 
 Template.home.helpers
   activeSessions: ->
