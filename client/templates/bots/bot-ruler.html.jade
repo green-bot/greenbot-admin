@@ -1,49 +1,26 @@
 template(name='botRuler')
-  nav
-    .nav-wrapper.teal
-      if isScriptGone
-        ul
-          li#info
-            a( href="/bots/{{currentBotId}}" )
-              i.small.material-icons info
-          li#convos
-            a( href="/bots/{{currentBotId}}/convos" )
-              i.small.material-icons chat
-          li
-            a(disabled)
-              i.small.material-icons save
-          li
-            a(disabled)
-              i.small.material-icons wifi
-          li
-            a(disabled)
-              i.small.material-icons settings
-          li#help
-            a(href='https://github.com/teal-bot/tealbot-core/wiki/{{ wikiName }}' )
-              i.small.material-icons help
-          li#delete.right
-            a()
-              i.small.material-icons delete
-      else
-        ul
-          li#info
-            a( href="/bots/{{currentBotId}}" )
-              i.small.material-icons info
-          li#convos
-            a( href="/bots/{{currentBotId}}/convos" )
-              i.small.material-icons chat
-          li#data
-            a( href="/bots/{{currentBotId}}/data" )
-              i.small.material-icons save
-          li#networks
-            a( href="/bots/{{currentBotId}}/networks" )
-              i.small.material-icons wifi
-          li#settings
-            a( href="/bots/{{currentBotId}}/settings" )
-              i.small.material-icons settings
-          li#help
-            a(href='https://github.com/teal-bot/tealbot-core/wiki/{{ wikiName }}' target='_blank')
-              i.small.material-icons help
-          li#delete.right
-            a
-              i.small.material-icons delete
+  nav.no-shaddow
+    .nav-wrapper.white
+      a.brand-logo.grey-text {{name}}
+      ul.right
+        li#info
+          a( href="/bots/{{currentBotId}}" )
+            i.small.material-icons.grey-text info
+        li#convos
+          a( href="/bots/{{currentBotId}}/convos" )
+            i.small.material-icons.grey-text chat
+        li#data
+          a( href="/bots/{{currentBotId}}/data" disabled=isScriptGone)
+            i.small.material-icons.grey-text save
+        li#networks
+          a( href="/bots/{{currentBotId}}/networks"  disabled=isScriptGone)
+            i.small.material-icons.grey-text wifi
+        li#settings
+          a( href="/bots/{{currentBotId}}/settings"  disabled=isScriptGone)
+            i.small.material-icons.grey-text settings
+        li#help
+          a(href='https://github.com/green-bot/greenbot-core/wiki/{{ wikiName }}' target='_blank')
+            i.small.material-icons.grey-text help
+        li#delete.right
+          a
+            i.small.material-icons.grey-text delete

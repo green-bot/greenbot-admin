@@ -1,11 +1,29 @@
-$primary-color-dark:   #388E3C;
-$primary-color:        #4CAF50;
-$primary-color-light:  #C8E6C9;
+$primary-color-dark:   #00796B;
+$primary-color:        #009688;
+$primary-color-light:  #B2DFDB;
 $primary-color-text:   #FFFFFF;
 $accent-color:         #FF5722;
 $primary-text-color:   #212121;
 $secondary-text-color: #727272;
 $divider-color:        #B6B6B6;
+
+.primary-color-text{
+  color: $primary-color;
+}
+
+.primary-color{
+  background-color: $primary-color;
+}
+
+.accent-color-text{
+  color: $accent-color;
+}
+
+.accent-color{
+  background-color: $accent-color;
+}
+
+
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    $primary-color;
@@ -47,14 +65,26 @@ footer.page-footer {
   background-color: color("materialize-grey", "lighten-4");
 }
 
+nav.no-shaddow{
+  box-shadow:none;
+}
+
 .bot-sidebar {
+  margin-top: 20px;
+  margin-left: 20px;
   i {
-    padding-right: 10px;
+    padding-right: 20px;
+    display: inline-flex;
+    line-height:1em!important;
+    vertical-align:middle;
+    font-size: 18px!important;
   }
   .bot-item {
-    line-height:1em;
-    vertical-align:bottom;
-    font-size: 14.5px;
+    padding-bottom: 10px;
+    display: inline-flex;
+    line-height:1em!important;
+    vertical-align:middle;
+    font-size: 18px!important;
     color: #616161;
   }
 }
@@ -74,9 +104,6 @@ nav .nav-wrapper, .nav-wrapper {
 
 }
 
-.bot-sidebar a:visited {
-  color: $primary-color-dark;
-}
 .botActive {
   color: $accent-color;
 }
@@ -281,7 +308,8 @@ dl {
 nav ul a[disabled]{
   cursor: default;
   color: $primary-color-light;
-  &:hover{ background-color: $primary-color-dark !important; }
+  pointer-events: none;
+  &:hover{ background-color: white!important; }
 }
 
 nav ul a{

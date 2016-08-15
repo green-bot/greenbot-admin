@@ -6,6 +6,7 @@ template(name="botsSidebar")
           a.bot-item(href='/bots/{{_id}}' class=activeStyle) 
             i.material-icons record_voice_over
             {{ name }}
-    .center-align
-      a.btn-floating.btn-large.orange.add-bot
-        i.large.material-icons add
+  .center-align
+    .fixed-action-button
+      a.btn-floating.btn-large.waves-effect.deep-orange.add-bot
+        i.material-icons add

@@ -13,17 +13,17 @@ template(name='scriptCard')
         i.black-text.material-icons.small.icon-bottom delete
         span Delete
   .col.s12.m4
-    .card.teal.darken-2.script-card(class="{{hide}}")
-      .card-content.white-text.script-card-content
+    .card.white.script-card(class="{{hide}}")
+      .card-content.white.black-text.script-card-content
         .row
-          .left.card-title {{name}}
+          .left.gray-text.card-title {{name}}
           a.dropdown-button.white-text.flow-text.right(href="#!" data-activates="{{dropdownId}}")
             i.material-icons more_vert
         .row
           p {{ short_desc}}
-      .card-action
+      .card-action.white.black-text
         .row.center-align
-          a.btn.waves-effect.waves-teal.red.select-script
+          a.btn.waves-effect.deep-orange.select-script
             | Select
 
     .col.s6
