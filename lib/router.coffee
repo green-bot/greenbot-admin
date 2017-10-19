@@ -96,6 +96,9 @@ Router.route '/accountsList',
     Meteor.subscribe 'scripts'
   data: ->
     Meteor.users.find()
+
+
+# entry point to router!!! //    
 Router.route '/',
   waitOn: ->
     Meteor.subscribe 'bots'
@@ -103,6 +106,7 @@ Router.route '/',
   template: 'home'
   action: ->
     @render()
+   
 Router.route '/scripts/new',
   name: 'scriptsNew'
   layoutTemplate: 'listLayout'
@@ -134,10 +138,22 @@ Router.route '/bots',
   name: 'bots'
   action: ->
     defaultSelectedBotId = Session.get('lastBotViewedId') or Bots.findOne({}, {sort: {createdAt:1}})?._id
-    if defaultSelectedBotId
+    defaultAccountId = Meteor.user().profile
+    console.log defaultAccountId.accountIds
+    if defaultSelectedBotId && defaultAccountId
       Router.go "/bots/#{defaultSelectedBotId}", {}, {replaceState: true}
-    else
+    else if defaultAccountId
       Router.go "/bots/new", {}, {replaceState: true}
+    else
+      Router.go "/bots/newAccountId", {}, {replaceState: true}
+
+
+Router.route 'bots/newAccountId',
+  name: 'acountIdNew'
+  layoutTemplate: 'masterLayout'
+  action: ->
+    @render 'accountIdNew'
+ 
 
 Router.route 'bots/new',
   name: 'botsNew'
